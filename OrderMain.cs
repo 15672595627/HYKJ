@@ -269,8 +269,10 @@ namespace WindowsFormsApp1
 
         private void button16_Click(object sender, EventArgs e)
         {
-            DesginList desginlist = new DesginList();
-            desginlist.Show();
+            /*DesginList desginlist = new DesginList();
+            desginlist.Show();*/
+            CheckCategory checkCategory = new CheckCategory();
+            checkCategory.Show();
         }
 
         private void button18_Click(object sender, EventArgs e)
@@ -287,8 +289,8 @@ namespace WindowsFormsApp1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            POApplyList purchaseApplyList = new POApplyList();
-            purchaseApplyList.Show();
+            cgwh cgwh = new cgwh();
+            cgwh.Show();
         }
 
         private void button22_Click(object sender, EventArgs e)
@@ -499,6 +501,58 @@ namespace WindowsFormsApp1
             listCbtz.Show();
         }
 
+        private void button31_Click(object sender, EventArgs e)
+        {
+            CheckStock checkStock = new CheckStock();
+            checkStock.User = Username1;
+            checkStock.Group = Group1;
+            checkStock.Show();
+        }
 
+        private void button32_Click(object sender, EventArgs e)
+        {
+            kucunyanzheng kucunyanzheng = new kucunyanzheng();
+            kucunyanzheng.Show();
+            kucunyanzheng.User = this.Username1;
+            kucunyanzheng.Group = this.Group1;
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            PurchaseSQ purchaseSQ = new PurchaseSQ();
+            purchaseSQ.Show();
+            purchaseSQ.User = this.Username1;
+            purchaseSQ.Group = this.Group1;
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            NewPurchase newPurchase = new NewPurchase();
+            newPurchase.Show();
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            lldList lldList = new lldList();
+            lldList.Show();
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            scllContract scllContract = new scllContract();
+            scllContract.Show();
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            basicMaterialAdd basicMaterialAdd = new basicMaterialAdd();
+            basicMaterialAdd.Show();
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            basicMaterialMaintain basicMaterialMaintain = new basicMaterialMaintain();
+            basicMaterialMaintain.Show();
+        }
     }
 }

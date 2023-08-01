@@ -103,6 +103,9 @@ namespace WindowsFormsApp1
             asc.controlAutoSize(this);
         }
 
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

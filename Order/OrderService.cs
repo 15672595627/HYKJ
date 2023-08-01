@@ -228,69 +228,76 @@ namespace WindowsFormsApp1.Order
                 string bz = richTextBox1.Text;
                 SqlConnection con = new SqlConnection(SQL);
                 bool go = true;
-                try
+                bool flag7 = this.YS.Text != "" && this.ZCM.Text != "" && this.ZMS.Text != "" && this.LXR.Text != "" && this.LXFS.Text != "";
+                if(flag7)
                 {
-                    con.Open();
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                    {
-                        SqlCommand comm = new SqlCommand();
-                        string nr = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
-                        string sl1 = dataGridView1.Rows[i].Cells[1].Value.ToString().Trim();
-                        string dw = dataGridView1.Rows[i].Cells[2].Value.ToString().Trim();
-                        string dj1 = dataGridView1.Rows[i].Cells[3].Value.ToString().Trim();
-                        string ms = dataGridView1.Rows[i].Cells[4].Value.ToString().Trim();
-                        string je = dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
-                        string cpmc = dataGridView1.Rows[i].Cells[6].Value.ToString().Trim();
-                        comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[ident],[pmc],[dusting]) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','N','N','" + PF.Text + "')";
-                        comm.Connection = con;
-                        int count = comm.ExecuteNonQuery();
-                        if (count < 1)
-                        {
-                            MessageBox.Show("保存失败");
-                        }
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("更新失败，失败原因" + ex.Message + "\n" + "检查一下详细数据是不是没录。");
-                    go = false;
-                }
-                finally
-                {
-                    con.Close();
-                }
-
-                try
-                {
-                    if (go == true)
+                    try
                     {
                         con.Open();
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj]) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + qdrq + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sjje + "','" + wsje + "','" + azf + "','" + ywf + "','" + huok + "','" + dj + "','" + hk + "','" + bz + "','已审核','" + qj + "')";
-                        cmd.Connection = con;
-                        int count = cmd.ExecuteNonQuery();
-                        if (count > 0)
+                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                         {
-                            MessageBox.Show("保存成功");
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("保存失败");
+                            SqlCommand comm = new SqlCommand();
+                            string nr = dataGridView1.Rows[i].Cells[0].Value.ToString().Trim();
+                            string sl1 = dataGridView1.Rows[i].Cells[1].Value.ToString().Trim();
+                            string dw = dataGridView1.Rows[i].Cells[2].Value.ToString().Trim();
+                            string dj1 = dataGridView1.Rows[i].Cells[3].Value.ToString().Trim();
+                            string ms = dataGridView1.Rows[i].Cells[4].Value.ToString().Trim();
+                            string je = dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
+                            string cpmc = dataGridView1.Rows[i].Cells[6].Value.ToString().Trim();
+                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[ident],[pmc],[dusting]) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','N','N','" + PF.Text + "')";
+                            comm.Connection = con;
+                            int count = comm.ExecuteNonQuery();
+                            if (count < 1)
+                            {
+                                MessageBox.Show("保存失败");
+                            }
+
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("更新失败，失败原因" + ex.Message + "\n" + "检查一下详细数据是不是没录。");
+                        go = false;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("保存失败，失败原因" + ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
+                    try
+                    {
+                        if (go == true)
+                        {
+                            con.Open();
+                            SqlCommand cmd = new SqlCommand();
+                            cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj]) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + qdrq + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sjje + "','" + wsje + "','" + azf + "','" + ywf + "','" + huok + "','" + dj + "','" + hk + "','" + bz + "','已审核','" + qj + "')";
+                            cmd.Connection = con;
+                            int count = cmd.ExecuteNonQuery();
+                            if (count > 0)
+                            {
+                                MessageBox.Show("保存成功");
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("保存失败");
+                            }
+                        }
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("保存失败，失败原因" + ex.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("联系人，联系方式，颜色，最长米或总米数没有输入，无法保存");
+                }        
             }
         }
 

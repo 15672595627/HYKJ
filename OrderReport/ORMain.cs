@@ -70,5 +70,11 @@ namespace WindowsFormsApp1.OrderReport
             Amount amount = new Amount();
             amount.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            week week = new week();
+            week.Show();
+        }
     }
 }

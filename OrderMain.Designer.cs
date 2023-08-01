@@ -63,6 +63,7 @@ namespace WindowsFormsApp1
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.button31 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
@@ -81,6 +82,13 @@ namespace WindowsFormsApp1
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -304,6 +312,7 @@ namespace WindowsFormsApp1
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.button34);
             this.groupBox8.Controls.Add(this.button22);
             this.groupBox8.Controls.Add(this.button23);
             this.groupBox8.Font = new System.Drawing.Font("楷体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -446,6 +455,8 @@ namespace WindowsFormsApp1
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.button36);
+            this.groupBox6.Controls.Add(this.button35);
             this.groupBox6.Controls.Add(this.button20);
             this.groupBox6.Controls.Add(this.button12);
             this.groupBox6.Controls.Add(this.button8);
@@ -464,7 +475,7 @@ namespace WindowsFormsApp1
             // 
             this.button20.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button20.Location = new System.Drawing.Point(6, 40);
+            this.button20.Location = new System.Drawing.Point(0, 116);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(178, 40);
             this.button20.TabIndex = 1;
@@ -476,7 +487,7 @@ namespace WindowsFormsApp1
             // 
             this.button12.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button12.Location = new System.Drawing.Point(6, 122);
+            this.button12.Location = new System.Drawing.Point(0, 162);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(178, 40);
             this.button12.TabIndex = 2;
@@ -488,7 +499,7 @@ namespace WindowsFormsApp1
             // 
             this.button8.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button8.Location = new System.Drawing.Point(195, 40);
+            this.button8.Location = new System.Drawing.Point(193, 116);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(166, 40);
             this.button8.TabIndex = 3;
@@ -500,7 +511,7 @@ namespace WindowsFormsApp1
             // 
             this.button9.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button9.Location = new System.Drawing.Point(195, 122);
+            this.button9.Location = new System.Drawing.Point(193, 162);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(166, 40);
             this.button9.TabIndex = 4;
@@ -510,6 +521,9 @@ namespace WindowsFormsApp1
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.button33);
+            this.groupBox10.Controls.Add(this.button32);
+            this.groupBox10.Controls.Add(this.button31);
             this.groupBox10.Controls.Add(this.button14);
             this.groupBox10.Controls.Add(this.button18);
             this.groupBox10.Controls.Add(this.button19);
@@ -525,6 +539,18 @@ namespace WindowsFormsApp1
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "PMC部";
             this.groupBox10.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox10_Paint);
+            // 
+            // button31
+            // 
+            this.button31.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button31.ForeColor = System.Drawing.Color.Black;
+            this.button31.Location = new System.Drawing.Point(104, 28);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(84, 40);
+            this.button31.TabIndex = 7;
+            this.button31.Text = "库存验证（仓库数据）";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
             // button14
             // 
@@ -544,7 +570,7 @@ namespace WindowsFormsApp1
             this.button18.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button18.Location = new System.Drawing.Point(6, 30);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(388, 40);
+            this.button18.Size = new System.Drawing.Size(92, 40);
             this.button18.TabIndex = 2;
             this.button18.Text = "（BOM单）库存验证";
             this.button18.UseVisualStyleBackColor = true;
@@ -566,9 +592,9 @@ namespace WindowsFormsApp1
             // 
             this.button10.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button10.Location = new System.Drawing.Point(206, 76);
+            this.button10.Location = new System.Drawing.Point(206, 122);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(188, 86);
+            this.button10.Size = new System.Drawing.Size(188, 40);
             this.button10.TabIndex = 1;
             this.button10.Text = "采购申请维护";
             this.button10.UseVisualStyleBackColor = true;
@@ -600,6 +626,8 @@ namespace WindowsFormsApp1
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button38);
+            this.groupBox7.Controls.Add(this.button37);
             this.groupBox7.Controls.Add(this.button16);
             this.groupBox7.Controls.Add(this.button17);
             this.groupBox7.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -616,7 +644,7 @@ namespace WindowsFormsApp1
             // 
             this.button16.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button16.Location = new System.Drawing.Point(6, 115);
+            this.button16.Location = new System.Drawing.Point(7, 96);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(188, 40);
             this.button16.TabIndex = 1;
@@ -699,6 +727,86 @@ namespace WindowsFormsApp1
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button32
+            // 
+            this.button32.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button32.ForeColor = System.Drawing.Color.Black;
+            this.button32.Location = new System.Drawing.Point(206, 30);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(188, 38);
+            this.button32.TabIndex = 8;
+            this.button32.Text = "库存验证";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // button33
+            // 
+            this.button33.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button33.ForeColor = System.Drawing.Color.Black;
+            this.button33.Location = new System.Drawing.Point(206, 76);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(184, 40);
+            this.button33.TabIndex = 9;
+            this.button33.Text = "采购申请";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // button34
+            // 
+            this.button34.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button34.ForeColor = System.Drawing.Color.Black;
+            this.button34.Location = new System.Drawing.Point(7, 133);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(170, 39);
+            this.button34.TabIndex = 4;
+            this.button34.Text = "采购申请";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // button35
+            // 
+            this.button35.Location = new System.Drawing.Point(7, 26);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(171, 23);
+            this.button35.TabIndex = 5;
+            this.button35.Text = "新增生产领料";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button36
+            // 
+            this.button36.Location = new System.Drawing.Point(188, 26);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(171, 23);
+            this.button36.TabIndex = 6;
+            this.button36.Text = "领料单维护";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button37.ForeColor = System.Drawing.Color.Black;
+            this.button37.Location = new System.Drawing.Point(8, 142);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(187, 41);
+            this.button37.TabIndex = 2;
+            this.button37.Text = "基础物料新增";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // button38
+            // 
+            this.button38.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button38.ForeColor = System.Drawing.Color.Black;
+            this.button38.Location = new System.Drawing.Point(7, 197);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(187, 45);
+            this.button38.TabIndex = 3;
+            this.button38.Text = "基础物料维护";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
             // OrderMain
             // 
@@ -787,5 +895,13 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button37;
     }
 }

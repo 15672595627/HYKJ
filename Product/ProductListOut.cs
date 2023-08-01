@@ -581,47 +581,55 @@ namespace WindowsFormsApp1.Product
 
         private void 批量审核ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            bool flag = this.dataGridView1.Rows.Count > 0;
+            if (flag)
             {
-
-
-                SqlConnection con = new SqlConnection(SQL);
-
-                //
-                //修改应发数量，修改出库单审核状态
-                //
+                SqlConnection sqlConnection = new SqlConnection(ProductListOut.SQL);
                 try
                 {
-                    con.Open();
-                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                    sqlConnection.Open();
+                    for (int i = 0; i < this.dataGridView1.SelectedRows.Count; i++)
                     {
-                        int m = dataGridView1.SelectedRows[i].Index;
-
-                        string djbh = dataGridView1.Rows[m].Cells["单据编号"].Value.ToString();
-                        string cpmc = dataGridView1.Rows[m].Cells["产品"].Value.ToString();
-                        string nr = dataGridView1.Rows[m].Cells["内容"].Value.ToString();
-                        string htbh = dataGridView1.Rows[m].Cells["合同编号"].Value.ToString();
-
-
-                        decimal oldyf = Convert.ToDecimal(dataGridView1.Rows[m].Cells["已发数量"].Value);
-                        decimal fhsl = Convert.ToDecimal(dataGridView1.Rows[m].Cells["发货数量"].Value);
-                        decimal newyf = oldyf + fhsl;
-
-                        SqlCommand cmd = con.CreateCommand();
-                        cmd.CommandText = "UPDATE ProductIn SET sent = '" + newyf + "' WHERE contractid = '" + htbh + "' and product = '" + cpmc + "' and substance = '" + nr + "'";
-                        int cot = cmd.ExecuteNonQuery();
-
-                        cmd.CommandText = "UPDATE ProductOut SET examine = '已审核' WHERE product = '" + cpmc + "' and orderid = '" + djbh + "' and substance = '" + nr + "'";
-                        int cot1 = cmd.ExecuteNonQuery();
-
-                        if (cot == 0 || cot1 == 0)
+                        int index = this.dataGridView1.SelectedRows[i].Index;
+                        string text = this.dataGridView1.Rows[index].Cells["单据编号"].Value.ToString();
+                        string text2 = this.dataGridView1.Rows[index].Cells["产品"].Value.ToString();
+                        string text3 = this.dataGridView1.Rows[index].Cells["内容"].Value.ToString();
+                        string text4 = this.dataGridView1.Rows[index].Cells["合同编号"].Value.ToString();
+                        decimal d = Convert.ToDecimal(this.dataGridView1.Rows[index].Cells["已发数量"].Value);
+                        decimal d2 = Convert.ToDecimal(this.dataGridView1.Rows[index].Cells["发货数量"].Value);
+                        decimal num = d + d2;
+                        SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                        sqlCommand.CommandText = string.Concat(new string[]
+                        {
+                            "UPDATE ProductIn SET sent = '",
+                            num.ToString(),
+                            "' WHERE contractid = '",
+                            text4,
+                            "' and product = '",
+                            text2,
+                            "' and substance = '",
+                            text3,
+                            "'"
+                        });
+                        int num2 = sqlCommand.ExecuteNonQuery();
+                        sqlCommand.CommandText = string.Concat(new string[]
+                        {
+                            "UPDATE ProductOut SET examine = '已审核' WHERE product = '",
+                            text2,
+                            "' and orderid = '",
+                            text,
+                            "' and substance = '",
+                            text3,
+                            "'"
+                        });
+                        int num3 = sqlCommand.ExecuteNonQuery();
+                        bool flag2 = num2 == 0 || num3 == 0;
+                        if (flag2)
                         {
                             MessageBox.Show("审核失败");
                         }
-
                     }
                     MessageBox.Show("审核成功");
-
                 }
                 catch (Exception ex)
                 {
@@ -629,50 +637,63 @@ namespace WindowsFormsApp1.Product
                 }
                 finally
                 {
-                    con.Close();
+                    sqlConnection.Close();
                 }
                 try
                 {
-                    con.Open();
-                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                    sqlConnection.Open();
+                    for (int j = 0; j < this.dataGridView1.SelectedRows.Count; j++)
                     {
-                        int m = dataGridView1.SelectedRows[i].Index;
-                        string djbh = dataGridView1.Rows[m].Cells["单据编号"].Value.ToString();
-                        string cpmc = dataGridView1.Rows[m].Cells["产品"].Value.ToString();
-                        string nr = dataGridView1.Rows[m].Cells["内容"].Value.ToString();
-                        string htbh = dataGridView1.Rows[m].Cells["合同编号"].Value.ToString();
-
-                        string strsql = "select * from Stock where contractid = '" + htbh + "' and product = '" + cpmc + "' and sub = '" + nr + "'";
-                        SqlDataAdapter da = new SqlDataAdapter(strsql, SQL);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        decimal oldkcsl = Convert.ToDecimal(dt.Rows[0][7]);
-
-                        decimal fhsl = Convert.ToDecimal(dataGridView1.Rows[m].Cells["发货数量"].Value);
-
-                        decimal newkcsl = oldkcsl - fhsl;
-
-
-                        SqlCommand cmd = con.CreateCommand();
-                        cmd.CommandText = "UPDATE Stock SET num = '" + newkcsl + "' WHERE contractid = '" + htbh + "' and product = '" + cpmc + "' and sub = '" + nr + "'";
-                        int cot = cmd.ExecuteNonQuery();
-
-                        if (cot == 0)
+                        int index2 = this.dataGridView1.SelectedRows[j].Index;
+                        string text5 = this.dataGridView1.Rows[index2].Cells["单据编号"].Value.ToString();
+                        string text6 = this.dataGridView1.Rows[index2].Cells["产品"].Value.ToString();
+                        string text7 = this.dataGridView1.Rows[index2].Cells["内容"].Value.ToString();
+                        string text8 = this.dataGridView1.Rows[index2].Cells["合同编号"].Value.ToString();
+                        string selectCommandText = string.Concat(new string[]
                         {
-                            string ms = cpmc + nr + "失败";
-                            continue;
+                            "select * from Stock where contractid = '",
+                            text8,
+                            "' and product = '",
+                            text6,
+                            "' and sub = '",
+                            text7,
+                            "'"
+                        });
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectCommandText, ProductListOut.SQL);
+                        DataTable dataTable = new DataTable();
+                        sqlDataAdapter.Fill(dataTable);
+                        decimal d3 = Convert.ToDecimal(dataTable.Rows[0][7]);
+                        decimal d4 = Convert.ToDecimal(this.dataGridView1.Rows[index2].Cells["发货数量"].Value);
+                        decimal num4 = d3 - d4;
+                        SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+                        sqlCommand2.CommandText = string.Concat(new string[]
+                        {
+                            "UPDATE Stock SET num = '",
+                            num4.ToString(),
+                            "' WHERE contractid = '",
+                            text8,
+                            "' and product = '",
+                            text6,
+                            "' and sub = '",
+                            text7,
+                            "'"
+                        });
+                        int num5 = sqlCommand2.ExecuteNonQuery();
+                        bool flag3 = num5 == 0;
+                        if (flag3)
+                        {
+                            string text9 = text6 + text7 + "失败";
                         }
                     }
                     MessageBox.Show("成功");
-
                 }
-                catch (Exception ex)
+                catch (Exception ex2)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex2.Message);
                 }
                 finally
                 {
-                    con.Close();
+                    sqlConnection.Close();
                 }
             }
         }

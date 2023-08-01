@@ -1,42 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Class;
 
 namespace WindowsFormsApp1.OrderReport
 {
-    // Token: 0x02000045 RID: 69
-    public partial class Daily : Form
+    public partial class week : Form
     {
-        // Token: 0x06000357 RID: 855 RVA: 0x0004737A File Offset: 0x0004557A
-        public Daily()
+        public week()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
-
-        // Token: 0x1700007B RID: 123
-        // (get) Token: 0x06000358 RID: 856 RVA: 0x0004739D File Offset: 0x0004559D
-        // (set) Token: 0x06000359 RID: 857 RVA: 0x000473A5 File Offset: 0x000455A5
         public string DY_User { get; set; }
 
-        // Token: 0x1700007C RID: 124
-        // (get) Token: 0x0600035A RID: 858 RVA: 0x000473AE File Offset: 0x000455AE
-        // (set) Token: 0x0600035B RID: 859 RVA: 0x000473B6 File Offset: 0x000455B6
         public string DY_Group { get; set; }
 
-        // Token: 0x0600035C RID: 860 RVA: 0x000473BF File Offset: 0x000455BF
-        private void Form1_Load(object sender, EventArgs e)
+        private void week_Load(object sender, EventArgs e)
         {
             this.asc.controllInitializeSize(this);
             this.toolStripStatusLabel2.Text = this.DY_User;
             this.toolStripStatusLabel5.Text = this.DY_Group;
         }
 
-        // Token: 0x0600035D RID: 861 RVA: 0x000473F4 File Offset: 0x000455F4
         private void timer1_Tick(object sender, EventArgs e)
         {
             string netDateTime = Winmain.GetNetDateTime();
@@ -51,17 +44,34 @@ namespace WindowsFormsApp1.OrderReport
             }
         }
 
-        // Token: 0x0600035E RID: 862 RVA: 0x0004745C File Offset: 0x0004565C
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.listView1.Items.Clear();
-            string str = DateTime.Now.ToString("yyyy-MM-dd");
-            string selectCommandText = "select * from Contract_h where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectCommandText, Daily.SQL);
+            int num = int.Parse(DateTime.Now.DayOfWeek.ToString("d"));
+            string text = DateTime.Now.AddDays((double)(1 - num)).ToString("yyyy-MM-dd");
+            string text2 = DateTime.Now.AddDays((double)(7 - num)).ToString("yyyy-MM-dd");
+            Console.WriteLine(text);
+            Console.WriteLine(text2);
+            string selectCommandText = string.Concat(new string[]
+            {
+                "select * from Contract_h where date between '",
+                text,
+                "'and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectCommandText, week.SQL);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            string selectCommandText2 = "select date,sum(amount) from Contract_h where date = '" + str + "' GROUP BY date";
-            SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(selectCommandText2, Daily.SQL);
+            string selectCommandText2 = string.Concat(new string[]
+            {
+                "select sum(amount) from Contract_h where date between '",
+                text,
+                "'and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(selectCommandText2, week.SQL);
             DataTable dataTable2 = new DataTable();
             sqlDataAdapter2.Fill(dataTable2);
             ListViewItem listViewItem = new ListViewItem();
@@ -70,7 +80,7 @@ namespace WindowsFormsApp1.OrderReport
             bool flag = dataTable2.Rows.Count > 0;
             if (flag)
             {
-                listViewItem.SubItems.Add(dataTable2.Rows[0][1].ToString() + "元");
+                listViewItem.SubItems.Add(dataTable2.Rows[0][0].ToString() + "元");
             }
             bool flag2 = dataTable2.Rows.Count == 0;
             if (flag2)
@@ -78,12 +88,26 @@ namespace WindowsFormsApp1.OrderReport
                 listViewItem.SubItems.Add("0元");
             }
             this.listView1.Items.Add(listViewItem);
-            string selectCommandText3 = "select * from Order_h where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter3 = new SqlDataAdapter(selectCommandText3, Daily.SQL);
+            string selectCommandText3 = string.Concat(new string[]
+            {
+                "select * from Order_h where date  between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter3 = new SqlDataAdapter(selectCommandText3, week.SQL);
             DataTable dataTable3 = new DataTable();
             sqlDataAdapter3.Fill(dataTable3);
-            string selectCommandText4 = "select date,sum(meters) from Order_b where date = '" + str + "' GROUP BY date";
-            SqlDataAdapter sqlDataAdapter4 = new SqlDataAdapter(selectCommandText4, Daily.SQL);
+            string selectCommandText4 = string.Concat(new string[]
+            {
+                "SELECT sum(meters) from ( select DISTINCT date,meters from Order_b where date between '",
+                text,
+                "' and '",
+                text2,
+                "' ) a"
+            });
+            SqlDataAdapter sqlDataAdapter4 = new SqlDataAdapter(selectCommandText4, week.SQL);
             DataTable dataTable4 = new DataTable();
             sqlDataAdapter4.Fill(dataTable4);
             ListViewItem listViewItem2 = new ListViewItem();
@@ -92,7 +116,7 @@ namespace WindowsFormsApp1.OrderReport
             bool flag3 = dataTable4.Rows.Count > 0;
             if (flag3)
             {
-                listViewItem2.SubItems.Add(dataTable4.Rows[0][1].ToString() + "米");
+                listViewItem2.SubItems.Add(dataTable4.Rows[0][0].ToString() + "米");
             }
             bool flag4 = dataTable4.Rows.Count == 0;
             if (flag4)
@@ -100,12 +124,26 @@ namespace WindowsFormsApp1.OrderReport
                 listViewItem2.SubItems.Add("0米");
             }
             this.listView1.Items.Add(listViewItem2);
-            string selectCommandText5 = "select * from DesginBom where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter5 = new SqlDataAdapter(selectCommandText5, Daily.SQL);
+            string selectCommandText5 = string.Concat(new string[]
+            {
+                "select * from DesginBom where date between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter5 = new SqlDataAdapter(selectCommandText5, week.SQL);
             DataTable dataTable5 = new DataTable();
             sqlDataAdapter5.Fill(dataTable5);
-            string selectCommandText6 = "SELECT sum(meters) from ( select DISTINCT orderid,date,meters from DesginBom where date like '%" + str + "%' ) a";
-            SqlDataAdapter sqlDataAdapter6 = new SqlDataAdapter(selectCommandText6, Daily.SQL);
+            string selectCommandText6 = string.Concat(new string[]
+            {
+                "SELECT sum(meters) from ( select DISTINCT orderid,date,meters from DesginBom where date between '",
+                text,
+                "' and '",
+                text2,
+                "')a"
+            });
+            SqlDataAdapter sqlDataAdapter6 = new SqlDataAdapter(selectCommandText6, week.SQL);
             DataTable dataTable6 = new DataTable();
             sqlDataAdapter6.Fill(dataTable6);
             ListViewItem listViewItem3 = new ListViewItem();
@@ -113,8 +151,15 @@ namespace WindowsFormsApp1.OrderReport
             listViewItem3.SubItems.Add(dataTable5.Rows.Count.ToString());
             listViewItem3.SubItems.Add(dataTable6.Rows[0][0].ToString() + "米");
             this.listView1.Items.Add(listViewItem3);
-            string selectCommandText7 = "select * from [dbo].[Plan] where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter7 = new SqlDataAdapter(selectCommandText7, Daily.SQL);
+            string selectCommandText7 = string.Concat(new string[]
+            {
+                "select * from [dbo].[Plan] where date between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter7 = new SqlDataAdapter(selectCommandText7, week.SQL);
             DataTable dataTable7 = new DataTable();
             sqlDataAdapter7.Fill(dataTable7);
             decimal d = 0m;
@@ -123,20 +168,20 @@ namespace WindowsFormsApp1.OrderReport
             {
                 for (int i = 0; i < dataTable7.Rows.Count; i++)
                 {
-                    string text = dataTable7.Rows[i][4].ToString();
-                    string text2 = dataTable7.Rows[i][7].ToString();
-                    string text3 = dataTable7.Rows[i][8].ToString();
+                    string text3 = dataTable7.Rows[i][4].ToString();
+                    string text4 = dataTable7.Rows[i][7].ToString();
+                    string text5 = dataTable7.Rows[i][8].ToString();
                     string selectCommandText8 = string.Concat(new string[]
                     {
                         "select * from Order_b where contractid = '",
-                        text,
-                        "' and  productname = '",
-                        text2,
-                        "' and sub = '",
                         text3,
+                        "' and  productname = '",
+                        text4,
+                        "' and sub = '",
+                        text5,
                         "'"
                     });
-                    SqlDataAdapter sqlDataAdapter8 = new SqlDataAdapter(selectCommandText8, Daily.SQL);
+                    SqlDataAdapter sqlDataAdapter8 = new SqlDataAdapter(selectCommandText8, week.SQL);
                     DataTable dataTable8 = new DataTable();
                     sqlDataAdapter8.Fill(dataTable8);
                     bool flag6 = dataTable8.Rows.Count > 0;
@@ -161,12 +206,26 @@ namespace WindowsFormsApp1.OrderReport
                 listViewItem4.SubItems.Add("0米");
             }
             this.listView1.Items.Add(listViewItem4);
-            string selectCommandText9 = "select * from ProductIn where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter9 = new SqlDataAdapter(selectCommandText9, Daily.SQL);
+            string selectCommandText9 = string.Concat(new string[]
+            {
+                "select * from ProductIn where date between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter9 = new SqlDataAdapter(selectCommandText9, week.SQL);
             DataTable dataTable9 = new DataTable();
             sqlDataAdapter9.Fill(dataTable9);
-            string selectCommandText10 = "select sum(meters) from ProductIn where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter10 = new SqlDataAdapter(selectCommandText10, Daily.SQL);
+            string selectCommandText10 = string.Concat(new string[]
+            {
+                "select sum(meters) from ProductIn where date between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter10 = new SqlDataAdapter(selectCommandText10, week.SQL);
             DataTable dataTable10 = new DataTable();
             sqlDataAdapter10.Fill(dataTable10);
             ListViewItem listViewItem5 = new ListViewItem();
@@ -182,12 +241,26 @@ namespace WindowsFormsApp1.OrderReport
                 listViewItem5.SubItems.Add("0米");
             }
             this.listView1.Items.Add(listViewItem5);
-            string selectCommandText11 = "select * from ProductOut where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter11 = new SqlDataAdapter(selectCommandText11, Daily.SQL);
+            string selectCommandText11 = string.Concat(new string[]
+            {
+                "select * from ProductOut where date  between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter11 = new SqlDataAdapter(selectCommandText11, week.SQL);
             DataTable dataTable11 = new DataTable();
             sqlDataAdapter11.Fill(dataTable11);
-            string selectCommandText12 = "select sum(meters) from ProductOut where date = '" + str + "'";
-            SqlDataAdapter sqlDataAdapter12 = new SqlDataAdapter(selectCommandText12, Daily.SQL);
+            string selectCommandText12 = string.Concat(new string[]
+            {
+                "select sum(meters) from ProductOut where date  between '",
+                text,
+                "' and '",
+                text2,
+                "'"
+            });
+            SqlDataAdapter sqlDataAdapter12 = new SqlDataAdapter(selectCommandText12, week.SQL);
             DataTable dataTable12 = new DataTable();
             sqlDataAdapter12.Fill(dataTable12);
             ListViewItem listViewItem6 = new ListViewItem();
@@ -205,7 +278,7 @@ namespace WindowsFormsApp1.OrderReport
             this.listView1.Items.Add(listViewItem6);
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void week_SizeChanged(object sender, EventArgs e)
         {
             this.asc.controlAutoSize(this);
         }

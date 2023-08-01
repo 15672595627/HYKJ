@@ -284,8 +284,7 @@ namespace WindowsFormsApp1.Contract
                         finally
                         {
                             conn.Close();
-                        }
-                        
+                        }  
                     }
                 }
             }

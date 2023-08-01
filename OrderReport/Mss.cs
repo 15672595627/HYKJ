@@ -39,7 +39,7 @@ namespace WindowsFormsApp1.OrderReport
             string rq =  RQ.Text.Trim();
             string rq1 = RQ1.Text.Trim();
             string gdy = txtgdy.Text.Trim();    
-            string strsql = "select id,contractid as 合同编号,applytime as 申请时间,service as 跟单员,company as 公司名称,project as 项目名称,productname as 产品名称,sub as 内容,quantity as 数量,unit as 单位,price as 价格,amount as 金额,fhck as 发货仓库,fhwl as 发货物流,examine as 财务审核,checker as 财务审核人,checkdate as 审核时间,checkout as 发货审核,checkouter as 发货审核人 from [dbo].[Message_FHSQ] where contractid like '%" + htbh + "%' and service like '%"+gdy+ "%' and CONVERT(nvarchar(10),checkdate,120)between  '" + rq+ "' and  '" + rq1+ "'";
+            string strsql = "select id,contractid as 合同编号,applytime as 申请时间,service as 跟单员,company as 公司名称,project as 项目名称,productname as 产品名称,sub as 内容,quantity as 数量,unit as 单位,price as 价格,amount as 金额,checkdate as 审核时间,fhck as 发货仓库,fhwl as 发货物流,examine as 财务审核,checker as 财务审核人,checkdate as 审核时间,checkout as 发货审核,checkouter as 发货审核人 from [dbo].[Message_FHSQ] where contractid like '%" + htbh + "%' and service like '%"+gdy+ "%' and CONVERT(nvarchar(10),checkdate,120)between  '" + rq+ "' and  '" + rq1+ "'";
             da = new SqlDataAdapter(strsql, SQL);
             dt = new DataTable();
             da.Fill(dt);

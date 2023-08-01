@@ -113,6 +113,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill\lldList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\lldList.Designer.cs">
+      <DependentUpon>lldList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bill\OutsourcingPlan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     </Compile>
     <Compile Include="Bill\InPurchase.Designer.cs">
       <DependentUpon>InPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\scllContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\scllContract.Designer.cs">
+      <DependentUpon>scllContract.cs</DependentUpon>
     </Compile>
     <Compile Include="Calc\Beijing.cs">
       <SubType>Form</SubType>
@@ -282,6 +294,18 @@
     <Compile Include="Date\Dis_Contract.Designer.cs">
       <DependentUpon>Dis_Contract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Desgin\basicMaterialAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\basicMaterialAdd.Designer.cs">
+      <DependentUpon>basicMaterialAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desgin\basicMaterialMaintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\basicMaterialMaintain.Designer.cs">
+      <DependentUpon>basicMaterialMaintain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Desgin\BomPx.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +317,30 @@
     </Compile>
     <Compile Include="Desgin\BomPxList.Designer.cs">
       <DependentUpon>BomPxList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desgin\CheckAllList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\CheckAllList.Designer.cs">
+      <DependentUpon>CheckAllList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desgin\CheckCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\CheckCategory.Designer.cs">
+      <DependentUpon>CheckCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desgin\GroupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\GroupList.Designer.cs">
+      <DependentUpon>GroupList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desgin\GroupListDetial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desgin\GroupListDetial.Designer.cs">
+      <DependentUpon>GroupListDetial.cs</DependentUpon>
     </Compile>
     <Compile Include="Feedback.cs">
       <SubType>Form</SubType>
@@ -398,6 +446,12 @@
     <Compile Include="OrderReport\ORMain.Designer.cs">
       <DependentUpon>ORMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderReport\week.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderReport\week.Designer.cs">
+      <DependentUpon>week.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order\Findkh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -481,6 +535,12 @@
     </Compile>
     <Compile Include="PO\NewPOList.Designer.cs">
       <DependentUpon>NewPOList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PO\NewPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PO\NewPurchase.Designer.cs">
+      <DependentUpon>NewPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="PO\NewShortApply.cs">
       <SubType>Form</SubType>
@@ -600,11 +660,29 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Purchase\cgwh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\cgwh.Designer.cs">
+      <DependentUpon>cgwh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\PurchaseApplyGoods.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Purchase\PurchaseApplyGoods.Designer.cs">
       <DependentUpon>PurchaseApplyGoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\PurchaseList.Designer.cs">
+      <DependentUpon>PurchaseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseSQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\PurchaseSQ.Designer.cs">
+      <DependentUpon>PurchaseSQ.cs</DependentUpon>
     </Compile>
     <Compile Include="Purchase\ShortAgeApplyContract.cs">
       <SubType>Form</SubType>
@@ -769,6 +847,30 @@
     <Compile Include="Purchase\ShortAgeApply.Designer.cs">
       <DependentUpon>ShortAgeApply.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scheduling\CheckStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduling\CheckStock.Designer.cs">
+      <DependentUpon>CheckStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduling\ContactH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduling\ContactH.Designer.cs">
+      <DependentUpon>ContactH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduling\ContractH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduling\ContractH.Designer.cs">
+      <DependentUpon>ContractH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduling\kucunyanzheng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduling\kucunyanzheng.Designer.cs">
+      <DependentUpon>kucunyanzheng.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scheduling\MaterialCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -818,6 +920,9 @@
     <Compile Include="Main\NewUser.Designer.cs">
       <DependentUpon>NewUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bill\lldList.resx">
+      <DependentUpon>lldList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bill\OutsourcingList.resx">
       <DependentUpon>OutsourcingList.cs</DependentUpon>
     </EmbeddedResource>
@@ -829,6 +934,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bill\OutsourcingPlan.resx">
       <DependentUpon>OutsourcingPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bill\scllContract.resx">
+      <DependentUpon>scllContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calc\Beijing.resx">
       <DependentUpon>Beijing.cs</DependentUpon>
@@ -902,11 +1010,29 @@
     <EmbeddedResource Include="Date\Dis_Contract.resx">
       <DependentUpon>Dis_Contract.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\basicMaterialAdd.resx">
+      <DependentUpon>basicMaterialAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\basicMaterialMaintain.resx">
+      <DependentUpon>basicMaterialMaintain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Desgin\BomPx.resx">
       <DependentUpon>BomPx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Desgin\BomPxList.resx">
       <DependentUpon>BomPxList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\CheckAllList.resx">
+      <DependentUpon>CheckAllList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\CheckCategory.resx">
+      <DependentUpon>CheckCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\GroupList.resx">
+      <DependentUpon>GroupList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desgin\GroupListDetial.resx">
+      <DependentUpon>GroupListDetial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feedback.resx">
       <DependentUpon>Feedback.cs</DependentUpon>
@@ -953,6 +1079,9 @@
     <EmbeddedResource Include="OrderReport\ORMain.resx">
       <DependentUpon>ORMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderReport\week.resx">
+      <DependentUpon>week.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Order\Findkh.resx">
       <DependentUpon>Findkh.cs</DependentUpon>
     </EmbeddedResource>
@@ -994,6 +1123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PO\NewPOList.resx">
       <DependentUpon>NewPOList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PO\NewPurchase.resx">
+      <DependentUpon>NewPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PO\NewShortApply.resx">
       <DependentUpon>NewShortApply.cs</DependentUpon>
@@ -1050,8 +1182,17 @@
       <DependentUpon>QuickOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Purchase\cgwh.resx">
+      <DependentUpon>cgwh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Purchase\PurchaseApplyGoods.resx">
       <DependentUpon>PurchaseApplyGoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\PurchaseList.resx">
+      <DependentUpon>PurchaseList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\PurchaseSQ.resx">
+      <DependentUpon>PurchaseSQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Purchase\ShortAgeApplyContract.resx">
       <DependentUpon>ShortAgeApplyContract.cs</DependentUpon>
@@ -1144,6 +1285,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Purchase\ShortAgeApply.resx">
       <DependentUpon>ShortAgeApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scheduling\CheckStock.resx">
+      <DependentUpon>CheckStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scheduling\ContactH.resx">
+      <DependentUpon>ContactH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scheduling\ContractH.resx">
+      <DependentUpon>ContractH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scheduling\kucunyanzheng.resx">
+      <DependentUpon>kucunyanzheng.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Scheduling\MaterialCheck.resx">
       <DependentUpon>MaterialCheck.cs</DependentUpon>

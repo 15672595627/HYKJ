@@ -41,11 +41,12 @@ namespace WindowsFormsApp1.Product
             string shzt = ZT.Text.Trim();
             string rq = RQ.Text.Trim();
             string rq1 = RQ1.Text.Trim();
-            string strsql = "SELECT id,orderid as 单据编号,date as 单据日期,caiwuRiqi as 财务日期, staffout as 录单员,sorderid as 销售订单,contractid as 合同编号,service as 跟单员,seller as 业务员,company as 公司名,project as 项目名,Product as 产品,substance as 内容,sl as 数量,dw as 单位,kfdj as 客服单价,meters as 米数,kfje as 客服金额含税,tax as 税率,wscz as 无税产值,fhsl as 发货数量,fhamount as 发货金额,fhcbamount as 发货成本金额,shck as 收货仓库,sent as 已发数量,examine as 审核状态,examine1 as 财务审核 from ProductOut where  date BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh + "%' and  company like '%" + gsm + "%' and examine like '%" + shzt + "%'";
+            string strsql = "SELECT p.id,p.orderid as 单据编号,p.date as 单据日期,p.caiwuRiqi as 财务日期, p.staffout as 录单员,p.sorderid as 销售订单,p.contractid as 合同编号,p.service as 跟单员,p.seller as 业务员,p.company as 公司名,p.project as 项目名,p.Product as 产品,p.substance as 内容,p.sl as 数量,p.dw as 单位,p.kfdj as 客服单价,p.meters as 米数,p.kfje as 客服金额含税,p.tax as 税率,p.wscz as 无税产值,p.fhsl as 发货数量,p.fhamount as 发货金额,p.fhcbamount as 发货成本金额,p.shck as 收货仓库,p.sent as 已发数量,p.examine as 审核状态,o.examine as 财务审核 from ProductOut p LEFT JOIN Order_b o ON o.contractid = p.contractid where o.contractid = p.contractid and o.company = p.company and o.quantity = p.sl and o.project = p.project and o.price = p.kfdj and o.meters = p.meters and o.sub = p.substance and p.date BETWEEN '" + rq + "' and '" + rq1 + "' and p.contractid like '%" + htbh + "%' and  p.company like '%" + gsm + "%' and o.examine like '%" + shzt + "%'";
             da = new SqlDataAdapter(strsql, SQL);
             dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+
             decimal sum1 = 0;
             decimal sum2 = 0;
             decimal sum3 = 0;
@@ -68,7 +69,7 @@ namespace WindowsFormsApp1.Product
             string ssum2 = sum2.ToString();
             string ssum3 = sum3.ToString();
 
-            string[] row = { "1", "合计", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0", "0", "0", ssum1, "0", ssum2, ssum3, "0", "0", "0" , "0" };
+            string[] row = { "1", "合计", "", "", "", "", "", "", "", "", "", "", "", "0", "", "", "0", "0", "0", ssum1, "0", ssum2, ssum3, "0", "0", "0" , "0" };
             ((DataTable)dataGridView1.DataSource).Rows.Add(row);
 
             
@@ -158,6 +159,7 @@ namespace WindowsFormsApp1.Product
                     con.Close();
                 }
             }
+            SX.PerformClick();
             
         }
 
@@ -194,6 +196,7 @@ namespace WindowsFormsApp1.Product
                     con.Close();
                 }
             }
+            SX.PerformClick();
         }
 
         private void 反审核ToolStripMenuItem_Click(object sender, EventArgs e)

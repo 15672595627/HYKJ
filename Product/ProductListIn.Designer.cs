@@ -55,6 +55,7 @@
             this.反审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.批量审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.财务审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -287,14 +288,15 @@
             this.审核ToolStripMenuItem,
             this.反审核ToolStripMenuItem,
             this.导出ToolStripMenuItem,
-            this.批量审核ToolStripMenuItem});
+            this.批量审核ToolStripMenuItem,
+            this.财务审核ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 202);
             // 
             // 修改ToolStripMenuItem
             // 
             this.修改ToolStripMenuItem.Name = "修改ToolStripMenuItem";
-            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.修改ToolStripMenuItem.Text = "修改";
             this.修改ToolStripMenuItem.Click += new System.EventHandler(this.修改ToolStripMenuItem_Click);
             // 
@@ -302,7 +304,7 @@
             // 
             this.删除ToolStripMenuItem.Enabled = false;
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
@@ -310,37 +312,44 @@
             // 
             this.粘贴ToolStripMenuItem.Enabled = false;
             this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
-            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.粘贴ToolStripMenuItem.Text = "粘贴";
             this.粘贴ToolStripMenuItem.Click += new System.EventHandler(this.粘贴ToolStripMenuItem_Click);
             // 
             // 审核ToolStripMenuItem
             // 
             this.审核ToolStripMenuItem.Name = "审核ToolStripMenuItem";
-            this.审核ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.审核ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.审核ToolStripMenuItem.Text = "审核";
             this.审核ToolStripMenuItem.Click += new System.EventHandler(this.审核ToolStripMenuItem_Click);
             // 
             // 反审核ToolStripMenuItem
             // 
             this.反审核ToolStripMenuItem.Name = "反审核ToolStripMenuItem";
-            this.反审核ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.反审核ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.反审核ToolStripMenuItem.Text = "反审核";
             this.反审核ToolStripMenuItem.Click += new System.EventHandler(this.反审核ToolStripMenuItem_Click);
             // 
             // 导出ToolStripMenuItem
             // 
             this.导出ToolStripMenuItem.Name = "导出ToolStripMenuItem";
-            this.导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.导出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.导出ToolStripMenuItem.Text = "导出";
             this.导出ToolStripMenuItem.Click += new System.EventHandler(this.导出ToolStripMenuItem_Click);
             // 
             // 批量审核ToolStripMenuItem
             // 
             this.批量审核ToolStripMenuItem.Name = "批量审核ToolStripMenuItem";
-            this.批量审核ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.批量审核ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.批量审核ToolStripMenuItem.Text = "批量审核";
             this.批量审核ToolStripMenuItem.Click += new System.EventHandler(this.批量审核ToolStripMenuItem_Click);
+            // 
+            // 财务审核ToolStripMenuItem
+            // 
+            this.财务审核ToolStripMenuItem.Name = "财务审核ToolStripMenuItem";
+            this.财务审核ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.财务审核ToolStripMenuItem.Text = "财务审核";
+            this.财务审核ToolStripMenuItem.Click += new System.EventHandler(this.财务审核ToolStripMenuItem_Click);
             // 
             // ProductListIn
             // 
@@ -391,5 +400,6 @@
         private System.Windows.Forms.ToolStripMenuItem 批量审核ToolStripMenuItem;
         private System.Windows.Forms.Button WSCZ;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem 财务审核ToolStripMenuItem;
     }
 }

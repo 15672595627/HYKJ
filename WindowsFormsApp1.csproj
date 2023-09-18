@@ -29,7 +29,7 @@
     <MinimumRequiredVersion>1.0.0.92</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>242</ApplicationRevision>
+    <ApplicationRevision>323</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -113,6 +113,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill\FindSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\FindSupply.Designer.cs">
+      <DependentUpon>FindSupply.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bill\lldList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,23 +137,17 @@
     <Compile Include="Bill\OutsourcingList.Designer.cs">
       <DependentUpon>OutsourcingList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bill\InsourcingList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bill\InsourcingList.Designer.cs">
-      <DependentUpon>InsourcingList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bill\InPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bill\InPurchase.Designer.cs">
       <DependentUpon>InPurchase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bill\scllContract.cs">
+    <Compile Include="Bill\outSouringAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bill\scllContract.Designer.cs">
-      <DependentUpon>scllContract.cs</DependentUpon>
+    <Compile Include="Bill\outSouringAdd.Designer.cs">
+      <DependentUpon>outSouringAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Calc\Beijing.cs">
       <SubType>Form</SubType>
@@ -464,6 +464,18 @@
     <Compile Include="Order\FindProduct.Designer.cs">
       <DependentUpon>FindProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order\ModifyDetialOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\ModifyDetialOrder.Designer.cs">
+      <DependentUpon>ModifyDetialOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OderCKZT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OderCKZT.Designer.cs">
+      <DependentUpon>OderCKZT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order\OrderFare.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -559,6 +571,12 @@
     </Compile>
     <Compile Include="PO\SupplierPO.Designer.cs">
       <DependentUpon>SupplierPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\addStockCaryyDown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\addStockCaryyDown.Designer.cs">
+      <DependentUpon>addStockCaryyDown.cs</DependentUpon>
     </Compile>
     <Compile Include="Product\CBTZ_ST.cs">
       <SubType>Form</SubType>
@@ -865,11 +883,17 @@
     <Compile Include="Scheduling\ContractH.Designer.cs">
       <DependentUpon>ContractH.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduling\kucunyanzheng.cs">
+    <Compile Include="Scheduling\ddl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scheduling\kucunyanzheng.Designer.cs">
-      <DependentUpon>kucunyanzheng.cs</DependentUpon>
+    <Compile Include="Scheduling\ddl.Designer.cs">
+      <DependentUpon>ddl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduling\库存验证.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduling\库存验证.Designer.cs">
+      <DependentUpon>库存验证.cs</DependentUpon>
     </Compile>
     <Compile Include="Scheduling\MaterialCheck.cs">
       <SubType>Form</SubType>
@@ -877,17 +901,41 @@
     <Compile Include="Scheduling\MaterialCheck.Designer.cs">
       <DependentUpon>MaterialCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bill\Insourcing.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bill\Insourcing.Designer.cs">
-      <DependentUpon>Insourcing.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bill\Outsourcing.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bill\Outsourcing.Designer.cs">
       <DependentUpon>Outsourcing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\addStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\addStock.Designer.cs">
+      <DependentUpon>addStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\Financelld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\Financelld.Designer.cs">
+      <DependentUpon>Financelld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\findSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\findSupply.Designer.cs">
+      <DependentUpon>findSupply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\findWlbm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\findWlbm.Designer.cs">
+      <DependentUpon>findWlbm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\InAndPutList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\InAndPutList.Designer.cs">
+      <DependentUpon>InAndPutList.cs</DependentUpon>
     </Compile>
     <Compile Include="Stock\JIT.cs">
       <SubType>Form</SubType>
@@ -895,6 +943,31 @@
     <Compile Include="Stock\JIT.Designer.cs">
       <DependentUpon>JIT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stock\updateOutList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\updateOutList.Designer.cs">
+      <DependentUpon>updateOutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\PutStockDetialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\PutStockDetialList.Designer.cs">
+      <DependentUpon>PutStockDetialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\updatePutList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\updatePutList.Designer.cs">
+      <DependentUpon>updatePutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\updateStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\updateStock.Designer.cs">
+      <DependentUpon>updateStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="test\Class1.cs" />
     <Compile Include="Updatelog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -920,14 +993,14 @@
     <Compile Include="Main\NewUser.Designer.cs">
       <DependentUpon>NewUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bill\FindSupply.resx">
+      <DependentUpon>FindSupply.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bill\lldList.resx">
       <DependentUpon>lldList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bill\OutsourcingList.resx">
       <DependentUpon>OutsourcingList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bill\InsourcingList.resx">
-      <DependentUpon>InsourcingList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bill\InPurchase.resx">
       <DependentUpon>InPurchase.cs</DependentUpon>
@@ -935,8 +1008,8 @@
     <EmbeddedResource Include="Bill\OutsourcingPlan.resx">
       <DependentUpon>OutsourcingPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bill\scllContract.resx">
-      <DependentUpon>scllContract.cs</DependentUpon>
+    <EmbeddedResource Include="Bill\outSouringAdd.resx">
+      <DependentUpon>outSouringAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calc\Beijing.resx">
       <DependentUpon>Beijing.cs</DependentUpon>
@@ -1088,6 +1161,12 @@
     <EmbeddedResource Include="Order\FindProduct.resx">
       <DependentUpon>FindProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Order\ModifyDetialOrder.resx">
+      <DependentUpon>ModifyDetialOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OderCKZT.resx">
+      <DependentUpon>OderCKZT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Order\OrderFare.resx">
       <DependentUpon>OrderFare.cs</DependentUpon>
     </EmbeddedResource>
@@ -1135,6 +1214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PO\SupplierPO.resx">
       <DependentUpon>SupplierPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\addStockCaryyDown.resx">
+      <DependentUpon>addStockCaryyDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\CBTZ_ST.resx">
       <DependentUpon>CBTZ_ST.cs</DependentUpon>
@@ -1265,9 +1347,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bill\Insourcing.resx">
-      <DependentUpon>Insourcing.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Bill\Outsourcing.resx">
       <DependentUpon>Outsourcing.cs</DependentUpon>
     </EmbeddedResource>
@@ -1295,14 +1374,44 @@
     <EmbeddedResource Include="Scheduling\ContractH.resx">
       <DependentUpon>ContractH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scheduling\kucunyanzheng.resx">
-      <DependentUpon>kucunyanzheng.cs</DependentUpon>
+    <EmbeddedResource Include="Scheduling\ddl.resx">
+      <DependentUpon>ddl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scheduling\库存验证.resx">
+      <DependentUpon>库存验证.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Scheduling\MaterialCheck.resx">
       <DependentUpon>MaterialCheck.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Stock\addStock.resx">
+      <DependentUpon>addStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\Financelld.resx">
+      <DependentUpon>Financelld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\findSupply.resx">
+      <DependentUpon>findSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\findWlbm.resx">
+      <DependentUpon>findWlbm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\InAndPutList.resx">
+      <DependentUpon>InAndPutList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stock\JIT.resx">
       <DependentUpon>JIT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\PutStockDetialList.resx">
+      <DependentUpon>PutStockDetialList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\updateOutList.resx">
+      <DependentUpon>updateOutList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\updatePutList.resx">
+      <DependentUpon>updatePutList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\updateStock.resx">
+      <DependentUpon>updateStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Updatelog.resx">
       <DependentUpon>Updatelog.cs</DependentUpon>
@@ -1408,6 +1517,8 @@
     <None Include="Resources\白纸飞机.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\add_circle_o.png" />
+    <None Include="Resources\add_circle_o1.png" />
     <Content Include="Resources\app.ico" />
     <None Include="Resources\mssform1.jpeg" />
     <None Include="Resources\mssform.jpeg" />

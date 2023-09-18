@@ -102,6 +102,7 @@ namespace WindowsFormsApp1.OrderReport
             listViewItem3.SubItems.Add(dataTable5.Rows.Count.ToString());
             listViewItem3.SubItems.Add(dataTable6.Rows[0][0].ToString() + "米");
             this.listView1.Items.Add(listViewItem3);
+
             string selectCommandText7 = "select * from [dbo].[Plan] where date like '%" + str + "%'";
             SqlDataAdapter sqlDataAdapter7 = new SqlDataAdapter(selectCommandText7, Month.SQL);
             DataTable dataTable7 = new DataTable();
@@ -141,6 +142,7 @@ namespace WindowsFormsApp1.OrderReport
             listViewItem4.SubItems.Add(dataTable7.Rows.Count.ToString());
             listViewItem4.SubItems.Add(d.ToString() + "米");
             this.listView1.Items.Add(listViewItem4);
+
             string selectCommandText9 = "select * from ProductIn where date like '%" + str + "%'";
             SqlDataAdapter sqlDataAdapter9 = new SqlDataAdapter(selectCommandText9, Month.SQL);
             DataTable dataTable9 = new DataTable();

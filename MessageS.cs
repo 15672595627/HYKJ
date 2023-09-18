@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dataGridView1.CurrentCell.OwningColumn.Name == "审核")
+            if (dataGridView1.CurrentCell.OwningColumn.Name == "审核")
             {
                 if(MSS_Group == "财务部" || MSS_Group == "Administrators")
                 {
@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
         {
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Clear();
-            string strsql = "select id,contractid as 合同编号,applytime as 申请时间,service as 跟单员,company as 公司名称,project as 项目名称,productname as 产品名称,sub as 内容,quantity as 数量,unit as 单位,amount as 金额,examine from [dbo].[Message_FHSQ] where examine = '未审核' ORDER BY id DESC";
+            string strsql = "select id,contractid as 合同编号,applytime as 申请时间,service as 跟单员,company as 公司名称,project as 项目名称,productname as 产品名称,sub as 内容,quantity as 数量,unit as 单位,amount as 总金额,examine from [dbo].[Message_FHSQ] where examine = '未审核' ORDER BY id DESC";
             da1 = new SqlDataAdapter(strsql, SQL);
             dt1 = new DataTable();
             da1.Fill(dt1);
@@ -207,7 +207,7 @@ namespace WindowsFormsApp1
             MessageBox.Show("更新成功!");
 
         }
-
+        int cot;
         private void 批量审核ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MSS_Group == "财务部" || MSS_Group == "Administrators")
@@ -219,7 +219,7 @@ namespace WindowsFormsApp1
                         string text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
                         {
-                            
+
                             int m = dataGridView1.SelectedRows[i].Index;
                             string cpmc = dataGridView1.Rows[m].Cells["产品名称"].Value.ToString();
                             string nr = dataGridView1.Rows[m].Cells["内容"].Value.ToString();
@@ -228,13 +228,17 @@ namespace WindowsFormsApp1
                             con.Open();
                             SqlCommand cmd = con.CreateCommand();
                             cmd.CommandText = "UPDATE Message_FHSQ SET examine='已审核',checkdate = '"+ text + "',checker = '" + MSS_User + "',readfh = '未读' WHERE id = '"+id+"'";
-                            int cot = cmd.ExecuteNonQuery();
-                            if (cot == 0)
-                            {
-                                MessageBox.Show("审核失败");
-                            }
+                            cot = cmd.ExecuteNonQuery();
                             dataGridView1.Rows.Remove(dataGridView1.Rows[m]);
-                        }                      
+                        }
+                        if (cot == 0)
+                        {
+                            MessageBox.Show("审核失败");
+                        }
+                        else
+                        {
+                            MessageBox.Show("审核成功");
+                        }
                     }
                 } 
             }

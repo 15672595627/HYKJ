@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Order
 
         private static readonly string SQL = ConfigurationManager.AppSettings["connectionstring"];
 
-
+        public string OXZ_id { get; set; }
         public string OXZ_Htbh { get; set; }
         public string OXZ_Gdy { get; set; }
         public string OXZ_Gsm { get; set; }
@@ -31,7 +31,6 @@ namespace WindowsFormsApp1.Order
         public string OXZ_Sl { get; set; }
         public string OXZ_Dw { get; set; }
         public string OXZ_Je { get; set; }
-
         private void QD_Click(object sender, EventArgs e)
         {
             if(FHCK.Text == "" || WL.Text == "")
@@ -69,11 +68,11 @@ namespace WindowsFormsApp1.Order
                 }
                 try
                 {
-                    con.Open();
+                    con.Open();/*contractid = '" + OXZ_Htbh + "' and productname = '" + OXZ_Cpmc + "' and sub = '" + OXZ_Nr + "'*/
                     string fhck = FHCK.Text.Trim();
                     string fhwl = WL.Text.Trim();
                     SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandText = "UPDATE Order_b SET ident = 'Y' WHERE contractid = '" + OXZ_Htbh + "' and productname = '" + OXZ_Cpmc + "' and sub = '" + OXZ_Nr + "'";
+                    cmd.CommandText = "UPDATE Order_b SET ident = 'Y' WHERE id = '"+ OXZ_id + "'";
                     int cot = cmd.ExecuteNonQuery();
                     if (cot > 0)
                     {
@@ -91,9 +90,13 @@ namespace WindowsFormsApp1.Order
                     con.Close();
                 }
             }
-           
         }
-
+        public delegate void Delegateaa(string TextVal);
+        public event Delegateaa aa;
+        private void aba(string bb)
+        {
+            aa(bb);
+        }
         private void Orderxz_Load(object sender, EventArgs e)
         {
 

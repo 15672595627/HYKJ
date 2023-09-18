@@ -13,6 +13,8 @@ using System.Security.Cryptography;
 using System.IO;
 using WindowsFormsApp1.Class;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
 
 namespace WindowsFormsApp1.Product
 {
@@ -28,6 +30,14 @@ namespace WindowsFormsApp1.Product
         DataTable dt;
         SqlDataAdapter da;
 
+        DataTable dt1;
+        SqlDataAdapter da1;
+
+        DataTable dt2;
+        SqlDataAdapter da2;
+
+        DataTable dt3;
+        SqlDataAdapter da3;
         private AutoSizeFormClass asc = new AutoSizeFormClass();
         public string Username1 { get; set; }
         public string Group1 { get; set; }
@@ -47,7 +57,7 @@ namespace WindowsFormsApp1.Product
             string rq = RQ.Text.Trim();
             string rq1 = RQ1.Text.Trim();
             string ck = CK.Text.Trim();
-            string strsql = "SELECT id,orderid as 单据编号,date as 单据日期,caiwuRiqi as 财务日期,staffin as 录单员,sorderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名,product as 产品名称,substance as 内容,sl as 数量,dw as 单位,kfdj as 客服单价,meters as 米数,kfje as 客服金额,tax as 税率,wscz as 无税产值,sssl as 实收数量,zsms as 折算米数,sjdj as 实际单价,shck as 收货仓库,cbdj as 成本单价, cbje as 成本金额,state as 状态,examine as 审核状态 from ProductIn where  date BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh + "%' and  company like '%" + gsm + "%' and examine like '%" + shzt + "%'  and  shck like '%" + ck + "%'";
+            string strsql = "SELECT id,orderid as 单据编号,date as 单据日期,caiwuRiqi as 财务日期,staffin as 录单员,sorderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名,product as 产品名称,substance as 内容,sl as 数量,dw as 单位,kfdj as 客服单价,meters as 米数,kfje as 客服金额,tax as 税率,wscz as 无税产值,sssl as 实收数量,zsms as 折算米数,sjdj as 实际单价,shck as 收货仓库,cbdj as 成本单价, cbje as 成本金额,state as 状态,examine as 审核状态,cwsh as 财务审核 from ProductIn where  caiwuRiqi BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh + "%' and  company like '%" + gsm + "%' and examine like '%" + shzt + "%'  and  shck like '%" + ck + "%'";
             da = new SqlDataAdapter(strsql, SQL);
             dt = new DataTable();
             da.Fill(dt);
@@ -546,10 +556,11 @@ namespace WindowsFormsApp1.Product
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        int cot1;
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(SQL);
+            string d = DateTime.Now.ToString("yyyy-MM");
+            /*SqlConnection con = new SqlConnection(SQL);
             con.Open();
             try
             {
@@ -572,14 +583,93 @@ namespace WindowsFormsApp1.Product
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            finally 
+            finally
             {
-                con.Close(); 
+                con.Close();
+            }*/
+            
+            string htbh1 = HTBH.Text.Trim();
+            string gsm = GSMC.Text.Trim();
+            string shzt = ZT.Text.Trim();
+            string rq = RQ.Text.Trim();
+            string rq1 = RQ1.Text.Trim();
+            string ck = CK.Text.Trim();
+            string str1 = "SELECT date as 日期,contractid as 合同编号,product as 产品,sum(sl) as 数量,sum(kfje) as 金额,dw as 单位,shck as 仓库 from ProductIn where caiwuRiqi BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh1 + "%' and  company like '%" + gsm + "%' and examine like '%" + shzt + "%'  and  shck like '%" + ck + "%' GROUP BY contractid,product,dw,shck,date";
+            da1 = new SqlDataAdapter(str1, SQL);
+            dt1 = new DataTable();
+            da1.Fill(dt1);
+
+            string str2 = "select * from ProductInJZ where oldDate BETWEEN '" + rq + "' and '" + rq1 + "' ";
+            da2 = new SqlDataAdapter(str2, SQL);
+            dt2 = new DataTable();
+            da2.Fill(dt2);
+            SqlConnection conn = new SqlConnection(SQL);
+            conn.Open();
+            if (dt2.Rows.Count < 1)
+            {
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+                    string DD = dt1.Rows[i]["日期"].ToString();
+                    string CID = dt1.Rows[i]["合同编号"].ToString();
+                    int SL = Convert.ToInt32(dt1.Rows[i]["数量"]);
+                    decimal JE = Convert.ToDecimal(dt1.Rows[i]["金额"]);
+                    string DW = dt1.Rows[i]["单位"].ToString();
+                    string CK = dt1.Rows[i]["仓库"].ToString();
+                    string CP = dt1.Rows[i]["产品"].ToString();
+
+                    
+                    SqlCommand cmd1 = conn.CreateCommand();
+                    cmd1.CommandText = "INSERT INTO [dbo].[ProductInJZ] ([contractid],[sl],[dw],[kfje],[shck],[date],product,oldDate) VALUES ('" + CID + "','" + SL + "','" + DW + "','" + JE + "','" + CK + "','" + d + "','" + CP + "','" + DD + "')";
+                    cot1 = cmd1.ExecuteNonQuery();
+                    
+                }
             }
+            else
+            {
+                MessageBox.Show("该月已经结转，请勿重复结转!");
+            }
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                string htbh = dataGridView1.Rows[i].Cells["合同编号"].Value.ToString();
+                string cpmc = dataGridView1.Rows[i].Cells["产品名称"].Value.ToString();
+                string nr = dataGridView1.Rows[i].Cells["内容"].Value.ToString();
+                string cbje = dataGridView1.Rows[i].Cells["成本金额"].Value.ToString();
+
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "UPDATE Stock SET amount = '" + cbje + "' WHERE contractid = '" + htbh + "' and product = '" + cpmc + "' and sub = '" + nr + "'";
+                int cot = cmd.ExecuteNonQuery();
+
+                if (cot == 0)
+                {
+                    string ms = cpmc + nr + "更新失败";
+                    MessageBox.Show(ms);
+                    continue;
+                }
+            }
+            conn.Close();
+            /* string str3 = "select contractid as 合同编号,sl as 数量,kfje as 金额,dw as 单位,product as 产品名称,shck as 仓库,oldDate as 时间 from ProductInJZ where oldDate BETWEEN '" + rq + "' and '" + rq1 + "'";
+             da3 = new SqlDataAdapter(str3, SQL);
+             dt3 = new DataTable();
+             da3.Fill(dt3);
+
+             for (int i = 0; i < dt3.Rows.Count; i++)
+             {
+                 string htbh1 = dt1.Rows[i]["合同编号"].ToString();
+                 string dw1 = dt1.Rows[i]["单位"].ToString();
+                 string cpmc1 = dt1.Rows[i]["产品名称"].ToString();
+                 string ck1 = dt1.Rows[i]["仓库"].ToString();
+                 string sj1 = dt1.Rows[i]["时间"].ToString();
+                 int sl1 = Convert.ToInt32(dt1.Rows[i]["数量"]);
+                 decimal je1 = Convert.ToDecimal(dt1.Rows[i]["金额"]);
+
+                 SqlCommand cmd2 = conn.CreateCommand();
+                 cmd2.CommandText = "UPDATE Stock SET amount = '" + je1 + "' WHERE contractid = '" + htbh1 + "' and product = '" + cpmc1 + "' and warehouse = '" + ck1 + "'and unit = '" + dw1 + "'";
+                 cmd2.ExecuteNonQuery();
+             }*/
         }
 
         private void btndjrq_Click(object sender, EventArgs e)
@@ -625,6 +715,27 @@ namespace WindowsFormsApp1.Product
                 MessageBox.Show("对不起，你没有权限！");
             }
         }
-            
+        int aa = 0;
+        private void 财务审核ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(SQL);
+            conn.Open();
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                int m = dataGridView1.SelectedRows[i].Index;
+                if (dataGridView1.Rows[m].Cells["财务审核"].Value.ToString() == "未审核")
+                {
+                    string id = dataGridView1.Rows[m].Cells["id"].Value.ToString().Trim();
+                    string str = "update ProductIn set cwsh = '已审核' where id = '" + id + "'and caiwuRiqi BETWEEN '" + RQ.Text.Trim() + "' and '" + RQ1.Text.Trim() + "'";
+                    SqlCommand cmd = new SqlCommand(str, conn);
+                    aa = cmd.ExecuteNonQuery();
+                }
+            }
+            if (aa > 0)
+            {
+                MessageBox.Show("审核成功！");
+            }
+            conn.Close();
+        }
     }
 }

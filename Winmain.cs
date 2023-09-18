@@ -393,5 +393,43 @@ namespace WindowsFormsApp1
             orderReceiving.Show();
         }
 
+        private void 新增库存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addStock addStock = new addStock();
+            addStock.con_user = Username;
+            addStock.con_group = Group;
+            addStock.Show();
+        }
+
+        private void 更新库存数量ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateStock updateStock = new updateStock();
+            updateStock.con_user = Username;
+            updateStock.con_group = Group;
+            updateStock.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OderCKZT oderCKZT = new OderCKZT();
+            oderCKZT.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+              
+        }
+
+        private void 领料单统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Financelld financelld = new Financelld();
+            financelld.Show();
+        }
+
+        private void 成品入库结转ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addStockCaryyDown addStock = new addStockCaryyDown();
+            addStock.Show();
+        }
     }
 }

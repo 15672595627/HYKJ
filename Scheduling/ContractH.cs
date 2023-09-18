@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.Scheduling
         {
             string text = textBox1.Text.Trim();
             string text2 = textBox2.Text.Trim();
-            string str ="select id, orderid as 单据编号,contractid as 合同编号,date as 日期,company as 公司,project as 项目名称,sub as 分公司 ,con_cate as 合同类别,kh_type as 客户类别,kh_cate as 客户类型,seller as 业务员,cost as 钢材,area as 地区,place as 产地,tax as 税率,amount as 金额,examine as 审核状态,qj as 期间 from[dbo].[Contract_h] where contractid like '%"+text+ "%' and company like '%"+text2+"%'";
+            string str = "select id,orderid as 单据编号,contractid as 合同编号,date as 日期,service as 跟单员,desgin as 设计员,company as 公司名,project as 项目名称,con_date as 合同日期,seller as 业务员,person as 联系人,phone as 电话,delivery as 交期,color as 颜色,longmetre as 最长米,quantity as 总米数,tax as 税率,htje as 合同金额,sjje as 实际金额,amount as 总金额,wsje as 无税金额,azf as 安装费,ywf as 业务费,huokuan as 货款,dj as 定金,hk as 回扣,remarks as 备注,examine as 审核状态,qj as 期间 from [dbo].[Order_h] where contractid like '%" + text+ "%' and company like '%"+text2+ "%' order by [date] DESC ";
             da = new SqlDataAdapter(str, SQL);
             dt = new DataTable();
             da.Fill(dt);
@@ -34,13 +34,15 @@ namespace WindowsFormsApp1.Scheduling
         {
             string text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             string text2 = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            string text3 = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            string text4 = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            string text3 = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            string text4 = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+            string wsje = dataGridView1.CurrentRow.Cells["无税金额"].Value.ToString();
             kucunyanzheng kucunyanzheng = (kucunyanzheng)this.Owner;
             kucunyanzheng.Controls["panel1"].Controls["txtDdbh"].Text = text;
             kucunyanzheng.Controls["panel1"].Controls["txtHtbh"].Text = text2;
             kucunyanzheng.Controls["panel1"].Controls["txtGsm"].Text = text3;
             kucunyanzheng.Controls["panel1"].Controls["txtXm"].Text = text4;
+            kucunyanzheng.Controls["panel1"].Controls["txtWsje"].Text = wsje;
             this.Close();
         }
 

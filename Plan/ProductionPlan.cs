@@ -32,7 +32,7 @@ namespace WindowsFormsApp1.Plan
 
             string time = DateTime.Now.ToString("yyyyMMddHHmmss");
             DJBH.Text = "SCPQD" + time;
-            DJRQ.Text = DateTime.Now.ToString("d");
+            DJRQ.Text = DateTime.Now.ToString("yyyy-MM-dd");
             PQR.Text = PDP_User;
             toolStripStatusLabel3.Text = PDP_User;
             toolStripStatusLabel5.Text = PDP_Group;

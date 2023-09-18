@@ -50,7 +50,12 @@ namespace WindowsFormsApp1.Scheduling
         private void txtHtbh_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ContactH contactH = new ContactH();
-            contactH.Show();
+            contactH.Show(this);
+        }
+
+        private void 下推ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

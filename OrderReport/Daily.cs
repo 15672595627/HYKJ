@@ -6,29 +6,20 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using WindowsFormsApp1.Class;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormsApp1.OrderReport
 {
-    // Token: 0x02000045 RID: 69
     public partial class Daily : Form
     {
-        // Token: 0x06000357 RID: 855 RVA: 0x0004737A File Offset: 0x0004557A
         public Daily()
         {
             this.InitializeComponent();
         }
-
-        // Token: 0x1700007B RID: 123
-        // (get) Token: 0x06000358 RID: 856 RVA: 0x0004739D File Offset: 0x0004559D
-        // (set) Token: 0x06000359 RID: 857 RVA: 0x000473A5 File Offset: 0x000455A5
         public string DY_User { get; set; }
 
-        // Token: 0x1700007C RID: 124
-        // (get) Token: 0x0600035A RID: 858 RVA: 0x000473AE File Offset: 0x000455AE
-        // (set) Token: 0x0600035B RID: 859 RVA: 0x000473B6 File Offset: 0x000455B6
         public string DY_Group { get; set; }
 
-        // Token: 0x0600035C RID: 860 RVA: 0x000473BF File Offset: 0x000455BF
         private void Form1_Load(object sender, EventArgs e)
         {
             this.asc.controllInitializeSize(this);
@@ -36,7 +27,6 @@ namespace WindowsFormsApp1.OrderReport
             this.toolStripStatusLabel5.Text = this.DY_Group;
         }
 
-        // Token: 0x0600035D RID: 861 RVA: 0x000473F4 File Offset: 0x000455F4
         private void timer1_Tick(object sender, EventArgs e)
         {
             string netDateTime = Winmain.GetNetDateTime();
@@ -67,6 +57,7 @@ namespace WindowsFormsApp1.OrderReport
             ListViewItem listViewItem = new ListViewItem();
             listViewItem.SubItems[0].Text = "内勤";
             listViewItem.SubItems.Add(dataTable.Rows.Count.ToString());
+
             bool flag = dataTable2.Rows.Count > 0;
             if (flag)
             {
@@ -77,7 +68,7 @@ namespace WindowsFormsApp1.OrderReport
             {
                 listViewItem.SubItems.Add("0元");
             }
-            this.listView1.Items.Add(listViewItem);
+            listView1.Items.Add(listViewItem);
             string selectCommandText3 = "select * from Order_h where date = '" + str + "'";
             SqlDataAdapter sqlDataAdapter3 = new SqlDataAdapter(selectCommandText3, Daily.SQL);
             DataTable dataTable3 = new DataTable();
@@ -89,6 +80,7 @@ namespace WindowsFormsApp1.OrderReport
             ListViewItem listViewItem2 = new ListViewItem();
             listViewItem2.SubItems[0].Text = "客服";
             listViewItem2.SubItems.Add(dataTable3.Rows.Count.ToString());
+
             bool flag3 = dataTable4.Rows.Count > 0;
             if (flag3)
             {
@@ -112,8 +104,10 @@ namespace WindowsFormsApp1.OrderReport
             listViewItem3.SubItems[0].Text = "设计";
             listViewItem3.SubItems.Add(dataTable5.Rows.Count.ToString());
             listViewItem3.SubItems.Add(dataTable6.Rows[0][0].ToString() + "米");
-            this.listView1.Items.Add(listViewItem3);
-            string selectCommandText7 = "select * from [dbo].[Plan] where date = '" + str + "'";
+            listView1.Items.Add(listViewItem3);
+
+            string aa = DateTime.Now.ToString("yyyy-MM-dd");
+            string selectCommandText7 = "select * from [dbo].[Plan] where date = '" + aa + "'";
             SqlDataAdapter sqlDataAdapter7 = new SqlDataAdapter(selectCommandText7, Daily.SQL);
             DataTable dataTable7 = new DataTable();
             sqlDataAdapter7.Fill(dataTable7);
@@ -139,8 +133,8 @@ namespace WindowsFormsApp1.OrderReport
                     SqlDataAdapter sqlDataAdapter8 = new SqlDataAdapter(selectCommandText8, Daily.SQL);
                     DataTable dataTable8 = new DataTable();
                     sqlDataAdapter8.Fill(dataTable8);
-                    bool flag6 = dataTable8.Rows.Count > 0;
-                    if (flag6)
+                    bool flag7 = dataTable8.Rows.Count > 0;
+                    if (flag7)
                     {
                         sqlDataAdapter8.Fill(dataTable8);
                         d += Convert.ToDecimal(dataTable8.Rows[0][11]);
@@ -150,17 +144,10 @@ namespace WindowsFormsApp1.OrderReport
             ListViewItem listViewItem4 = new ListViewItem();
             listViewItem4.SubItems[0].Text = "PMC";
             listViewItem4.SubItems.Add(dataTable7.Rows.Count.ToString());
-            bool flag7 = dataTable7.Rows.Count > 0;
-            if (flag7)
-            {
-                listViewItem4.SubItems.Add(d.ToString() + "米");
-            }
-            bool flag8 = dataTable7.Rows.Count == 0;
-            if (flag8)
-            {
-                listViewItem4.SubItems.Add("0米");
-            }
+            listViewItem4.SubItems.Add(d.ToString() + "米");
             this.listView1.Items.Add(listViewItem4);
+
+
             string selectCommandText9 = "select * from ProductIn where date = '" + str + "'";
             SqlDataAdapter sqlDataAdapter9 = new SqlDataAdapter(selectCommandText9, Daily.SQL);
             DataTable dataTable9 = new DataTable();

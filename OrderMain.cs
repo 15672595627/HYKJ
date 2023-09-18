@@ -20,6 +20,7 @@ using WindowsFormsApp1.Plan;
 using WindowsFormsApp1.Product;
 using WindowsFormsApp1.Class;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using WindowsFormsApp1.Stock;
 
 namespace WindowsFormsApp1
 {
@@ -305,18 +306,6 @@ namespace WindowsFormsApp1
             newPOList.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Insourcing insourcing = new Insourcing();
-            insourcing.Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            InsourcingList insourcingList = new InsourcingList();
-            insourcingList.Show();
-        }
-
         private void button20_Click(object sender, EventArgs e)
         {
             Outsourcing outsourcing = new Outsourcing();
@@ -328,9 +317,6 @@ namespace WindowsFormsApp1
             OutsourcingList outsourcingList = new OutsourcingList();
             outsourcingList.Show();
         }
-
-
-
 
         private void button14_Click(object sender, EventArgs e)
         {
@@ -535,12 +521,17 @@ namespace WindowsFormsApp1
         {
             lldList lldList = new lldList();
             lldList.Show();
+            lldList.OSL_Group= this.Group1;
+            lldList.OSL_User= this.Username1;
         }
 
         private void button35_Click(object sender, EventArgs e)
         {
-            scllContract scllContract = new scllContract();
-            scllContract.Show();
+            
+            outSouringAdd outSouring = new outSouringAdd();
+            outSouring.Show();
+            outSouring.User = this.Username1;
+            outSouring.Group = this.Group1;
         }
 
         private void button37_Click(object sender, EventArgs e)
@@ -553,6 +544,20 @@ namespace WindowsFormsApp1
         {
             basicMaterialMaintain basicMaterialMaintain = new basicMaterialMaintain();
             basicMaterialMaintain.Show();
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            InAndPutList inAndPutList = new InAndPutList();
+            inAndPutList.Show();
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            PutStockDetialList putStockDetial  = new PutStockDetialList();
+            putStockDetial.Show();
+            putStockDetial.User = this.Username1;
+            putStockDetial.Group = this.Group1;
         }
     }
 }

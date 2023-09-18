@@ -37,8 +37,10 @@ namespace WindowsFormsApp1.Order
             this.label1 = new System.Windows.Forms.Label();
             this.HTBH = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.XDY = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.LXR = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.JQ = new System.Windows.Forms.DateTimePicker();
@@ -63,6 +65,9 @@ namespace WindowsFormsApp1.Order
             this.单价 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.米数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.金额 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.安装费 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.回扣 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.运费 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.合同产品名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ZMS = new System.Windows.Forms.TextBox();
@@ -123,7 +128,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(8, 47);
+            this.label1.Location = new System.Drawing.Point(17, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -132,7 +137,7 @@ namespace WindowsFormsApp1.Order
             // HTBH
             // 
             this.HTBH.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HTBH.Location = new System.Drawing.Point(66, 44);
+            this.HTBH.Location = new System.Drawing.Point(75, 24);
             this.HTBH.Name = "HTBH";
             this.HTBH.Size = new System.Drawing.Size(121, 21);
             this.HTBH.TabIndex = 1;
@@ -141,8 +146,10 @@ namespace WindowsFormsApp1.Order
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label29);
             this.groupBox1.Controls.Add(this.XDY);
             this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.LXR);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.JQ);
@@ -162,18 +169,28 @@ namespace WindowsFormsApp1.Order
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 87);
+            this.groupBox1.Location = new System.Drawing.Point(12, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 166);
+            this.groupBox1.Size = new System.Drawing.Size(555, 184);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "客户资料";
             this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupBox1_Paint_1);
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.Location = new System.Drawing.Point(6, 148);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(71, 16);
+            this.label29.TabIndex = 23;
+            this.label29.Text = "合同日期";
+            // 
             // XDY
             // 
             this.XDY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.XDY.Location = new System.Drawing.Point(432, 126);
+            this.XDY.Location = new System.Drawing.Point(441, 106);
             this.XDY.Name = "XDY";
             this.XDY.ReadOnly = true;
             this.XDY.Size = new System.Drawing.Size(108, 21);
@@ -183,16 +200,25 @@ namespace WindowsFormsApp1.Order
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(374, 130);
+            this.label25.Location = new System.Drawing.Point(383, 110);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 12);
             this.label25.TabIndex = 20;
             this.label25.Text = "下单员";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(75, 141);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(121, 23);
+            this.textBox1.TabIndex = 22;
+            // 
             // LXR
             // 
             this.LXR.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LXR.Location = new System.Drawing.Point(260, 98);
+            this.LXR.Location = new System.Drawing.Point(269, 78);
             this.LXR.Name = "LXR";
             this.LXR.Size = new System.Drawing.Size(108, 21);
             this.LXR.TabIndex = 19;
@@ -201,7 +227,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(213, 103);
+            this.label13.Location = new System.Drawing.Point(222, 83);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 18;
@@ -212,7 +238,7 @@ namespace WindowsFormsApp1.Order
             this.JQ.CustomFormat = "yyyy-MM-dd";
             this.JQ.Font = new System.Drawing.Font("楷体", 9F);
             this.JQ.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.JQ.Location = new System.Drawing.Point(260, 128);
+            this.JQ.Location = new System.Drawing.Point(269, 108);
             this.JQ.Name = "JQ";
             this.JQ.Size = new System.Drawing.Size(108, 21);
             this.JQ.TabIndex = 17;
@@ -221,7 +247,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(225, 131);
+            this.label12.Location = new System.Drawing.Point(234, 111);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 16;
@@ -230,7 +256,7 @@ namespace WindowsFormsApp1.Order
             // QY
             // 
             this.QY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QY.Location = new System.Drawing.Point(66, 128);
+            this.QY.Location = new System.Drawing.Point(75, 108);
             this.QY.Name = "QY";
             this.QY.ReadOnly = true;
             this.QY.Size = new System.Drawing.Size(121, 21);
@@ -240,7 +266,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(27, 134);
+            this.label8.Location = new System.Drawing.Point(36, 114);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 14;
@@ -249,7 +275,7 @@ namespace WindowsFormsApp1.Order
             // YWY
             // 
             this.YWY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.YWY.Location = new System.Drawing.Point(66, 98);
+            this.YWY.Location = new System.Drawing.Point(75, 78);
             this.YWY.Name = "YWY";
             this.YWY.ReadOnly = true;
             this.YWY.Size = new System.Drawing.Size(121, 21);
@@ -259,7 +285,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(19, 107);
+            this.label7.Location = new System.Drawing.Point(28, 87);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 12;
@@ -268,7 +294,7 @@ namespace WindowsFormsApp1.Order
             // LXFS
             // 
             this.LXFS.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LXFS.Location = new System.Drawing.Point(432, 99);
+            this.LXFS.Location = new System.Drawing.Point(441, 79);
             this.LXFS.Name = "LXFS";
             this.LXFS.Size = new System.Drawing.Size(108, 21);
             this.LXFS.TabIndex = 11;
@@ -277,7 +303,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(374, 103);
+            this.label6.Location = new System.Drawing.Point(383, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 10;
@@ -286,7 +312,7 @@ namespace WindowsFormsApp1.Order
             // GSM
             // 
             this.GSM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.GSM.Location = new System.Drawing.Point(260, 44);
+            this.GSM.Location = new System.Drawing.Point(269, 24);
             this.GSM.Name = "GSM";
             this.GSM.ReadOnly = true;
             this.GSM.Size = new System.Drawing.Size(280, 21);
@@ -296,7 +322,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(213, 47);
+            this.label4.Location = new System.Drawing.Point(222, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 4;
@@ -305,7 +331,7 @@ namespace WindowsFormsApp1.Order
             // XMMC
             // 
             this.XMMC.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.XMMC.Location = new System.Drawing.Point(260, 71);
+            this.XMMC.Location = new System.Drawing.Point(269, 51);
             this.XMMC.Name = "XMMC";
             this.XMMC.ReadOnly = true;
             this.XMMC.Size = new System.Drawing.Size(280, 21);
@@ -315,7 +341,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(202, 74);
+            this.label3.Location = new System.Drawing.Point(211, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -324,7 +350,7 @@ namespace WindowsFormsApp1.Order
             // QDRQ
             // 
             this.QDRQ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QDRQ.Location = new System.Drawing.Point(66, 71);
+            this.QDRQ.Location = new System.Drawing.Point(75, 51);
             this.QDRQ.Name = "QDRQ";
             this.QDRQ.ReadOnly = true;
             this.QDRQ.Size = new System.Drawing.Size(121, 21);
@@ -334,7 +360,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(7, 74);
+            this.label2.Location = new System.Drawing.Point(16, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 6;
@@ -372,6 +398,9 @@ namespace WindowsFormsApp1.Order
             this.单价,
             this.米数,
             this.金额,
+            this.安装费,
+            this.回扣,
+            this.运费,
             this.合同产品名称});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -446,6 +475,24 @@ namespace WindowsFormsApp1.Order
             this.金额.HeaderText = "金额";
             this.金额.Name = "金额";
             this.金额.Width = 60;
+            // 
+            // 安装费
+            // 
+            this.安装费.HeaderText = "安装费";
+            this.安装费.Name = "安装费";
+            this.安装费.Width = 50;
+            // 
+            // 回扣
+            // 
+            this.回扣.HeaderText = "回扣";
+            this.回扣.Name = "回扣";
+            this.回扣.Width = 50;
+            // 
+            // 运费
+            // 
+            this.运费.HeaderText = "运费";
+            this.运费.Name = "运费";
+            this.运费.Width = 50;
             // 
             // 合同产品名称
             // 
@@ -640,8 +687,9 @@ namespace WindowsFormsApp1.Order
             this.WSJE.Location = new System.Drawing.Point(65, 95);
             this.WSJE.Name = "WSJE";
             this.WSJE.ReadOnly = true;
-            this.WSJE.Size = new System.Drawing.Size(164, 21);
+            this.WSJE.Size = new System.Drawing.Size(55, 21);
             this.WSJE.TabIndex = 19;
+            this.WSJE.TextChanged += new System.EventHandler(this.WSJE_TextChanged);
             // 
             // label17
             // 
@@ -677,6 +725,7 @@ namespace WindowsFormsApp1.Order
             this.AZF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AZF.Location = new System.Drawing.Point(65, 149);
             this.AZF.Name = "AZF";
+            this.AZF.ReadOnly = true;
             this.AZF.Size = new System.Drawing.Size(55, 21);
             this.AZF.TabIndex = 23;
             // 
@@ -695,6 +744,7 @@ namespace WindowsFormsApp1.Order
             this.YWF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.YWF.Location = new System.Drawing.Point(65, 176);
             this.YWF.Name = "YWF";
+            this.YWF.ReadOnly = true;
             this.YWF.Size = new System.Drawing.Size(55, 21);
             this.YWF.TabIndex = 26;
             // 
@@ -702,7 +752,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(127, 153);
+            this.label20.Location = new System.Drawing.Point(126, 126);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(29, 12);
             this.label20.TabIndex = 27;
@@ -711,7 +761,7 @@ namespace WindowsFormsApp1.Order
             // DJ
             // 
             this.DJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DJ.Location = new System.Drawing.Point(162, 149);
+            this.DJ.Location = new System.Drawing.Point(161, 122);
             this.DJ.Name = "DJ";
             this.DJ.Size = new System.Drawing.Size(67, 21);
             this.DJ.TabIndex = 28;
@@ -721,7 +771,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(127, 180);
+            this.label21.Location = new System.Drawing.Point(126, 153);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 29;
@@ -730,8 +780,9 @@ namespace WindowsFormsApp1.Order
             // HK
             // 
             this.HK.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HK.Location = new System.Drawing.Point(162, 176);
+            this.HK.Location = new System.Drawing.Point(161, 149);
             this.HK.Name = "HK";
+            this.HK.ReadOnly = true;
             this.HK.Size = new System.Drawing.Size(67, 21);
             this.HK.TabIndex = 30;
             // 
@@ -767,7 +818,7 @@ namespace WindowsFormsApp1.Order
             // HUOK
             // 
             this.HUOK.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HUOK.Location = new System.Drawing.Point(161, 125);
+            this.HUOK.Location = new System.Drawing.Point(160, 98);
             this.HUOK.Name = "HUOK";
             this.HUOK.ReadOnly = true;
             this.HUOK.Size = new System.Drawing.Size(67, 21);
@@ -777,7 +828,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(126, 129);
+            this.label24.Location = new System.Drawing.Point(125, 102);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(29, 12);
             this.label24.TabIndex = 31;
@@ -822,7 +873,7 @@ namespace WindowsFormsApp1.Order
             this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 654);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(822, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(817, 22);
             this.statusStrip1.TabIndex = 59;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -911,7 +962,7 @@ namespace WindowsFormsApp1.Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(822, 676);
+            this.ClientSize = new System.Drawing.Size(817, 676);
             this.Controls.Add(this.PF);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.QJ);
@@ -1019,14 +1070,19 @@ namespace WindowsFormsApp1.Order
         private System.Windows.Forms.TextBox XDRQ;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox QJ;
+        private System.Windows.Forms.ComboBox PF;
+        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.DataGridViewTextBoxColumn 内容;
         private System.Windows.Forms.DataGridViewTextBoxColumn 数量;
         private System.Windows.Forms.DataGridViewComboBoxColumn 单位;
         private System.Windows.Forms.DataGridViewTextBoxColumn 单价;
         private System.Windows.Forms.DataGridViewTextBoxColumn 米数;
         private System.Windows.Forms.DataGridViewTextBoxColumn 金额;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 安装费;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 回扣;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 运费;
         private System.Windows.Forms.DataGridViewTextBoxColumn 合同产品名称;
-        private System.Windows.Forms.ComboBox PF;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

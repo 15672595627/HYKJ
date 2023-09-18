@@ -29,7 +29,13 @@ namespace WindowsFormsApp1.Product
 
         public string PO_user { get; set; }
         public string PO_group { get; set; }
-
+        int cot;
+        int cot1;
+        int cot2;
+        int cot3;
+        int cot4;
+        int cot5;
+        int cot6;
         public DataTable PDO;
         private void ProductOut_Load(object sender, EventArgs e)
         {
@@ -41,10 +47,13 @@ namespace WindowsFormsApp1.Product
             toolStripStatusLabel5.Text = PO_group;
             LDY.Text = PO_user;
         }
-
+        decimal sl1;
+        decimal je1;
+        DataTable dt1;
+        SqlDataAdapter da1;
         private void BC_Click(object sender, EventArgs e)
         {
-
+            string sj = DateTime.Now.ToString("yyyy-MM-dd");
             string djbh = DJBH.Text.Trim();
             string djrq = DJRQ.Text.Trim();
             string ldy = LDY.Text.Trim();
@@ -59,34 +68,36 @@ namespace WindowsFormsApp1.Product
                     con.Open();
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        string xsdj = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        string htbh = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                        string gsm = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                        string xmmc = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                        string cpmc = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                        string nr = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                        string sl = dataGridView1.Rows[i].Cells[6].Value.ToString();
-                        string dw = dataGridView1.Rows[i].Cells[7].Value.ToString();
-                        string kfdj = dataGridView1.Rows[i].Cells[8].Value.ToString();
-                        string ms = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                        string kfje = dataGridView1.Rows[i].Cells[10].Value.ToString();
+                        string id = dataGridView1.Rows[i].Cells["id"].Value.ToString();
+                        string xsdj = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                        string htbh = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                        string gsm = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                        string xmmc = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                        string cpmc = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                        string nr = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                        decimal sl = Convert.ToDecimal(dataGridView1.Rows[i].Cells[7].Value);
+                        string dw = dataGridView1.Rows[i].Cells[8].Value.ToString();
+                        string kfdj = dataGridView1.Rows[i].Cells[9].Value.ToString();
+                        string ms = dataGridView1.Rows[i].Cells[10].Value.ToString();
+                        string kfje = dataGridView1.Rows[i].Cells[11].Value.ToString();
 
-                        string jesl = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                        string jesl = dataGridView1.Rows[i].Cells[12].Value.ToString();
 
-                        string wscz = dataGridView1.Rows[i].Cells[12].Value.ToString();
+                        string wscz = dataGridView1.Rows[i].Cells[13].Value.ToString();
 
-                        string fhsl = dataGridView1.Rows[i].Cells[13].Value.ToString();
-                        string fhje = dataGridView1.Rows[i].Cells[14].Value.ToString();
-                        string fhcbje = dataGridView1.Rows[i].Cells[15].Value.ToString();
+                        decimal fhsl = Convert.ToDecimal(dataGridView1.Rows[i].Cells[14].Value);
+                        string fhje = dataGridView1.Rows[i].Cells[15].Value.ToString();
+                        string fhcbje = dataGridView1.Rows[i].Cells[16].Value.ToString();
 
-                        string gdy = dataGridView1.Rows[i].Cells[16].Value.ToString();
-                        string ywy = dataGridView1.Rows[i].Cells[17].Value.ToString();
+                        string gdy = dataGridView1.Rows[i].Cells[17].Value.ToString();
+                        string ywy = dataGridView1.Rows[i].Cells[18].Value.ToString();
 
-                        string shck = dataGridView1.Rows[i].Cells[18].Value.ToString() ;
+                        string shck = dataGridView1.Rows[i].Cells[19].Value.ToString();
                         //string cwrq = dataGridView1.Rows[i].Cells["caiwuRiqi"].Value.ToString();
 
+                        
                         SqlCommand cmmd = con.CreateCommand();
-                        cmmd.CommandText = "select * from [dbo].[ProductOut] where product = '" + cpmc + "' and  substance = '" + nr + "' and fhsl = '" + fhsl + "' and fhamount = '" + fhje + "'";
+                        cmmd.CommandText = "select * from [dbo].[ProductOut] where product = '" + cpmc + "' and  substance = '" + nr + "' and kfdj = '" + kfdj + "' and fhsl = '" + fhsl + "' and fhamount = '" + fhje + "'";
                         SqlDataReader sdr = cmmd.ExecuteReader();
                         sdr.Read();
                         if (sdr.HasRows)
@@ -95,7 +106,7 @@ namespace WindowsFormsApp1.Product
                             string ts = "此产品" + cpmc + "-" + nr + "已出库，请删除后重新保存";
                             MessageBox.Show(ts);
                             return;
-                            
+
                         }
                         else
                         {
@@ -108,9 +119,9 @@ namespace WindowsFormsApp1.Product
                             {
                                 ssdr.Close();
                                 string ts = "此产品" + cpmc + "-" + nr + "未入库，请先入库,是否打开入库界面";
-                                if(MessageBox.Show(ts,"警告",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning) == DialogResult.OK)
+                                if (MessageBox.Show(ts, "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                                 {
-                                    
+
                                     ProductIn productIn = new ProductIn();
                                     productIn.ShowDialog();
                                     return;
@@ -119,24 +130,98 @@ namespace WindowsFormsApp1.Product
                                 {
                                     return;
                                 }
-                                
+
                             }
                             else
                             {
                                 ssdr.Close();
+                                //匹配库存，减库存
+                                string st = "select contractid as 合同编号,product as 产品,sub as 内容,num as 数量,amount as 金额 from [dbo].[Stock] where product = '" + cpmc + "' and  sub = '" + nr + "' and  contractid = '" + htbh + "'";
+                                da1 = new SqlDataAdapter(st, SQL);
+                                dt1 = new DataTable();
+                                da1.Fill(dt1);
+
                                 SqlCommand cmd = con.CreateCommand();
-                                cmd.CommandText = "INSERT INTO [dbo].[ProductOut] ([orderid],[date],[caiwuRiqi],[staffout],[sorderid],[contractid],[service],[seller],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[fhsl],[fhamount],[fhcbamount],[shck],[sent],[examine],[examine1]) values ('" + djbh + "','" + djrq + "','"+ djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gdy + "','" + ywy + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + wscz + "','" + fhsl + "','" + fhje + "','" + fhcbje + "','" + shck + "','0','未审核','未审核')";
-                                int cot = cmd.ExecuteNonQuery();
-                                if (cot == 0)
+                                cmd.CommandText = st;
+                                SqlDataReader sdr1 = cmd.ExecuteReader();
+                                sdr1.Read();
+                                if (!sdr1.HasRows)
                                 {
-                                    MessageBox.Show("保存失败");
+                                    sdr1.Close();
+
+
+                                    string ts = "此产品" + cpmc + "-" + nr + "库存不存在，请添加库存后进行出库！";
+                                    MessageBox.Show(ts);
+                                    continue;
                                 }
+                                for (int j = 0; j < dt1.Rows.Count; j++)
+                                {
+                                    string htbh1 = dt1.Rows[j]["合同编号"].ToString();
+                                    string cp1 = dt1.Rows[j]["产品"].ToString();
+                                    string nr1 = dt1.Rows[j]["内容"].ToString();
+                                    sl1 = Convert.ToDecimal(dt1.Rows[j]["数量"]);
+                                    je1 = Convert.ToDecimal(dt1.Rows[j]["金额"]);
+                                    if (htbh == htbh1 && cpmc == cp1 && nr1 == nr && sl1 >= fhsl)
+                                    {
+                                        decimal sumSl = sl1 - fhsl;
+                                        decimal sumje = je1 - Convert.ToDecimal(kfje);
+
+                                        SqlCommand cmd1 = con.CreateCommand();
+                                        cmd1.CommandText = "update Stock set num = '" + sumSl + "',amount = '" + sumje + "',updatetime = '" + sj + "' where contractid = '" + htbh + "' and product = '" + cpmc + "' and sub = '" + nr + "'";
+                                        cmd1.ExecuteNonQuery();
+
+                                        SqlCommand cmd2 = con.CreateCommand();
+                                        cmd2.CommandText = "INSERT INTO [dbo].[ProductOut] ([orderid],[date],[caiwuRiqi],[staffout],[sorderid],[contractid],[service],[seller],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[fhsl],[fhamount],[fhcbamount],[shck],[sent],[examine],[examine1]) values ('" + djbh + "','" + djrq + "','" + djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gdy + "','" + ywy + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + wscz + "','" + fhsl + "','" + fhje + "','" + fhcbje + "','" + shck + "','0','已审核','未审核')";
+                                        cmd2.ExecuteNonQuery();
+                                    }
+                                    else if (htbh == htbh1 && cpmc == cp1 && nr1 == nr && sl1 < fhsl)
+                                    {
+                                        MessageBox.Show("该产品" + cpmc + "库存量不够，请补充库存量后进行出库操作！");
+                                    }
+                                    
+                                    if (sl == fhsl)
+                                    {
+                                        SqlCommand cmd1 = con.CreateCommand();
+                                        cmd1.CommandText = "update Order_b set ckzt = '已出库' where id = '" + id + "'";
+                                        cot1 = cmd1.ExecuteNonQuery();
+
+                                        SqlCommand cmd4 = con.CreateCommand();
+                                        cmd4.CommandText = "update Order_b_cw set ckzt = '已出库' where oId = '" + id + "'";
+                                        cot4 = cmd4.ExecuteNonQuery();
+                                    }
+                                    else if (fhsl == 0)
+                                    {
+                                        SqlCommand cmd2 = con.CreateCommand();
+                                        cmd2.CommandText = "update Order_b set ckzt = '未出库' where id = '" + id + "'";
+                                        cot2 = cmd2.ExecuteNonQuery();
+
+                                        SqlCommand cmd5 = con.CreateCommand();
+                                        cmd5.CommandText = "update Order_b_cw set ckzt = '未出库' where oId = '" + id + "'";
+                                        cot5 = cmd5.ExecuteNonQuery();
+                                    }
+                                    else
+                                    {
+                                        SqlCommand cmd3 = con.CreateCommand();
+                                        cmd3.CommandText = "update Order_b set ckzt = '部分出库' where id = '" + id + "'";
+                                        cot3 = cmd3.ExecuteNonQuery();
+
+                                        SqlCommand cmd6 = con.CreateCommand();
+                                        cmd6.CommandText = "update Order_b_cw set ckzt = '部分出库' where oId = '" + id + "'";
+                                        cot6 = cmd6.ExecuteNonQuery();
+                                    }
+
+                                    if (cot1 < 1 && cot2 < 1 && cot3 < 1)
+                                    {
+                                        MessageBox.Show("保存失败");
+                                    }
+                                }
+                                MessageBox.Show("保存成功");
                             }
                         }
                     }
-                    MessageBox.Show("保存成功");
                     this.Close();
                 }
+
             }
             catch (Exception ex)
             {
@@ -147,10 +232,6 @@ namespace WindowsFormsApp1.Product
                 con.Close();
             }
         }
-
-
-    
-
         /*
         private void GSM_KeyDown(object sender, KeyEventArgs e)
         {
@@ -201,9 +282,6 @@ namespace WindowsFormsApp1.Product
             }
         }
         */
-
-
-
         private void XZ_Click(object sender, EventArgs e)
         {
             ProductOutCon outCon = new ProductOutCon();
@@ -218,10 +296,12 @@ namespace WindowsFormsApp1.Product
 
             if (dataGridView1.Columns.Count > 0)
             {
+                dataGridView1.Columns["id"].Visible = false;
                 dataGridView1.Columns["销售订单"].Visible = false;
                 dataGridView1.Columns["合同编号"].Visible = false;
                 dataGridView1.Columns["公司名"].Visible = false;
                 dataGridView1.Columns["项目名称"].Visible = false;
+                
 
                 DataGridViewComboBoxColumn ck = new DataGridViewComboBoxColumn();
                 ck.Items.Add("一线成品仓");
@@ -285,9 +365,9 @@ namespace WindowsFormsApp1.Product
                     dataGridView1.Rows[i].Cells["发货数量"].Value = "0";
                     dataGridView1.Rows[i].Cells["发货金额"].Value = "0";
                     dataGridView1.Rows[i].Cells["发货成本金额"].Value = "0";
-
+                    
                 }
-
+                //dataGridView1.Columns["id"].Visible = false;
             }
         }
 
@@ -295,5 +375,6 @@ namespace WindowsFormsApp1.Product
         {
             asc.controlAutoSize(this);
         }
+
     }
 }

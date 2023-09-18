@@ -213,8 +213,8 @@
             // 
             this.ZT.FormattingEnabled = true;
             this.ZT.Items.AddRange(new object[] {
-            "已入库",
-            "已出库"});
+            "已审核",
+            "未审核"});
             this.ZT.Location = new System.Drawing.Point(467, 44);
             this.ZT.Name = "ZT";
             this.ZT.Size = new System.Drawing.Size(100, 20);

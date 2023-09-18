@@ -37,8 +37,8 @@ namespace WindowsFormsApp1.Bill
         {
             int row = e.RowIndex;
             string aa = dataGridView1.Rows[row].Cells[0].Value.ToString().Trim();
-            Insourcing insourcing = (Insourcing)this.Owner;
-            insourcing.Controls["CGDD"].Text = aa;
+            //Insourcing insourcing = (Insourcing)this.Owner;
+            //insourcing.Controls["CGDD"].Text = aa;
             this.Close();
         }
     }

@@ -32,6 +32,8 @@ namespace WindowsFormsApp1.Order
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.CKZT = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.QJ = new System.Windows.Forms.TextBox();
@@ -64,6 +66,7 @@ namespace WindowsFormsApp1.Order
             this.导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发货申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.批量发货申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.财务审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +86,8 @@ namespace WindowsFormsApp1.Order
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.label11);
             this.splitContainer1.Panel1.Controls.Add(this.CKZT);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
             this.splitContainer1.Panel1.Controls.Add(this.QJ);
@@ -109,9 +114,31 @@ namespace WindowsFormsApp1.Order
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1225, 663);
+            this.splitContainer1.Size = new System.Drawing.Size(1323, 663);
             this.splitContainer1.SplitterDistance = 73;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "已出库",
+            "部分出库",
+            "未出库"});
+            this.comboBox1.Location = new System.Drawing.Point(1080, 39);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(95, 20);
+            this.comboBox1.TabIndex = 80;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("楷体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(1076, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 20);
+            this.label11.TabIndex = 79;
+            this.label11.Text = "出库状态";
             // 
             // CKZT
             // 
@@ -132,7 +159,7 @@ namespace WindowsFormsApp1.Order
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 21);
             this.label10.TabIndex = 77;
-            this.label10.Text = "出库状态";
+            this.label10.Text = "发货状态";
             // 
             // QJ
             // 
@@ -306,7 +333,7 @@ namespace WindowsFormsApp1.Order
             // SX
             // 
             this.SX.Font = new System.Drawing.Font("楷体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SX.Location = new System.Drawing.Point(1102, 12);
+            this.SX.Location = new System.Drawing.Point(1209, 22);
             this.SX.Name = "SX";
             this.SX.Size = new System.Drawing.Size(111, 44);
             this.SX.TabIndex = 0;
@@ -335,7 +362,7 @@ namespace WindowsFormsApp1.Order
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1225, 586);
+            this.dataGridView1.Size = new System.Drawing.Size(1323, 586);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
@@ -351,9 +378,10 @@ namespace WindowsFormsApp1.Order
             this.反审核ToolStripMenuItem,
             this.导出ToolStripMenuItem,
             this.发货申请ToolStripMenuItem,
-            this.批量发货申请ToolStripMenuItem});
+            this.批量发货申请ToolStripMenuItem,
+            this.财务审核ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 202);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 224);
             // 
             // 收款单修改ToolStripMenuItem
             // 
@@ -418,15 +446,22 @@ namespace WindowsFormsApp1.Order
             this.批量发货申请ToolStripMenuItem.Text = "批量发货申请";
             this.批量发货申请ToolStripMenuItem.Click += new System.EventHandler(this.批量发货申请ToolStripMenuItem_Click);
             // 
+            // 财务审核ToolStripMenuItem
+            // 
+            this.财务审核ToolStripMenuItem.Name = "财务审核ToolStripMenuItem";
+            this.财务审核ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.财务审核ToolStripMenuItem.Text = "财务审核";
+            this.财务审核ToolStripMenuItem.Click += new System.EventHandler(this.财务审核ToolStripMenuItem_Click);
+            // 
             // OrderServiceList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1225, 663);
+            this.ClientSize = new System.Drawing.Size(1323, 663);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "OrderServiceList";
-            this.Text = "Orderservicelist";
+            this.Text = "订单维护";
             this.Load += new System.EventHandler(this.OrderServiceList_Load);
             this.SizeChanged += new System.EventHandler(this.OrderServiceList_SizeChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -474,5 +509,8 @@ namespace WindowsFormsApp1.Order
         private System.Windows.Forms.ComboBox CKZT;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripMenuItem 批量发货申请ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 财务审核ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

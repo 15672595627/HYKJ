@@ -32,14 +32,21 @@ namespace WindowsFormsApp1.Order
         public string ord_user { get; set; }
         public string ord_group { get; set; }
 
-
+        decimal zz;
+        decimal sunAa;
+        decimal sumBb;
+        decimal sumAzf;
+        decimal sumHUOK;
+        decimal sumJe;
+        decimal shij;
+        decimal sumHk;
         private AutoSizeFormClass asc = new AutoSizeFormClass();
 
         private void Orderservice_Load(object sender, EventArgs e)
         {
             asc.controllInitializeSize(this);
             string time = DateTime.Now.ToString("yyyyMMddHHmmss");
-            XDRQ.Text = DateTime.Now.ToString("d");
+            XDRQ.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DDBH.Text = "XSDD" + time;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("宋体", 9);
             dataGridView1.DefaultCellStyle.Font = new Font("宋体", 9);
@@ -55,7 +62,7 @@ namespace WindowsFormsApp1.Order
             FindContract findcontract = new FindContract();
             findcontract.Show(this);
         }
-
+        
         private void HTBH_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -166,12 +173,16 @@ namespace WindowsFormsApp1.Order
 
         #endregion 红色groupbox边框
 
-
+        
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (HTBH.Text == "" || JESL.Text == ""|| QJ.Text == "")
+            if (HTBH.Text == "" || QJ.Text == "")
             {
-                MessageBox.Show("请输入合同编号/税率/期间");
+                MessageBox.Show("请输入合同编号/期间");
+            }
+            if (JESL.Text == "")
+            {
+                MessageBox.Show("请输入税率");
             }
             if (YS.Text == "")
             {
@@ -199,6 +210,9 @@ namespace WindowsFormsApp1.Order
             }
             else
             {
+                decimal aa;
+                decimal bb;
+                decimal c;
                 string qj = QJ.Text;
                 string ddbh = DDBH.Text;
                 string htbh = HTBH.Text;
@@ -218,7 +232,7 @@ namespace WindowsFormsApp1.Order
                 string zms = ZMS.Text;
                 string jesl = JESL.Text;
                 string htje = HTJE.Text;
-                string sjje = SJJE.Text;
+                decimal sjje = Convert.ToDecimal(SJJE.Text);
                 string wsje = WSJE.Text;
                 string azf = AZF.Text;
                 string ywf = YWF.Text;
@@ -242,9 +256,26 @@ namespace WindowsFormsApp1.Order
                             string dw = dataGridView1.Rows[i].Cells[2].Value.ToString().Trim();
                             string dj1 = dataGridView1.Rows[i].Cells[3].Value.ToString().Trim();
                             string ms = dataGridView1.Rows[i].Cells[4].Value.ToString().Trim();
-                            string je = dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
-                            string cpmc = dataGridView1.Rows[i].Cells[6].Value.ToString().Trim();
-                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[ident],[pmc],[dusting]) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','N','N','" + PF.Text + "')";
+                            //总金额
+                            decimal je = Convert.ToDecimal(dataGridView1.Rows[i].Cells[5].Value.ToString().Trim());
+                            sumJe += je;
+                            decimal Azf = Convert.ToDecimal(dataGridView1.Rows[i].Cells[6].Value.ToString().Trim());
+                            decimal Hk = Convert.ToDecimal(dataGridView1.Rows[i].Cells[7].Value.ToString().Trim());
+                            decimal Yf = Convert.ToDecimal(dataGridView1.Rows[i].Cells[8].Value.ToString().Trim());
+                            string cpmc = dataGridView1.Rows[i].Cells[9].Value.ToString().Trim();
+                            //实际金额
+                            aa = Convert.ToDecimal(je) - Convert.ToDecimal(Azf) - Convert.ToDecimal(Hk) - Convert.ToDecimal(Yf);
+                            //无税金额
+                            bb = aa / (1 + (Convert.ToDecimal(JESL.Text)/100));
+                            //货款
+                            decimal huokuan = aa - Convert.ToDecimal(dj1);
+                            sunAa += aa;
+                            sumBb += bb;
+                            sumAzf += Azf;
+                            sumHUOK += huokuan;
+                            sumHk += Hk;
+                            //sjje += (je + Azf + Yf);
+                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[azf],[hk],[yf],[ywy],[qy],[sjje],[wsje],[ident],[pmc],[dusting],ckzt,examine) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','"+Azf+ "','"+Hk+"','"+Yf+"','"+ywy+"','"+qy+"','"+aa+"','"+bb+"','N','N','" + PF.Text + "','未出库','未审核')";
                             comm.Connection = con;
                             int count = comm.ExecuteNonQuery();
                             if (count < 1)
@@ -270,7 +301,7 @@ namespace WindowsFormsApp1.Order
                         {
                             con.Open();
                             SqlCommand cmd = new SqlCommand();
-                            cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj]) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + qdrq + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sjje + "','" + wsje + "','" + azf + "','" + ywf + "','" + huok + "','" + dj + "','" + hk + "','" + bz + "','已审核','" + qj + "')";
+                            cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[amount],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj]) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + textBox1.Text + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sumJe + "','"+sunAa+"','" + sumBb + "','"+sumAzf+"','0.00','" + sumHUOK + "','0.00','"+ sumHk + "','" + bz + "','已审核','" + qj + "')";
                             cmd.Connection = con;
                             int count = cmd.ExecuteNonQuery();
                             if (count > 0)
@@ -390,8 +421,7 @@ namespace WindowsFormsApp1.Order
             }
 
         }
-
-
+        
         private void DJ_TextChanged(object sender, EventArgs e)
         {
             if(DJ.Text == "")
@@ -406,56 +436,84 @@ namespace WindowsFormsApp1.Order
             }
         }
 
-        private void JESL_TextChanged(object sender, EventArgs e)
-        {
-            if (HTJE.Text == "")
-            {
-                MessageBox.Show("请注意：合同金额是否为空");
-            }
-            else
-            {
-                if (SJJE.Text == "" || AZF.Text == "" || YWF.Text == "" || HK.Text == "")
-                {
-                    MessageBox.Show("请输入：安装费！业务费！回扣");
-                    return;
-                }
-                else
-                {
+        /* private void JESL_TextChanged(object sender, EventArgs e)
+         {
+             if (HTJE.Text == "")
+             {
+                 MessageBox.Show("请注意：合同金额是否为空");
+             }
+             else
+             {
+                 if (SJJE.Text == "" || AZF.Text == "" || YWF.Text == "" || HK.Text == "")
+                 {
+                     MessageBox.Show("请输入：安装费！业务费！回扣");
+                     return;
+                 }
+                 else
+                 {
 
-                    decimal ab = Convert.ToDecimal(JESL.Text.Trim());//税率
-                    decimal aa = Convert.ToDecimal(SJJE.Text.Trim());//实际金额
-                    decimal bb = Convert.ToDecimal(AZF.Text.Trim());//安装费
-                    decimal cc = Convert.ToDecimal(YWF.Text.Trim());//业务费
-                    decimal dd = Convert.ToDecimal(HK.Text.Trim());//回扣
-                    if((1 + ab / 100) > 0) 
-                    { 
-                    WSJE.Text = ((aa - bb - cc - dd) / (1 + ab / 100)).ToString("0.00");
-                    }
-                    else
-                    {
-                        WSJE.Text = Convert.ToString(0.00);
-                    }
-                }
-            }
-        }
+                     decimal ab = Convert.ToDecimal(JESL.Text.Trim());//税率
+                     decimal aa = Convert.ToDecimal(SJJE.Text.Trim());//实际金额
+                     decimal bb = Convert.ToDecimal(AZF.Text.Trim());//安装费
+                     decimal cc = Convert.ToDecimal(YWF.Text.Trim());//业务费
+                     decimal dd = Convert.ToDecimal(HK.Text.Trim());//回扣
+                     if((1 + ab / 100) > 0) 
+                     { 
+                     WSJE.Text = ((aa - bb - cc - dd) / (1 + ab / 100)).ToString("0.00");
+                     }
+                     else
+                     {
+                         WSJE.Text = Convert.ToString(0.00);
+                     }
+                 }
+             }
+         }*/
 
         private void dataGridView1_Validated(object sender, EventArgs e)
         {
             decimal sum = 0;
             decimal sum1 = 0;
+            decimal sum2 = 0;
+            decimal sum3 = 0;
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["金额"].Value);
+                sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["金额"].Value) + Convert.ToDecimal(dataGridView1.Rows[i].Cells["安装费"].Value) + Convert.ToDecimal(dataGridView1.Rows[i].Cells["运费"].Value);
                 sum1 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["米数"].Value);
+                sum2 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["回扣"].Value);
+                sum3 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["安装费"].Value);
             }
 
             SJJE.Text = sum.ToString("0.00");
             ZMS.Text = sum1.ToString("0.00");
-        }
+            HK.Text = sum2.ToString("0.00");
+            YWF.Text = sum3.ToString("0.00");
 
+
+        }
         private void OrderService_SizeChanged(object sender, EventArgs e)
         {
             asc.controlAutoSize(this);
+        }
+
+        private void WSJE_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void JESL_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(JESL.Text.Trim()))
+            {
+                JESL.Text = "0";
+                zz = Convert.ToDecimal(SJJE.Text.Trim()) / (Convert.ToDecimal(JESL.Text.Trim()) + (0 / 100));
+                WSJE.Text = Convert.ToString(zz);
+
+            }
+            else
+            {
+                zz = Convert.ToDecimal(SJJE.Text.Trim()) / (1 + (Convert.ToDecimal(JESL.Text.Trim()) / 100));
+                WSJE.Text = Convert.ToString(zz);
+            }
         }
     }
 }

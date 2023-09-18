@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.Order
             string bb = RQ2.Text.Trim();
             string cc = HTBH.Text.Trim();
             string dd = KH.Text.Trim();
-            string sql = String.Format("select contractid as 合同编号,company as 客户,date as 日期 from [dbo].[Contract_h] where contractid like '%" + cc + "%' and company like '%" + dd + "%' and date between '" + aa + "' and '" + bb + "'");
+            string sql = String.Format("select contractid as 合同编号,company as 客户,seller as 业务员,sub as 区域,date as 日期,project as 项目名称,amount as 金额 from [dbo].[Contract_h] where contractid like '%" + cc + "%' and company like '%" + dd + "%' and date between '" + aa + "' and '" + bb + "'");
             SqlDataAdapter adapter = new SqlDataAdapter(sql, SQL);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
@@ -40,9 +40,20 @@ namespace WindowsFormsApp1.Order
         {
             int rowindex = e.RowIndex;
             string b = dataGridView1.Rows[rowindex].Cells[0].Value.ToString();
+            string c = dataGridView1.Rows[rowindex].Cells[2].Value.ToString();
+            string d = dataGridView1.Rows[rowindex].Cells[3].Value.ToString();
+            string f= dataGridView1.Rows[rowindex].Cells[1].Value.ToString();
+            string g = dataGridView1.Rows[rowindex].Cells[4].Value.ToString();
+            string h = dataGridView1.Rows[rowindex].Cells[5].Value.ToString();
+            string i = dataGridView1.Rows[rowindex].Cells[6].Value.ToString();
             OrderService orderservice = (OrderService)this.Owner;
             orderservice.Controls["groupBox1"].Controls["HTBH"].Text = b;
-
+            orderservice.Controls["groupBox1"].Controls["YWY"].Text = c;
+            orderservice.Controls["groupBox1"].Controls["QY"].Text = d;
+            orderservice.Controls["groupBox1"].Controls["GSM"].Text = f;
+            orderservice.Controls["groupBox1"].Controls["textBox1"].Text = g;
+            orderservice.Controls["groupBox1"].Controls["XMMC"].Text = h;
+            orderservice.Controls["groupBox3"].Controls["HTJE"].Text = i;
             this.Close();
         }
 

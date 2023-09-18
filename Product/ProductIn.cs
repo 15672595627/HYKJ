@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Windows.Controls;
 using WindowsFormsApp1.Class;
+using System.Data.Common;
+using DataTable = System.Data.DataTable;
 
 namespace WindowsFormsApp1.Product
 {
@@ -30,6 +32,10 @@ namespace WindowsFormsApp1.Product
 
         public DataTable PDI;
 
+            DataTable dt1;
+            SqlDataAdapter da1;
+
+
         private AutoSizeFormClass asc = new AutoSizeFormClass();
         private void ProductIn_Load(object sender, EventArgs e)
         {
@@ -47,7 +53,7 @@ namespace WindowsFormsApp1.Product
             string djbh = DJBH.Text.Trim();
             string djrq = DJRQ.Text.Trim();
             string ldy = LDY.Text.Trim();
-
+            string sj = DateTime.Now.ToString("yyyy-MM-dd");
             SqlConnection con = new SqlConnection(SQL);
 
             try
@@ -63,15 +69,15 @@ namespace WindowsFormsApp1.Product
                     string xmmc = dataGridView1.Rows[i].Cells[3].Value.ToString();
                     string cpmc = dataGridView1.Rows[i].Cells[4].Value.ToString();
                     string nr = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                    string sl = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                    decimal sl = Convert.ToDecimal(dataGridView1.Rows[i].Cells[6].Value.ToString());
                     string dw = dataGridView1.Rows[i].Cells[7].Value.ToString();
                     string kfdj = dataGridView1.Rows[i].Cells[8].Value.ToString();
                     string ms = dataGridView1.Rows[i].Cells[9].Value.ToString();
                     string kfje = dataGridView1.Rows[i].Cells[10].Value.ToString();
+                    string wscz = dataGridView1.Rows[i].Cells["无税金额"].Value.ToString();
 
-                    string jesl = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                    string wscz = dataGridView1.Rows[i].Cells[12].Value.ToString();
-                    string sssl = dataGridView1.Rows[i].Cells[13].Value.ToString();
+                    string jesl = dataGridView1.Rows[i].Cells[12].Value.ToString();
+                    decimal sssl = Convert.ToDecimal(dataGridView1.Rows[i].Cells[13].Value.ToString());
                     string zsms = dataGridView1.Rows[i].Cells[14].Value.ToString();
                     string sjdj = dataGridView1.Rows[i].Cells[15].Value.ToString();
                     string shck = dataGridView1.Rows[i].Cells[16].Value.ToString();
@@ -79,32 +85,72 @@ namespace WindowsFormsApp1.Product
                     string cbje = dataGridView1.Rows[i].Cells[18].Value.ToString();
                     //string cwrq = dataGridView1.Rows[i].Cells["caiwuRiqi"].Value.ToString();
 
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandText = "select * from [dbo].[ProductIn] where product = '" + cpmc + "' and  substance = '" + nr + "' and sssl = '" + sssl + "' and kfje = '" + kfje + "'";
-                    SqlDataReader sdr = cmd.ExecuteReader();
-                    sdr.Read();
-                    if (sdr.HasRows)
+                    //检查库存是否存在
+                    string str = "select contractid as 合同编号,product as 产品,sub as 内容,num as 数量,amount as 金额 from [dbo].[Stock] where product = '" + cpmc + "' and  sub = '" + nr + "' and contractid = '" + htbh + "' ";
+                    da1 = new SqlDataAdapter(str, SQL);
+                    dt1 = new DataTable();
+                    da1.Fill(dt1);
+                    if(dt1.Rows.Count > 0)
                     {
-                        sdr.Close();
-                        string ts = "此产品" + cpmc + "-" + nr + "已入库，保存跳过此行";
-                        MessageBox.Show(ts);
-                        continue;
+                        for (int j = 0; j < dt1.Rows.Count; j++)
+                        {
+                            string htbh1 = dt1.Rows[j]["合同编号"].ToString();
+                            string cp1 = dt1.Rows[j]["产品"].ToString();
+                            string nr1 = dt1.Rows[j]["内容"].ToString();
+                            decimal sl1 = Convert.ToDecimal(dt1.Rows[j]["数量"]);
+                            decimal je1 = Convert.ToDecimal(dt1.Rows[j]["金额"]);
+                            //库存在
+                            if (htbh == htbh1 || cpmc == cp1 || nr1 == nr)
+                            {
+                                decimal sumSl = sl1 + sssl;
+                                decimal sumje = Convert.ToDecimal(kfje) + je1;
+
+                                SqlCommand cmd1 = con.CreateCommand();
+                                cmd1.CommandText = "update Stock set num = '" + sumSl + "',amount = '" + sumje + "',updatetime = '" + sj + "' where contractid = '" + htbh + "' and product = '" + cpmc + "' and sub = '" + nr + "'";
+                                cmd1.ExecuteNonQuery();
+                            }
+                            //不存在库存，则添加库存
+                            else
+                            {
+                                SqlCommand cmd2 = con.CreateCommand();
+                                cmd2.CommandText = "insert into Stock(date,contractid,product,sub,norm,unit,num,amount,warehouse,createtime) VALUES ('" + sj + "','" + htbh + "','" + cpmc + "','" + nr + "','','" + dw + "','" + sl + "','" + kfje + "','" + shck + "','" + sj + "')";
+                                cmd2.ExecuteNonQuery();
+                            }
+                        }
                     }
                     else
                     {
-                        sdr.Close();
-                        SqlCommand cmmd = con.CreateCommand();
-                        cmmd.CommandText = "INSERT INTO [dbo].[ProductIn] ([orderid],[date],[caiwuRiqi],[staffin],[sorderid],[contractid],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[sssl],[zsms],[sjdj],[shck],[cbdj],[cbje],[state],[examine],[sent]) VALUES ('" + djbh + "','" + djrq + "','"+ djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + wscz + "','" + sssl + "','" + zsms + "','" + sjdj + "','" + shck + "','" + cbdj + "','" + cbje + "','已入库','已审核','0')";
-                        int cot = cmmd.ExecuteNonQuery();
-                        if (cot == 0)
+                        SqlCommand cmd3 = con.CreateCommand();
+                        cmd3.CommandText = "insert into Stock(date,contractid,product,sub,norm,unit,num,amount,warehouse,createtime) VALUES ('" + sj + "','" + htbh + "','" + cpmc + "','" + nr + "','','" + dw + "','" + sl + "','" + kfje + "','" + shck + "','" + sj + "')";
+                        cmd3.ExecuteNonQuery();
+                    }
+                    
+                    using (SqlCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "select * from [dbo].[ProductIn] where product = '" + cpmc + "' and  substance = '" + nr + "' and sssl = '" + sssl + "' and kfje = '" + kfje + "'";
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        sdr.Read();
+                        if (sdr.HasRows)
                         {
-                            MessageBox.Show("保存失败");
+                            sdr.Close();
+                            string ts = "此产品" + cpmc + "-" + nr + "已入库，保存跳过此行";
+                            MessageBox.Show(ts);
+                            continue;
+                        }
+                        else
+                        {
+                            sdr.Close();
+                            SqlCommand cmmd = con.CreateCommand();
+                            cmmd.CommandText = "INSERT INTO [dbo].[ProductIn] ([orderid],[date],[caiwuRiqi],[staffin],[sorderid],[contractid],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[sssl],[zsms],[sjdj],[shck],[cbdj],[cbje],[state],[examine],[sent],cwsh) VALUES ('" + djbh + "','" + djrq + "','" + djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + wscz + "','" + sssl + "','" + zsms + "','" + sjdj + "','" + shck + "','" + cbdj + "','" + cbje + "','已入库','已审核','0','未审核')";
+                            int cot = cmmd.ExecuteNonQuery();
+                            if (cot == 0)
+                            {
+                                MessageBox.Show("保存失败");
+                            }
                         }
                     }
                 }
                 MessageBox.Show("保存成功");
-
-
                 this.Close();
 
             }
@@ -143,7 +189,7 @@ namespace WindowsFormsApp1.Product
                 cb.Name = "收货仓库";
 
                 dataGridView1.Columns.Add("税率", "税率");
-                dataGridView1.Columns.Add("无税产值", "无税产值");
+                //dataGridView1.Columns.Add("无税产值", "无税产值");
                 dataGridView1.Columns.Add("实收数量", "实收数量");
                 dataGridView1.Columns.Add("折算米数", "折算米数");
                 dataGridView1.Columns.Add("实际单价", "实际单价");
@@ -157,15 +203,16 @@ namespace WindowsFormsApp1.Product
                 dataGridView1.Columns["单位"].ReadOnly = true;
                 dataGridView1.Columns["单价"].ReadOnly = true;
                 dataGridView1.Columns["米数"].ReadOnly = true;
-                dataGridView1.Columns["金额"].ReadOnly = true;
+                dataGridView1.Columns["总金额"].ReadOnly = true;
                 dataGridView1.Columns["税率"].ReadOnly = true;
+                dataGridView1.Columns["无税金额"].ReadOnly = true;
 
                 if (PI_group == "资材部")
                 {
                     dataGridView1.Columns["单价"].Visible = false;
-                    dataGridView1.Columns["金额"].Visible = false;
+                    dataGridView1.Columns["总金额"].Visible = false;
                     dataGridView1.Columns["税率"].Visible = false;
-                    dataGridView1.Columns["无税产值"].Visible = false;
+                    dataGridView1.Columns["无税金额"].Visible = false;
                     dataGridView1.Columns["实际单价"].Visible = false;
                     dataGridView1.Columns["成本单价"].Visible = false;
                     dataGridView1.Columns["成本金额"].Visible = false;
@@ -184,7 +231,7 @@ namespace WindowsFormsApp1.Product
                         dataGridView1.Rows[i].Cells["税率"].Value = dt.Rows[0][1].ToString();
                     }
 
-                    dataGridView1.Rows[i].Cells["无税产值"].Value = "0";
+                    //dataGridView1.Rows[i].Cells["无税产值"].Value = "0";
                     dataGridView1.Rows[i].Cells["实际单价"].Value = "0";
                     dataGridView1.Rows[i].Cells["成本单价"].Value = "0";
                     dataGridView1.Rows[i].Cells["成本金额"].Value = "0";

@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.Order
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string aa = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            string aa = dataGridView1.CurrentRow.Cells["产品名称"].Value.ToString();
             OrderService.CPMC = aa;
             this.Close();
             

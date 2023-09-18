@@ -147,7 +147,7 @@ namespace WindowsFormsApp1.Order
                 SqlConnection con = new SqlConnection(SQL);
                 con.Open();
                 SqlCommand cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE Order_h SET color = '" + YS.Text.Trim() + "',longmetre = '" + ZCM.Text.Trim() + "',quantity = '" + ZMS.Text.Trim() + "',sjje = '" + SJJE.Text.Trim() + "',wsje = '" + WSJE.Text.Trim() + "',azf = '" + AZF.Text.Trim() + "',ywf = '" + YWF.Text.Trim() + "',huokuan = '" + HUOK.Text.Trim() + "',dj = '" + DJ.Text.Trim() + "',hk = '" + HK.Text.Trim() + "',remarks = '" + BZ.Text.Trim() + "',examine = '已审核' WHERE orderid = '" + OSR_Ord + "'";
+                cmd.CommandText = "UPDATE Order_h SET color = '" + YS.Text.Trim() + "',tax = '"+JESL.Text.Trim()+"',longmetre = '" + ZCM.Text.Trim() + "',quantity = '" + ZMS.Text.Trim() + "',sjje = '" + SJJE.Text.Trim() + "',wsje = '" + WSJE.Text.Trim() + "',azf = '" + AZF.Text.Trim() + "',ywf = '" + YWF.Text.Trim() + "',huokuan = '" + HUOK.Text.Trim() + "',dj = '" + DJ.Text.Trim() + "',hk = '" + HK.Text.Trim() + "',remarks = '" + BZ.Text.Trim() + "',examine = '已审核' WHERE orderid = '" + OSR_Ord + "'";
                 int cot = cmd.ExecuteNonQuery();
 
                 cmd.CommandText = "UPDATE Order_b SET date = '" + XDRQ.Text.Trim() + "',service = '" + GDY.Text.Trim() + "',company = '" + GSM.Text.Trim() + "',project = '" + XMMC.Text.Trim() + "',ident = 'N',pmc = 'N' WHERE orderid = '" + OSR_Ord + "'";

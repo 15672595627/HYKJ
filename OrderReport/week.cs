@@ -150,7 +150,8 @@ namespace WindowsFormsApp1.OrderReport
             listViewItem3.SubItems[0].Text = "设计";
             listViewItem3.SubItems.Add(dataTable5.Rows.Count.ToString());
             listViewItem3.SubItems.Add(dataTable6.Rows[0][0].ToString() + "米");
-            this.listView1.Items.Add(listViewItem3);
+            listView1.Items.Add(listViewItem3);
+
             string selectCommandText7 = string.Concat(new string[]
             {
                 "select * from [dbo].[Plan] where date between '",
@@ -206,6 +207,7 @@ namespace WindowsFormsApp1.OrderReport
                 listViewItem4.SubItems.Add("0米");
             }
             this.listView1.Items.Add(listViewItem4);
+
             string selectCommandText9 = string.Concat(new string[]
             {
                 "select * from ProductIn where date between '",

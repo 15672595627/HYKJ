@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.XZL = new System.Windows.Forms.Button();
             this.JZ1 = new System.Windows.Forms.Button();
             this.JZ = new System.Windows.Forms.Button();
@@ -75,6 +77,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button2);
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.XZL);
             this.splitContainer1.Panel1.Controls.Add(this.JZ1);
             this.splitContainer1.Panel1.Controls.Add(this.JZ);
@@ -100,6 +104,26 @@
             this.splitContainer1.SplitterDistance = 84;
             this.splitContainer1.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(877, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 89;
+            this.button2.Text = "累计结转";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(877, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 25);
+            this.button1.TabIndex = 88;
+            this.button1.Text = "结转当月";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // XZL
             // 
             this.XZL.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -115,12 +139,13 @@
             // 
             this.JZ1.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.JZ1.ForeColor = System.Drawing.Color.Red;
-            this.JZ1.Location = new System.Drawing.Point(907, 18);
+            this.JZ1.Location = new System.Drawing.Point(787, 18);
             this.JZ1.Name = "JZ1";
             this.JZ1.Size = new System.Drawing.Size(73, 52);
             this.JZ1.TabIndex = 86;
             this.JZ1.Text = "结转出货";
             this.JZ1.UseVisualStyleBackColor = true;
+            this.JZ1.Visible = false;
             this.JZ1.Click += new System.EventHandler(this.JZ1_Click);
             // 
             // JZ
@@ -129,7 +154,7 @@
             this.JZ.ForeColor = System.Drawing.Color.Red;
             this.JZ.Location = new System.Drawing.Point(690, 18);
             this.JZ.Name = "JZ";
-            this.JZ.Size = new System.Drawing.Size(211, 52);
+            this.JZ.Size = new System.Drawing.Size(91, 52);
             this.JZ.TabIndex = 85;
             this.JZ.Text = "结转成本金额";
             this.JZ.UseVisualStyleBackColor = true;
@@ -165,7 +190,7 @@
             this.BC.Location = new System.Drawing.Point(1112, 19);
             this.BC.Name = "BC";
             this.BC.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BC.Size = new System.Drawing.Size(107, 46);
+            this.BC.Size = new System.Drawing.Size(107, 51);
             this.BC.TabIndex = 82;
             this.BC.Text = "保存";
             this.BC.UseVisualStyleBackColor = true;
@@ -373,6 +398,7 @@
             // 
             // ProductListOut
             // 
+            this.AcceptButton = this.SX;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1233, 663);
@@ -423,5 +449,7 @@
         private System.Windows.Forms.Button JZ1;
         private System.Windows.Forms.ToolStripMenuItem 批量审核ToolStripMenuItem;
         private System.Windows.Forms.Button XZL;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

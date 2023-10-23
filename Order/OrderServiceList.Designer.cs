@@ -32,6 +32,8 @@ namespace WindowsFormsApp1.Order
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.CKZT = new System.Windows.Forms.ComboBox();
@@ -86,6 +88,8 @@ namespace WindowsFormsApp1.Order
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.comboBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.label12);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer1.Panel1.Controls.Add(this.label11);
             this.splitContainer1.Panel1.Controls.Add(this.CKZT);
@@ -114,9 +118,31 @@ namespace WindowsFormsApp1.Order
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1323, 663);
+            this.splitContainer1.Size = new System.Drawing.Size(1427, 663);
             this.splitContainer1.SplitterDistance = 73;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "已入库",
+            "未入库",
+            "部分入库"});
+            this.comboBox2.Location = new System.Drawing.Point(1193, 39);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(95, 20);
+            this.comboBox2.TabIndex = 82;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("楷体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(1189, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 19);
+            this.label12.TabIndex = 81;
+            this.label12.Text = "入库状态";
             // 
             // comboBox1
             // 
@@ -241,7 +267,7 @@ namespace WindowsFormsApp1.Order
             this.RQ1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.RQ1.Location = new System.Drawing.Point(234, 40);
             this.RQ1.Name = "RQ1";
-            this.RQ1.Size = new System.Drawing.Size(94, 21);
+            this.RQ1.Size = new System.Drawing.Size(101, 21);
             this.RQ1.TabIndex = 26;
             this.RQ1.Value = new System.DateTime(2023, 6, 10, 0, 0, 0, 0);
             // 
@@ -251,7 +277,7 @@ namespace WindowsFormsApp1.Order
             this.RQ.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.RQ.Location = new System.Drawing.Point(126, 41);
             this.RQ.Name = "RQ";
-            this.RQ.Size = new System.Drawing.Size(98, 21);
+            this.RQ.Size = new System.Drawing.Size(102, 21);
             this.RQ.TabIndex = 25;
             this.RQ.Value = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
             // 
@@ -333,7 +359,7 @@ namespace WindowsFormsApp1.Order
             // SX
             // 
             this.SX.Font = new System.Drawing.Font("楷体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SX.Location = new System.Drawing.Point(1209, 22);
+            this.SX.Location = new System.Drawing.Point(1315, 19);
             this.SX.Name = "SX";
             this.SX.Size = new System.Drawing.Size(111, 44);
             this.SX.TabIndex = 0;
@@ -362,7 +388,7 @@ namespace WindowsFormsApp1.Order
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1323, 586);
+            this.dataGridView1.Size = new System.Drawing.Size(1427, 586);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
@@ -455,15 +481,18 @@ namespace WindowsFormsApp1.Order
             // 
             // OrderServiceList
             // 
+            this.AcceptButton = this.SX;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1323, 663);
+            this.ClientSize = new System.Drawing.Size(1427, 663);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.Name = "OrderServiceList";
             this.Text = "订单维护";
             this.Load += new System.EventHandler(this.OrderServiceList_Load);
             this.SizeChanged += new System.EventHandler(this.OrderServiceList_SizeChanged);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OrderServiceList_KeyPress);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -512,5 +541,7 @@ namespace WindowsFormsApp1.Order
         private System.Windows.Forms.ToolStripMenuItem 财务审核ToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label12;
     }
 }

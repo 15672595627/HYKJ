@@ -139,7 +139,7 @@ namespace WindowsFormsApp1.Contract
                                     string cpdj = dataGridView1.Rows[i].Cells[5].Value.ToString().Trim();
                                     string cpjg = dataGridView1.Rows[i].Cells[6].Value.ToString().Trim();
                                     string cpje = dataGridView1.Rows[i].Cells[7].Value.ToString().Trim();
-                                    cmd.CommandText = "INSERT INTO [dbo].[Contract_b] ([orderid],[contractid],[date],[company],[project],[pd_kind],[pd_cate],[product],[norms],[high],[price],[s_amount],[amount]) VALUES ('" + djbh + "','" + sjht + "','" + djrq + "','" + gsm + "','" + xmmc + "','" + cplx + "','" + cplb + "','" + cpmc + "','" + cpgg + "','" + cpgd + "','" + cpdj + "','" + cpjg + "','" + cpje + "')";
+                                    cmd.CommandText = "INSERT INTO [dbo].[Contract_b] ([orderid],[contractid],[date],[company],[project],[pd_kind],[pd_cate],[product],[norms],[high],[price],[s_amount],[amount],[ry]) VALUES ('" + djbh + "','" + sjht + "','" + djrq + "','" + gsm + "','" + xmmc + "','" + cplx + "','" + cplb + "','" + cpmc + "','" + cpgg + "','" + cpgd + "','" + cpdj + "','" + cpjg + "','" + cpje + "','"+ con_user + "')";
                                     int cot = cmd.ExecuteNonQuery();
 
                                     cmd.CommandText = "INSERT INTO [dbo].[Product] ([contractid],[company],[product],[amount]) VALUES ('" + sjht + "','" + gsm + "','" + cpmc + "','" + cpje + "')";
@@ -168,7 +168,7 @@ namespace WindowsFormsApp1.Contract
                                 {
                                     conn.Open();
                                     SqlCommand cmd = new SqlCommand();
-                                    string sqlstr = "INSERT INTO [dbo].[Contract_h] ([orderid],[contractid],[date],[company],[project],[sub],[kh_type],[kh_cate],[con_cate],[area],[place],[seller],[cost],[installation],[transport],[net],[tax],[amount],[remake],[examine],[qj]) VALUES ('" + djbh + "','" + sjht + "','" + djrq + "','" + gsm + "','" + xmmc + "','" + fgs + "','" + khlx + "','" + khlb + "','" + htlb + "','" + qy + "','" + cd + "','" + ywy + "','" + gcj + "','" + az + "','" + ys + "','" + wlkh + "','" + hs + "','" + zje + "','" + bz + "','已审核','" + qj + "')";
+                                    string sqlstr = "INSERT INTO [dbo].[Contract_h] ([orderid],[contractid],[date],[company],[project],[sub],[kh_type],[kh_cate],[con_cate],[area],[place],[seller],[cost],[installation],[transport],[net],[tax],[amount],[remake],[examine],[qj],[ry]) VALUES ('" + djbh + "','" + sjht + "','" + djrq + "','" + gsm + "','" + xmmc + "','" + fgs + "','" + khlx + "','" + khlb + "','" + htlb + "','" + qy + "','" + cd + "','" + ywy + "','" + gcj + "','" + az + "','" + ys + "','" + wlkh + "','" + hs + "','" + zje + "','" + bz + "','已审核','" + qj + "','"+ con_user + "')";
                                     cmd.CommandText = sqlstr;
                                     cmd.Connection = conn;
                                     int count = cmd.ExecuteNonQuery();

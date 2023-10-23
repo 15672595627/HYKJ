@@ -52,6 +52,8 @@
             this.即时库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新增库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.更新库存数量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.财务结转ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.成品入库结转ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.单据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.成品入库单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.成品入库单导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +66,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -80,8 +83,8 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.XFJ = new System.Windows.Forms.Button();
-            this.财务结转ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.成品入库结转ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -138,7 +141,7 @@
             this.群组新增ToolStripMenuItem,
             this.业务员新增ToolStripMenuItem});
             this.用户管理ToolStripMenuItem1.Name = "用户管理ToolStripMenuItem1";
-            this.用户管理ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.用户管理ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.用户管理ToolStripMenuItem1.Text = "用户管理";
             // 
             // 用户新增ToolStripMenuItem
@@ -174,7 +177,7 @@
             this.客户管理ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.客户新增ToolStripMenuItem});
             this.客户管理ToolStripMenuItem1.Name = "客户管理ToolStripMenuItem1";
-            this.客户管理ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.客户管理ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.客户管理ToolStripMenuItem1.Text = "客户管理";
             // 
             // 客户新增ToolStripMenuItem
@@ -190,7 +193,7 @@
             this.产品类别新增ToolStripMenuItem,
             this.产品导入ToolStripMenuItem});
             this.产品类别ToolStripMenuItem.Name = "产品类别ToolStripMenuItem";
-            this.产品类别ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.产品类别ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.产品类别ToolStripMenuItem.Text = "产品管理";
             // 
             // 产品类别新增ToolStripMenuItem
@@ -215,34 +218,34 @@
             this.物料清单ToolStripMenuItem,
             this.领料单统计ToolStripMenuItem});
             this.原材料管理ToolStripMenuItem.Name = "原材料管理ToolStripMenuItem";
-            this.原材料管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.原材料管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.原材料管理ToolStripMenuItem.Text = "原材料管理";
             // 
             // 物料新增ToolStripMenuItem
             // 
             this.物料新增ToolStripMenuItem.Name = "物料新增ToolStripMenuItem";
-            this.物料新增ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.物料新增ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.物料新增ToolStripMenuItem.Text = "物料新增";
             this.物料新增ToolStripMenuItem.Click += new System.EventHandler(this.物料新增ToolStripMenuItem_Click);
             // 
             // 物料导入ToolStripMenuItem
             // 
             this.物料导入ToolStripMenuItem.Name = "物料导入ToolStripMenuItem";
-            this.物料导入ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.物料导入ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.物料导入ToolStripMenuItem.Text = "物料导入";
             this.物料导入ToolStripMenuItem.Click += new System.EventHandler(this.物料导入ToolStripMenuItem_Click);
             // 
             // 物料清单ToolStripMenuItem
             // 
             this.物料清单ToolStripMenuItem.Name = "物料清单ToolStripMenuItem";
-            this.物料清单ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.物料清单ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.物料清单ToolStripMenuItem.Text = "物料清单";
             this.物料清单ToolStripMenuItem.Click += new System.EventHandler(this.物料清单ToolStripMenuItem_Click);
             // 
             // 领料单统计ToolStripMenuItem
             // 
             this.领料单统计ToolStripMenuItem.Name = "领料单统计ToolStripMenuItem";
-            this.领料单统计ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.领料单统计ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.领料单统计ToolStripMenuItem.Text = "领料单统计";
             this.领料单统计ToolStripMenuItem.Click += new System.EventHandler(this.领料单统计ToolStripMenuItem_Click);
             // 
@@ -253,7 +256,7 @@
             this.新增库存ToolStripMenuItem,
             this.更新库存数量ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
-            this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.库存管理ToolStripMenuItem.Text = "库存管理";
             // 
             // 即时库存ToolStripMenuItem
@@ -276,6 +279,21 @@
             this.更新库存数量ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.更新库存数量ToolStripMenuItem.Text = "外购入库";
             this.更新库存数量ToolStripMenuItem.Click += new System.EventHandler(this.更新库存数量ToolStripMenuItem_Click);
+            // 
+            // 财务结转ToolStripMenuItem
+            // 
+            this.财务结转ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.成品入库结转ToolStripMenuItem});
+            this.财务结转ToolStripMenuItem.Name = "财务结转ToolStripMenuItem";
+            this.财务结转ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.财务结转ToolStripMenuItem.Text = "财务结转";
+            // 
+            // 成品入库结转ToolStripMenuItem
+            // 
+            this.成品入库结转ToolStripMenuItem.Name = "成品入库结转ToolStripMenuItem";
+            this.成品入库结转ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.成品入库结转ToolStripMenuItem.Text = "成品入库结转";
+            this.成品入库结转ToolStripMenuItem.Click += new System.EventHandler(this.成品入库结转ToolStripMenuItem_Click);
             // 
             // 单据管理ToolStripMenuItem
             // 
@@ -350,7 +368,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("楷体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(20, 81);
+            this.button1.Location = new System.Drawing.Point(20, 56);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(211, 44);
             this.button1.TabIndex = 1;
@@ -362,7 +380,7 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("楷体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(20, 218);
+            this.button3.Location = new System.Drawing.Point(20, 117);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(211, 44);
             this.button3.TabIndex = 3;
@@ -372,6 +390,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Font = new System.Drawing.Font("楷体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -382,6 +402,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "报价算价";
             this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.GroupBox1_Paint);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(20, 178);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(211, 43);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "预算报表";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // groupBox2
             // 
@@ -527,26 +557,32 @@
             this.XFJ.UseVisualStyleBackColor = false;
             this.XFJ.Click += new System.EventHandler(this.XFJ_Click);
             // 
-            // 财务结转ToolStripMenuItem
+            // button8
             // 
-            this.财务结转ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.成品入库结转ToolStripMenuItem});
-            this.财务结转ToolStripMenuItem.Name = "财务结转ToolStripMenuItem";
-            this.财务结转ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.财务结转ToolStripMenuItem.Text = "财务结转";
+            this.button8.Location = new System.Drawing.Point(683, 94);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 10;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
-            // 成品入库结转ToolStripMenuItem
+            // button9
             // 
-            this.成品入库结转ToolStripMenuItem.Name = "成品入库结转ToolStripMenuItem";
-            this.成品入库结转ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.成品入库结转ToolStripMenuItem.Text = "成品入库结转";
-            this.成品入库结转ToolStripMenuItem.Click += new System.EventHandler(this.成品入库结转ToolStripMenuItem_Click);
+            this.button9.Location = new System.Drawing.Point(20, 245);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(211, 43);
+            this.button9.TabIndex = 5;
+            this.button9.Text = "生产预算";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Winmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.XFJ);
             this.Controls.Add(this.statusStrip1);
@@ -625,5 +661,8 @@
         private System.Windows.Forms.ToolStripMenuItem 领料单统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 财务结转ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 成品入库结转ToolStripMenuItem;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }

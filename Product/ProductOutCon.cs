@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.Product
             string aa = CP.Text.Trim();
             string bb = GSM.Text.Trim();
             string cc = XMMC.Text.Trim();
-            string strsql = "select id, orderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名称,productname as 产品,sub as 内容,quantity as 数量,unit as 单位,price as 单价,meters as 米数,amount as 金额 from [dbo].[Order_b] where productname like '%" + aa + "%' and company like '%" + bb + "%'  and project like '%" + cc + "%'";
+            string strsql = "select id, orderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名称,productname as 产品,sub as 内容,quantity as 数量,unit as 单位,price as 单价,meters as 米数,amount as 金额,xdrq as 下单日期 from [dbo].[Order_b] where productname like '%" + aa + "%' and company like '%" + bb + "%'  and project like '%" + cc + "%'";
             SqlDataAdapter da = new SqlDataAdapter(strsql, SQL);
             DataSet ds = new DataSet();
             da.Fill(ds);

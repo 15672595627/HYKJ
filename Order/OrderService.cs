@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.Order
         decimal sumJe;
         decimal shij;
         decimal sumHk;
+        string sds;
         private AutoSizeFormClass asc = new AutoSizeFormClass();
 
         private void Orderservice_Load(object sender, EventArgs e)
@@ -47,6 +48,7 @@ namespace WindowsFormsApp1.Order
             asc.controllInitializeSize(this);
             string time = DateTime.Now.ToString("yyyyMMddHHmmss");
             XDRQ.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            sds = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             DDBH.Text = "XSDD" + time;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("宋体", 9);
             dataGridView1.DefaultCellStyle.Font = new Font("宋体", 9);
@@ -275,7 +277,7 @@ namespace WindowsFormsApp1.Order
                             sumHUOK += huokuan;
                             sumHk += Hk;
                             //sjje += (je + Azf + Yf);
-                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[azf],[hk],[yf],[ywy],[qy],[sjje],[wsje],[ident],[pmc],[dusting],ckzt,examine) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','"+Azf+ "','"+Hk+"','"+Yf+"','"+ywy+"','"+qy+"','"+aa+"','"+bb+"','N','N','" + PF.Text + "','未出库','未审核')";
+                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[azf],[hk],[yf],[ywy],[qy],[sjje],[wsje],[ident],[pmc],[dusting],ckzt,examine,rkzt,xdrq) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','"+Azf+ "','"+Hk+"','"+Yf+"','"+ywy+"','"+qy+"','"+aa+"','"+bb+"','N','N','" + PF.Text + "','未出库','未审核','未入库','"+sds+"')";
                             comm.Connection = con;
                             int count = comm.ExecuteNonQuery();
                             if (count < 1)
@@ -301,7 +303,7 @@ namespace WindowsFormsApp1.Order
                         {
                             con.Open();
                             SqlCommand cmd = new SqlCommand();
-                            cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[amount],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj]) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + textBox1.Text + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sumJe + "','"+sunAa+"','" + sumBb + "','"+sumAzf+"','0.00','" + sumHUOK + "','0.00','"+ sumHk + "','" + bz + "','已审核','" + qj + "')";
+                            cmd.CommandText = "INSERT INTO [dbo].[Order_h] ([orderid],[contractid],[date],[service],[company],[project],[con_date],[seller],[person],[phone],[area],[delivery],[desgin],[color],[longmetre],[quantity],[tax],[htje],[sjje],[amount],[wsje],[azf],[ywf],[huokuan],[dj],[hk],[remarks],[examine],[qj],xdrq) VALUES ('" + ddbh + "','" + htbh + "','" + xdrq + "','" + gdy + "','" + gsm + "','" + xmmc + "','" + textBox1.Text + "','" + ywy + "','" + lxr + "','" + lxfs + "','" + qy + "','" + jq + "','" + xdy + "','" + ys + "','" + zcm + "','" + zms + "','" + jesl + "','" + htje + "','" + sumJe + "','"+sunAa+"','" + sumBb + "','"+sumAzf+"','0.00','" + sumHUOK + "','0.00','"+ sumHk + "','" + bz + "','已审核','" + qj + "','"+sds+"')";
                             cmd.Connection = con;
                             int count = cmd.ExecuteNonQuery();
                             if (count > 0)

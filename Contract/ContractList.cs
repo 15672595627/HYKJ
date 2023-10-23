@@ -345,5 +345,13 @@ namespace WindowsFormsApp1.Contract
         {
 
         }
+
+        private void ContractList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)//按下ESC //27
+            {
+                this.Close();
+            }
+        }
     }
 }

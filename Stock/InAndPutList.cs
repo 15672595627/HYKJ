@@ -72,9 +72,12 @@ namespace WindowsFormsApp1.Stock
         //string shijian = DateTime.Now.ToString("yyyy-MM");
         private void button1_Click(object sender, EventArgs e)
         {
-            string yue = dateTimePicker1.Text.Trim();//拿到datatimepiker控件的值
+            //拿到datatimepiker控件的值
+            string yue = dateTimePicker1.Text.Trim();
 
-            string tian = Convert.ToDateTime(yue).AddMonths(0).AddDays(-1).ToString("yyyy-MM-dd");//得到上个月最后一天
+
+            //得到上个月最后一天
+            string tian = Convert.ToDateTime(yue).AddMonths(0).AddDays(-1).ToString("yyyy-MM-dd");
             Console.WriteLine(yue);
             Console.WriteLine(tian);
             dataGridView1.Columns.Clear();

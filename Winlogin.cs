@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
                         winmain.ShowDialog();
                         this.Dispose();
                         this.Close();
-                        ;//传递当前用户名
+                        //传递当前用户名
                          //显示对象窗口
                     }
                     else

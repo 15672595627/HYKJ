@@ -118,7 +118,7 @@ namespace WindowsFormsApp1.Order
                     批量发货申请ToolStripMenuItem.Enabled = true;
                     try
                     {
-                        string sql = String.Format("select id,orderid as 单据编号,contractid as 合同编号,date as 日期,service as 跟单员,company as 公司名,project as 项目名称,sub as 内容,quantity as 数量,unit as 单位,price as 单价,meters as 米数,amount as 总金额,azf as 安装费,hk as 回扣,yf as 运费 ,sjje as 实际金额,wsje as 无税金额,ywy as 业务员,qy as 区域,productname as 产品名称,ident as 发货状态,ckzt as 出库状态,examine as 审核状态 from [dbo].[Order_b] where  contractid like '%" + htbh + "%' and service like '%" + cc + "%' and company like '%" + dd + "%' and ident like '%" + ckzt + "%' and ckzt like '%"+comboBox1.Text.Trim()+"%' and  date between '" + aa + "' and '" + bb + "'");
+                        string sql = String.Format("select id,orderid as 单据编号,contractid as 合同编号,date as 日期,service as 跟单员,company as 公司名,project as 项目名称,sub as 内容,quantity as 数量,unit as 单位,price as 单价,meters as 米数,amount as 总金额,azf as 安装费,hk as 回扣,yf as 运费 ,sjje as 实际金额,wsje as 无税金额,ywy as 业务员,qy as 区域,productname as 产品名称,ident as 发货状态,ckzt as 出库状态,examine as 审核状态,rkzt as 入库状态,rksj as 入库时间 from [dbo].[Order_b] where contractid like '%" + htbh + "%' and service like '%" + cc + "%' and company like '%" + dd + "%' and ident like '%" + ckzt + "%' and ckzt like '%" + comboBox1.Text.Trim() + "%' and  date between '" + aa + "' and '" + bb + "'and examine like '%"+ee+ "%' and rkzt like '%"+comboBox2.Text+"%'");
 
                         da = new SqlDataAdapter(sql, SQL);
                         dt = new DataTable();
@@ -888,6 +888,13 @@ namespace WindowsFormsApp1.Order
             }
             MessageBox.Show("点击主页面加号小图标进行查看");
             conn.Close();
+        }
+        private void OrderServiceList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)//按下ESC //27
+            {
+                this.Close();
+            }
         }
     }
 }

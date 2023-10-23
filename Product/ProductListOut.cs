@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.Product
             string shzt = ZT.Text.Trim();
             string rq = RQ.Text.Trim();
             string rq1 = RQ1.Text.Trim();
-            string strsql = "SELECT p.id,p.orderid as 单据编号,p.date as 单据日期,p.caiwuRiqi as 财务日期, p.staffout as 录单员,p.sorderid as 销售订单,p.contractid as 合同编号,p.service as 跟单员,p.seller as 业务员,p.company as 公司名,p.project as 项目名,p.Product as 产品,p.substance as 内容,p.sl as 数量,p.dw as 单位,p.kfdj as 客服单价,p.meters as 米数,p.kfje as 客服金额含税,p.tax as 税率,p.wscz as 无税产值,p.fhsl as 发货数量,p.fhamount as 发货金额,p.fhcbamount as 发货成本金额,p.shck as 收货仓库,p.sent as 已发数量,p.examine as 审核状态,o.examine as 财务审核 from ProductOut p LEFT JOIN Order_b o ON o.contractid = p.contractid where o.contractid = p.contractid and o.company = p.company and o.quantity = p.sl and o.project = p.project and o.price = p.kfdj and o.meters = p.meters and o.sub = p.substance and p.date BETWEEN '" + rq + "' and '" + rq1 + "' and p.contractid like '%" + htbh + "%' and  p.company like '%" + gsm + "%' and o.examine like '%" + shzt + "%'";
+            string strsql = "SELECT p.id,p.orderid as 单据编号,p.date as 单据日期,p.caiwuRiqi as 财务日期, p.staffout as 录单员,p.sorderid as 销售订单,p.contractid as 合同编号,p.service as 跟单员,p.seller as 业务员,p.company as 公司名,p.project as 项目名,p.Product as 产品,p.substance as 内容,p.sl as 数量,p.dw as 单位,p.kfdj as 客服单价,p.meters as 米数,p.kfje as 客服金额含税,p.tax as 税率,p.wscz as 无税产值,p.fhsl as 发货数量,p.fhamount as 发货金额,p.fhcbamount as 发货成本金额,p.shck as 收货仓库,p.sent as 已发数量,p.examine as 审核状态,o.examine as 财务审核 from ProductOut p LEFT JOIN Order_b o ON o.contractid = p.contractid where o.contractid = p.contractid and o.company = p.company and o.quantity = p.sl and o.project = p.project and o.price = p.kfdj and o.meters = p.meters and o.sub = p.substance and p.date BETWEEN '" + rq + "' and '" + rq1 + "' and p.contractid like '%" + htbh + "%' and  p.company like '%" + gsm + "%' and o.examine like '%" + shzt + "%' order by p.date";
             da = new SqlDataAdapter(strsql, SQL);
             dt = new DataTable();
             da.Fill(dt);
@@ -347,56 +347,6 @@ namespace WindowsFormsApp1.Product
 
         private void 导出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*if (dataGridView1.Rows.Count > 0)
-            {
-                SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog();
-                sfd.Filter = "Execl files (*.xls)|*.xls";
-                sfd.FilterIndex = 0;
-                sfd.RestoreDirectory = true;
-                sfd.CreatePrompt = true;
-                sfd.Title = "Export Excel File";
-                sfd.ShowDialog();
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    if (sfd.FileName == "")
-                    {
-                        MessageBox.Show("请输入保存名");
-                        return;
-                    }
-                    else
-                    {
-                        Stream mystream = sfd.OpenFile();
-                        StreamWriter sw = new StreamWriter(mystream, System.Text.Encoding.GetEncoding(-0));
-                        string str = "";
-                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
-                        {
-                            if (i > 0)
-                            {
-                                str += "\t";
-                            }
-                            str += dataGridView1.Columns[i].HeaderText;
-                        }
-                        sw.WriteLine(str);
-                        for (int j = 0; j < dataGridView1.Rows.Count; j++)
-                        {
-                            string tempStr = "";
-                            for (int k = 0; k < dataGridView1.Columns.Count; k++)
-                            {
-                                if (k > 0)
-                                {
-                                    tempStr += "\t";
-                                }
-                                tempStr += dataGridView1.Rows[j].Cells[k].Value.ToString();
-                            }
-                            sw.WriteLine(tempStr);
-                        }
-                        sw.Close();
-                        mystream.Close();
-                    }
-                }
-            }*/
-            
             string fileName = "";//可以在这里设置默认文件名
             string saveFileName = "";//文件保存名
             SaveFileDialog saveDialog = new SaveFileDialog();//实例化文件对象
@@ -497,7 +447,6 @@ namespace WindowsFormsApp1.Product
                             {
                                 continue;
                             }
-
                         }
                     }
                     catch (System.Exception ex)
@@ -543,7 +492,7 @@ namespace WindowsFormsApp1.Product
                             SqlDataAdapter da1 = new SqlDataAdapter(strsql, SQL);
                             DataTable dt1 = new DataTable();
                             da1.Fill(dt1);
-                            if(dt1.Rows.Count > 0)
+                            if (dt1.Rows.Count > 0)
                             {
                                 decimal oldkcje = Convert.ToDecimal(dt1.Rows[0][1]);
 
@@ -563,7 +512,7 @@ namespace WindowsFormsApp1.Product
                             else
                             {
                                 continue;
-                            } 
+                            }
                         }
                         MessageBox.Show("更新成功");
 
@@ -580,6 +529,7 @@ namespace WindowsFormsApp1.Product
                     }
                 }
             }
+
         }
 
         private void 批量审核ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -753,6 +703,18 @@ namespace WindowsFormsApp1.Product
             {
                 MessageBox.Show("对不起，你没有权限！");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 form1form = new Form1();
+            form1form.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cwsfc cwsfc = new cwsfc();
+            cwsfc.ShowDialog();
         }
     }
 }

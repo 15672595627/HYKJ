@@ -45,6 +45,7 @@ namespace WindowsFormsApp1.Product
         {
             asc.controllInitializeSize(this);
             RQ.Value = DateTime.Now.AddDays(1 - DateTime.Now.Day).AddMonths(-3); //'设置为本月第一天
+            
         }
 
         private void SX_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace WindowsFormsApp1.Product
             string rq = RQ.Text.Trim();
             string rq1 = RQ1.Text.Trim();
             string ck = CK.Text.Trim();
-            string strsql = "SELECT id,orderid as 单据编号,date as 单据日期,caiwuRiqi as 财务日期,staffin as 录单员,sorderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名,product as 产品名称,substance as 内容,sl as 数量,dw as 单位,kfdj as 客服单价,meters as 米数,kfje as 客服金额,tax as 税率,wscz as 无税产值,sssl as 实收数量,zsms as 折算米数,sjdj as 实际单价,shck as 收货仓库,cbdj as 成本单价, cbje as 成本金额,state as 状态,examine as 审核状态,cwsh as 财务审核 from ProductIn where  caiwuRiqi BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh + "%' and  company like '%" + gsm + "%' and examine like '%" + shzt + "%'  and  shck like '%" + ck + "%'";
+            string strsql = "SELECT id,orderid as 单据编号,date as 单据日期,caiwuRiqi as 财务日期,staffin as 录单员,sorderid as 销售订单,contractid as 合同编号,company as 公司名,project as 项目名,product as 产品名称,substance as 内容,sl as 数量,dw as 单位,kfdj as 客服单价,meters as 米数,kfje as 客服金额,tax as 税率,wscz as 无税产值,sssl as 实收数量,zsms as 折算米数,sjdj as 实际单价,shck as 收货仓库,cbdj as 成本单价, cbje as 成本金额,state as 状态,examine as 审核状态,cwsh as 财务审核 from ProductIn where  caiwuRiqi BETWEEN '" + rq + "' and '" + rq1 + "' and contractid like '%" + htbh + "%' and  company like '%" + gsm + "%' and cwsh like '%" + shzt + "%'  and  shck like '%" + ck + "%'";
             da = new SqlDataAdapter(strsql, SQL);
             dt = new DataTable();
             da.Fill(dt);
@@ -67,11 +68,23 @@ namespace WindowsFormsApp1.Product
 
             decimal sum1 = 0;
             decimal sum2 = 0;
-
+            decimal sum3 = 0;
+            decimal sum4 = 0; 
+            decimal sum5 = 0;
+            decimal sum6 = 0;
+            decimal sum7 = 0;
+            decimal sum8 = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 sum1 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["无税产值"].Value);
                 sum2 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["成本金额"].Value);
+                sum3 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["客服单价"].Value);
+                sum4 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["米数"].Value);
+                sum5 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["客服金额"].Value);
+                sum6 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["实收数量"].Value);
+                sum7 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["折算米数"].Value);
+                sum8 += Convert.ToDecimal(dataGridView1.Rows[i].Cells["实际单价"].Value);
+
 
                 if (dataGridView1.Rows[i].Cells["审核状态"].Value.ToString() == "已审核")
                 {
@@ -83,11 +96,15 @@ namespace WindowsFormsApp1.Product
             }
             string ssum1 = sum1.ToString();
             string ssum2 = sum2.ToString();
+            string ssum3 = sum3.ToString();
+            string ssum4 = sum4.ToString();
+            string ssum5 = sum5.ToString();
+            string ssum6 = sum6.ToString();
+            string ssum7 = sum7.ToString();
+            string ssum8 = sum8.ToString();
 
-            string[] row = { "1", "合计", "","", "", "", "", "", "", "", "", "0", "", "0", "0", "0", "0", ssum1, "0", "0", "0", "", "0", ssum2, "", "" };
+            string[] row = { "1", "合计", "","", "", "", "", "", "", "", "", "0", "", ssum3, ssum4, ssum5, "0", ssum1, ssum6, ssum7, ssum8, "", "0", ssum2, "", "" };
             ((DataTable)dataGridView1.DataSource).Rows.Add(row);
-
-            
         }
 
 
@@ -720,7 +737,7 @@ namespace WindowsFormsApp1.Product
         {
             SqlConnection conn = new SqlConnection(SQL);
             conn.Open();
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
             {
                 int m = dataGridView1.SelectedRows[i].Index;
                 if (dataGridView1.Rows[m].Cells["财务审核"].Value.ToString() == "未审核")
@@ -736,6 +753,8 @@ namespace WindowsFormsApp1.Product
                 MessageBox.Show("审核成功！");
             }
             conn.Close();
+            SX.PerformClick();
         }
+        
     }
 }

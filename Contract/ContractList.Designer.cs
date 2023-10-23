@@ -333,14 +333,17 @@ namespace WindowsFormsApp1.Contract
             // 
             // ContractList
             // 
+            this.AcceptButton = this.SX;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1160, 663);
             this.Controls.Add(this.splitContainer1);
+            this.KeyPreview = true;
             this.Name = "ContractList";
             this.Text = "ContractList";
             this.Load += new System.EventHandler(this.ContractList_Load);
             this.SizeChanged += new System.EventHandler(this.ContractList_SizeChanged);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContractList_KeyPress);
             this.contextMenuStrip1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

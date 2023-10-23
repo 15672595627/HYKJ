@@ -83,7 +83,7 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 625);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 587);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1250, 22);
             this.statusStrip1.TabIndex = 76;
@@ -116,7 +116,7 @@
             // BC
             // 
             this.BC.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BC.Location = new System.Drawing.Point(1105, 566);
+            this.BC.Location = new System.Drawing.Point(1147, 547);
             this.BC.Name = "BC";
             this.BC.Size = new System.Drawing.Size(88, 36);
             this.BC.TabIndex = 71;
@@ -182,6 +182,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -214,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1250, 647);
+            this.ClientSize = new System.Drawing.Size(1250, 609);
             this.Controls.Add(this.XZ);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);

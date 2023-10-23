@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>preview</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ED19AD30-D4AB-4249-B350-3D3B4082CB33}</ProjectGuid>
@@ -29,7 +30,7 @@
     <MinimumRequiredVersion>1.0.0.92</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>323</ApplicationRevision>
+    <ApplicationRevision>365</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -148,6 +149,24 @@
     </Compile>
     <Compile Include="Bill\outSouringAdd.Designer.cs">
       <DependentUpon>outSouringAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="budget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="budget.Designer.cs">
+      <DependentUpon>budget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BudgetList.Designer.cs">
+      <DependentUpon>BudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BudgetMode.Designer.cs">
+      <DependentUpon>BudgetMode.cs</DependentUpon>
     </Compile>
     <Compile Include="Calc\Beijing.cs">
       <SubType>Form</SubType>
@@ -288,6 +307,102 @@
     <Compile Include="Contract\Con_date.Designer.cs">
       <DependentUpon>Con_date.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerServiceDepartment\Cadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\Cadd.Designer.cs">
+      <DependentUpon>Cadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CAddEmployee.Designer.cs">
+      <DependentUpon>CAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CCGXBudget.Designer.cs">
+      <DependentUpon>CCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CCGXBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CCGXBudgetList.Designer.cs">
+      <DependentUpon>CCGXBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CEmployeeList.Designer.cs">
+      <DependentUpon>CEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CEmployeePlan.Designer.cs">
+      <DependentUpon>CEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CFixedAssetBudget.Designer.cs">
+      <DependentUpon>CFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>CFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CReduceEmployee.Designer.cs">
+      <DependentUpon>CReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CSummaryBudget.Designer.cs">
+      <DependentUpon>CSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CSummaryBudgetList.Designer.cs">
+      <DependentUpon>CSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateAddEmployee.Designer.cs">
+      <DependentUpon>CUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateCGXBudget.Designer.cs">
+      <DependentUpon>CUpdateCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>CUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>CUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerServiceDepartment\CUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>CUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Date\Dis_Contract.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,11 +457,414 @@
     <Compile Include="Desgin\GroupListDetial.Designer.cs">
       <DependentUpon>GroupListDetial.cs</DependentUpon>
     </Compile>
+    <Compile Include="DesignDepartment\Dadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\Dadd.Designer.cs">
+      <DependentUpon>Dadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DAddEmployee.Designer.cs">
+      <DependentUpon>DAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DCGXBudget.Designer.cs">
+      <DependentUpon>DCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DCGXBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DCGXBudgetList.Designer.cs">
+      <DependentUpon>DCGXBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DEmployeeList.Designer.cs">
+      <DependentUpon>DEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DEmployeePlan.Designer.cs">
+      <DependentUpon>DEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DFixedAssetBudget.Designer.cs">
+      <DependentUpon>DFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DReduceEmployee.Designer.cs">
+      <DependentUpon>DReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DSummaryBudget.Designer.cs">
+      <DependentUpon>DSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DSummaryBudgetList.Designer.cs">
+      <DependentUpon>DSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateAddEmployee.Designer.cs">
+      <DependentUpon>DUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateCGXBudget.Designer.cs">
+      <DependentUpon>DUpdateCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>DUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>DUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>DUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignDepartment\DFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignDepartment\DFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>DFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\Eadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\Eadd.Designer.cs">
+      <DependentUpon>Eadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EAddEmployee.Designer.cs">
+      <DependentUpon>EAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ECGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ECGXBudget.Designer.cs">
+      <DependentUpon>ECGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ECGXBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ECGXBudgetList.Designer.cs">
+      <DependentUpon>ECGXBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EEmployeeList.Designer.cs">
+      <DependentUpon>EEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EEmployeePlan.Designer.cs">
+      <DependentUpon>EEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EFixedAssetBudget.Designer.cs">
+      <DependentUpon>EFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>EFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EReduecEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EReduecEmployee.Designer.cs">
+      <DependentUpon>EReduecEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESalaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESalaryDetails.Designer.cs">
+      <DependentUpon>ESalaryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESalaryDetailsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESalaryDetailsList.Designer.cs">
+      <DependentUpon>ESalaryDetailsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESummaryBudget.Designer.cs">
+      <DependentUpon>ESummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\ESummaryBudgetList.Designer.cs">
+      <DependentUpon>ESummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateAddEmployee.Designer.cs">
+      <DependentUpon>EUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateCGXBudget.Designer.cs">
+      <DependentUpon>EUpdateCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>EUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>EUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateSalaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateSalaryDetails.Designer.cs">
+      <DependentUpon>EUpdateSalaryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineeringDepartment\EUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>EUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feedback.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Feedback.Designer.cs">
       <DependentUpon>Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBadd.Designer.cs">
+      <DependentUpon>CWBadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBAddEmployee.Designer.cs">
+      <DependentUpon>CWBAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBBudget.Designer.cs">
+      <DependentUpon>CWBBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBBudgetList.Designer.cs">
+      <DependentUpon>CWBBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBEmployeeList.Designer.cs">
+      <DependentUpon>CWBEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBEmployeePlan.Designer.cs">
+      <DependentUpon>CWBEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBFixedAssetBudget.Designer.cs">
+      <DependentUpon>CWBFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>CWBFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBReduceEmployee.Designer.cs">
+      <DependentUpon>CWBReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBSummaryBudget.Designer.cs">
+      <DependentUpon>CWBSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBSummaryBudgetList.Designer.cs">
+      <DependentUpon>CWBSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateAddEmployee.Designer.cs">
+      <DependentUpon>CWBUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateBudget.Designer.cs">
+      <DependentUpon>CWBUpdateBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>CWBUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>CWBUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceDepartment\CWBUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>CWBUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\add.Designer.cs">
+      <DependentUpon>add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\AddEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\AddEmployeeList.Designer.cs">
+      <DependentUpon>AddEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\CGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\CGXBudget.Designer.cs">
+      <DependentUpon>CGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\CGXBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\CGXBudgetList.Designer.cs">
+      <DependentUpon>CGXBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\EmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\EmployeePlan.Designer.cs">
+      <DependentUpon>EmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\FixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\FixedAssetBudget.Designer.cs">
+      <DependentUpon>FixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\FixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\FixedAssetBudgetList.Designer.cs">
+      <DependentUpon>FixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\GSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\.Designer.cs">
+      <DependentUpon>GSummaryBudget.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\GSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\GSummaryBudgetList.Designer.cs">
+      <DependentUpon>GSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\ReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\ReduceEmployee.Designer.cs">
+      <DependentUpon>ReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateAddEmployee.Designer.cs">
+      <DependentUpon>UpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateCGXBBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateCGXBBudget.Designer.cs">
+      <DependentUpon>UpdateCGXBBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>UpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateGSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateGSummaryBudget.Designer.cs">
+      <DependentUpon>UpdateGSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralManager\UpdateReduceEmployee.Designer.cs">
+      <DependentUpon>UpdateReduceEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Goods\GoodsRead.cs">
       <SubType>Form</SubType>
@@ -379,6 +897,120 @@
     </Compile>
     <Compile Include="Main\BasisList.Designer.cs">
       <DependentUpon>BasisList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\Sadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\Sadd.Designer.cs">
+      <DependentUpon>Sadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SExpandPlan.Designer.cs">
+      <DependentUpon>SExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SExpandPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SExpandPlanList.Designer.cs">
+      <DependentUpon>SExpandPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateExpandPlan.Designer.cs">
+      <DependentUpon>SUpdateExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SAddEmployee.Designer.cs">
+      <DependentUpon>SAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SEmployeeList.Designer.cs">
+      <DependentUpon>SEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SEmployeePlan.Designer.cs">
+      <DependentUpon>SEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SFixedAssetBudget.Designer.cs">
+      <DependentUpon>SFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>SFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SReduceEmployee.Designer.cs">
+      <DependentUpon>SReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateAddEmployee.Designer.cs">
+      <DependentUpon>SUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>SUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateGSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateGSummaryBudget.Designer.cs">
+      <DependentUpon>SUpdateGSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SGSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SGSummaryBudgetList.Designer.cs">
+      <DependentUpon>SGSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SGSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SGSummaryBudget.Designer.cs">
+      <DependentUpon>SGSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SCGXBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SCGXBudget.Designer.cs">
+      <DependentUpon>SCGXBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SCGXBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SCGXBudgetList.Designer.cs">
+      <DependentUpon>SCGXBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateCGXBBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateCGXBBudget.Designer.cs">
+      <DependentUpon>SUpdateCGXBBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketingDepartment\SUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>SUpdateReduceEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageS.cs">
       <SubType>Form</SubType>
@@ -506,6 +1138,102 @@
     <Compile Include="Order\R_Order.Designer.cs">
       <DependentUpon>R_Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersonnelDepartment\Padd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\Padd.Designer.cs">
+      <DependentUpon>Padd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PAddEmployee.Designer.cs">
+      <DependentUpon>PAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PEmployeeList.Designer.cs">
+      <DependentUpon>PEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PEmployeePlan.Designer.cs">
+      <DependentUpon>PEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PFixedAssetBudget.Designer.cs">
+      <DependentUpon>PFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>PFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PReduceEmployee.Designer.cs">
+      <DependentUpon>PReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSalaryDetailsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSalaryDetailsList.Designer.cs">
+      <DependentUpon>PSalaryDetailsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSummaryBudget.Designer.cs">
+      <DependentUpon>PSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSummaryBudgetList.Designer.cs">
+      <DependentUpon>PSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateAddEmployee.Designer.cs">
+      <DependentUpon>PUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>PUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>PUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateSalaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateSalaryDetails.Designer.cs">
+      <DependentUpon>PUpdateSalaryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>PUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSalaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelDepartment\PSalaryDetails.Designer.cs">
+      <DependentUpon>PSalaryDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Plan\PlanOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -572,6 +1300,42 @@
     <Compile Include="PO\SupplierPO.Designer.cs">
       <DependentUpon>SupplierPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produce\PBAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\PBAdd.Designer.cs">
+      <DependentUpon>PBAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produce\PBListByMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\PBListByMonth.Designer.cs">
+      <DependentUpon>PBListByMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produce\PBListByYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\PBListByYear.Designer.cs">
+      <DependentUpon>PBListByYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produce\ProductionBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\ProductionBudget.Designer.cs">
+      <DependentUpon>ProductionBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produce\ProductionBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\ProductionBudgetList.Designer.cs">
+      <DependentUpon>ProductionBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produce\ProductionUpdateBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produce\ProductionUpdateBudget.Designer.cs">
+      <DependentUpon>ProductionUpdateBudget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product\addStockCaryyDown.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,11 +1348,23 @@
     <Compile Include="Product\CBTZ_ST.Designer.cs">
       <DependentUpon>CBTZ_ST.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product\cwsfc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\cwsfc.Designer.cs">
+      <DependentUpon>cwsfc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product\ForColumn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Product\ForColumn.Designer.cs">
       <DependentUpon>ForColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Product\ImportProIn.cs">
       <SubType>Form</SubType>
@@ -865,6 +1641,558 @@
     <Compile Include="Purchase\ShortAgeApply.Designer.cs">
       <DependentUpon>ShortAgeApply.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchasingDepartment\PpFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpFixedAssetBudget.Designer.cs">
+      <DependentUpon>PpFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>PpFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpSummaryBudget.Designer.cs">
+      <DependentUpon>PpSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpSummaryBudgetList.Designer.cs">
+      <DependentUpon>PpSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>PpUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>PpUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpBudget.Designer.cs">
+      <DependentUpon>PpBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpBudgetList.Designer.cs">
+      <DependentUpon>PpBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateBudget.Designer.cs">
+      <DependentUpon>PpUpdateBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\Ppadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\Ppadd.Designer.cs">
+      <DependentUpon>Ppadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpAddEmployee.Designer.cs">
+      <DependentUpon>PpAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpEmployeeList.Designer.cs">
+      <DependentUpon>PpEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpEmployeePlan.Designer.cs">
+      <DependentUpon>PpEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpReduceEmployee.Designer.cs">
+      <DependentUpon>PpReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateAddEmployee.Designer.cs">
+      <DependentUpon>PpUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingDepartment\PpUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>PpUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYadd.Designer.cs">
+      <DependentUpon>JZQYadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYAddEmployee.Designer.cs">
+      <DependentUpon>JZQYAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYCgxBudget.Designer.cs">
+      <DependentUpon>JZQYCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYCgxBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYCgxBudgetList.Designer.cs">
+      <DependentUpon>JZQYCgxBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYEmployeeList.Designer.cs">
+      <DependentUpon>JZQYEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYEmployeePlan.Designer.cs">
+      <DependentUpon>JZQYEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYExpandPlan.Designer.cs">
+      <DependentUpon>JZQYExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYExpandPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYExpandPlanList.Designer.cs">
+      <DependentUpon>JZQYExpandPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYFixedAssetBudget.Designer.cs">
+      <DependentUpon>JZQYFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>JZQYFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYReduceEmployee.Designer.cs">
+      <DependentUpon>JZQYReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYSummaryBudget.Designer.cs">
+      <DependentUpon>JZQYSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYSummaryBudgetList.Designer.cs">
+      <DependentUpon>JZQYSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateAddEmployee.Designer.cs">
+      <DependentUpon>JZQYUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateCgxBudget.Designer.cs">
+      <DependentUpon>JZQYUpdateCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateExpandPlan.Designer.cs">
+      <DependentUpon>JZQYUpdateExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>JZQYUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>JZQYUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\JZQYUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>JZQYUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCadd.Designer.cs">
+      <DependentUpon>WHGCadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCAddEmployee.Designer.cs">
+      <DependentUpon>WHGCAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCCgxBudget.Designer.cs">
+      <DependentUpon>WHGCCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCCgxBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCCgxBudgetList.Designer.cs">
+      <DependentUpon>WHGCCgxBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCEmployeeList.Designer.cs">
+      <DependentUpon>WHGCEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCEmployeePlan.Designer.cs">
+      <DependentUpon>WHGCEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCExpandPlan.Designer.cs">
+      <DependentUpon>WHGCExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCExpandPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCExpandPlanList.Designer.cs">
+      <DependentUpon>WHGCExpandPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCFixedAssetBudget.Designer.cs">
+      <DependentUpon>WHGCFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>WHGCFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCReduceEmployee.Designer.cs">
+      <DependentUpon>WHGCReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCSummaryBudget.Designer.cs">
+      <DependentUpon>WHGCSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCSummaryBudgetList.Designer.cs">
+      <DependentUpon>WHGCSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateAddEmployee.Designer.cs">
+      <DependentUpon>WHGCUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateCgxBudget.Designer.cs">
+      <DependentUpon>WHGCUpdateCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateExpandPlan.Designer.cs">
+      <DependentUpon>WHGCUpdateExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>WHGCUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>WHGCUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHGCUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>WHGCUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYadd.Designer.cs">
+      <DependentUpon>WHQYadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYAddEmployee.Designer.cs">
+      <DependentUpon>WHQYAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYCgxBudget.Designer.cs">
+      <DependentUpon>WHQYCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYCgxBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYCgxBudgetList.Designer.cs">
+      <DependentUpon>WHQYCgxBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYEmployeeList.Designer.cs">
+      <DependentUpon>WHQYEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYEmployeePlan.Designer.cs">
+      <DependentUpon>WHQYEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYExpandPlan.Designer.cs">
+      <DependentUpon>WHQYExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYExpandPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYExpandPlanList.Designer.cs">
+      <DependentUpon>WHQYExpandPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYFixedAssetBudget.Designer.cs">
+      <DependentUpon>WHQYFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>WHQYFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYReduceEmployee.Designer.cs">
+      <DependentUpon>WHQYReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYSummaryBudget.Designer.cs">
+      <DependentUpon>WHQYSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYSummaryBudgetList.Designer.cs">
+      <DependentUpon>WHQYSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateAddEmployee.Designer.cs">
+      <DependentUpon>WHQYUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateCgxBudget.Designer.cs">
+      <DependentUpon>WHQYUpdateCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateExpandPlan.Designer.cs">
+      <DependentUpon>WHQYUpdateExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>WHQYUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>WHQYUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WHQYUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>WHQYUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBAddEmployee.Designer.cs">
+      <DependentUpon>WXBAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBCgxBudget.Designer.cs">
+      <DependentUpon>WXBCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBCgxBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBCgxBudgetList.Designer.cs">
+      <DependentUpon>WXBCgxBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBExpandPlan.Designer.cs">
+      <DependentUpon>WXBExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBExpandPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBExpandPlanList.Designer.cs">
+      <DependentUpon>WXBExpandPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBFixedAssetBudget.Designer.cs">
+      <DependentUpon>WXBFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBFixedAssetBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBFixedAssetBudgetList.Designer.cs">
+      <DependentUpon>WXBFixedAssetBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBSummaryBudget.Designer.cs">
+      <DependentUpon>WXBSummaryBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBSummaryBudgetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBSummaryBudgetList.Designer.cs">
+      <DependentUpon>WXBSummaryBudgetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateAddEmployee.Designer.cs">
+      <DependentUpon>WXBUpdateAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBEmployeeList.Designer.cs">
+      <DependentUpon>WXBEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBEmployeePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBEmployeePlan.Designer.cs">
+      <DependentUpon>WXBEmployeePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBReduceEmployee.Designer.cs">
+      <DependentUpon>WXBReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateCgxBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateCgxBudget.Designer.cs">
+      <DependentUpon>WXBUpdateCgxBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateExpandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateExpandPlan.Designer.cs">
+      <DependentUpon>WXBUpdateExpandPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateFixedAssetBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateFixedAssetBudget.Designer.cs">
+      <DependentUpon>WXBUpdateFixedAssetBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateReduceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateReduceEmployee.Designer.cs">
+      <DependentUpon>WXBUpdateReduceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBadd.Designer.cs">
+      <DependentUpon>WXBadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateSummaryBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesDepartment\WXBUpdateSummaryBudget.Designer.cs">
+      <DependentUpon>WXBUpdateSummaryBudget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scheduling\CheckStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -967,7 +2295,12 @@
     <Compile Include="Stock\updateStock.Designer.cs">
       <DependentUpon>updateStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="test\Class1.cs" />
+    <Compile Include="test\test1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test\test1.Designer.cs">
+      <DependentUpon>test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Updatelog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1010,6 +2343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bill\outSouringAdd.resx">
       <DependentUpon>outSouringAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="budget.resx">
+      <DependentUpon>budget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BudgetList.resx">
+      <DependentUpon>BudgetList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calc\Beijing.resx">
       <DependentUpon>Beijing.cs</DependentUpon>
@@ -1080,6 +2419,54 @@
     <EmbeddedResource Include="Contract\Con_date.resx">
       <DependentUpon>Con_date.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\Cadd.resx">
+      <DependentUpon>Cadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CAddEmployee.resx">
+      <DependentUpon>CAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CCGXBudget.resx">
+      <DependentUpon>CCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CCGXBudgetList.resx">
+      <DependentUpon>CCGXBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CEmployeeList.resx">
+      <DependentUpon>CEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CEmployeePlan.resx">
+      <DependentUpon>CEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CFixedAssetBudget.resx">
+      <DependentUpon>CFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CFixedAssetBudgetList.resx">
+      <DependentUpon>CFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CReduceEmployee.resx">
+      <DependentUpon>CReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CSummaryBudget.resx">
+      <DependentUpon>CSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CSummaryBudgetList.resx">
+      <DependentUpon>CSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CUpdateAddEmployee.resx">
+      <DependentUpon>CUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CUpdateCGXBudget.resx">
+      <DependentUpon>CUpdateCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CUpdateFixedAssetBudget.resx">
+      <DependentUpon>CUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CUpdateReduceEmployee.resx">
+      <DependentUpon>CUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerServiceDepartment\CUpdateSummaryBudget.resx">
+      <DependentUpon>CUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Date\Dis_Contract.resx">
       <DependentUpon>Dis_Contract.cs</DependentUpon>
     </EmbeddedResource>
@@ -1107,8 +2494,209 @@
     <EmbeddedResource Include="Desgin\GroupListDetial.resx">
       <DependentUpon>GroupListDetial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\Dadd.resx">
+      <DependentUpon>Dadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DAddEmployee.resx">
+      <DependentUpon>DAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DCGXBudget.resx">
+      <DependentUpon>DCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DCGXBudgetList.resx">
+      <DependentUpon>DCGXBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DEmployeeList.resx">
+      <DependentUpon>DEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DEmployeePlan.resx">
+      <DependentUpon>DEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DFixedAssetBudget.resx">
+      <DependentUpon>DFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DFixedAssetBudgetList.resx">
+      <DependentUpon>DFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DReduceEmployee.resx">
+      <DependentUpon>DReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DSummaryBudget.resx">
+      <DependentUpon>DSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DSummaryBudgetList.resx">
+      <DependentUpon>DSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DUpdateAddEmployee.resx">
+      <DependentUpon>DUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DUpdateCGXBudget.resx">
+      <DependentUpon>DUpdateCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DUpdateFixedAssetBudget.resx">
+      <DependentUpon>DUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DUpdateReduceEmployee.resx">
+      <DependentUpon>DUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignDepartment\DUpdateSummaryBudget.resx">
+      <DependentUpon>DUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\Eadd.resx">
+      <DependentUpon>Eadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EAddEmployee.resx">
+      <DependentUpon>EAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ECGXBudget.resx">
+      <DependentUpon>ECGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ECGXBudgetList.resx">
+      <DependentUpon>ECGXBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EEmployeeList.resx">
+      <DependentUpon>EEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EEmployeePlan.resx">
+      <DependentUpon>EEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EFixedAssetBudget.resx">
+      <DependentUpon>EFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EFixedAssetBudgetList.resx">
+      <DependentUpon>EFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EReduecEmployee.resx">
+      <DependentUpon>EReduecEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ESalaryDetails.resx">
+      <DependentUpon>ESalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ESalaryDetailsList.resx">
+      <DependentUpon>ESalaryDetailsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ESummaryBudget.resx">
+      <DependentUpon>ESummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\ESummaryBudgetList.resx">
+      <DependentUpon>ESummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateAddEmployee.resx">
+      <DependentUpon>EUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateCGXBudget.resx">
+      <DependentUpon>EUpdateCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateFixedAssetBudget.resx">
+      <DependentUpon>EUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateReduceEmployee.resx">
+      <DependentUpon>EUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateSalaryDetails.resx">
+      <DependentUpon>EUpdateSalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineeringDepartment\EUpdateSummaryBudget.resx">
+      <DependentUpon>EUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Feedback.resx">
       <DependentUpon>Feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBadd.resx">
+      <DependentUpon>CWBadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBAddEmployee.resx">
+      <DependentUpon>CWBAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBBudget.resx">
+      <DependentUpon>CWBBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBBudgetList.resx">
+      <DependentUpon>CWBBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBEmployeeList.resx">
+      <DependentUpon>CWBEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBEmployeePlan.resx">
+      <DependentUpon>CWBEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBFixedAssetBudget.resx">
+      <DependentUpon>CWBFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBFixedAssetBudgetList.resx">
+      <DependentUpon>CWBFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBReduceEmployee.resx">
+      <DependentUpon>CWBReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBSummaryBudget.resx">
+      <DependentUpon>CWBSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBSummaryBudgetList.resx">
+      <DependentUpon>CWBSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBUpdateAddEmployee.resx">
+      <DependentUpon>CWBUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBUpdateBudget.resx">
+      <DependentUpon>CWBUpdateBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBUpdateFixedAssetBudget.resx">
+      <DependentUpon>CWBUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBUpdateReduceEmployee.resx">
+      <DependentUpon>CWBUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanceDepartment\CWBUpdateSummaryBudget.resx">
+      <DependentUpon>CWBUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\add.resx">
+      <DependentUpon>add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\AddEmployeeList.resx">
+      <DependentUpon>AddEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\CGXBudget.resx">
+      <DependentUpon>CGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\CGXBudgetList.resx">
+      <DependentUpon>CGXBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\EmployeePlan.resx">
+      <DependentUpon>EmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\FixedAssetBudget.resx">
+      <DependentUpon>FixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\FixedAssetBudgetList.resx">
+      <DependentUpon>FixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\GSummaryBudget.resx">
+      <DependentUpon>GSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\GSummaryBudgetList.resx">
+      <DependentUpon>GSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\ReduceEmployee.resx">
+      <DependentUpon>ReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\UpdateAddEmployee.resx">
+      <DependentUpon>UpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\UpdateCGXBBudget.resx">
+      <DependentUpon>UpdateCGXBBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\UpdateFixedAssetBudget.resx">
+      <DependentUpon>UpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\UpdateGSummaryBudget.resx">
+      <DependentUpon>UpdateGSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralManager\UpdateReduceEmployee.resx">
+      <DependentUpon>UpdateReduceEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Goods\GoodsRead.resx">
       <DependentUpon>GoodsRead.cs</DependentUpon>
@@ -1121,6 +2709,63 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\BasisList.resx">
       <DependentUpon>BasisList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\Sadd.resx">
+      <DependentUpon>Sadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SExpandPlan.resx">
+      <DependentUpon>SExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateExpandPlan.resx">
+      <DependentUpon>SUpdateExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SExpandPlanList.resx">
+      <DependentUpon>SExpandPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SCGXBudget.resx">
+      <DependentUpon>SCGXBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SCGXBudgetList.resx">
+      <DependentUpon>SCGXBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SAddEmployee.resx">
+      <DependentUpon>SAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SEmployeeList.resx">
+      <DependentUpon>SEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SEmployeePlan.resx">
+      <DependentUpon>SEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SFixedAssetBudget.resx">
+      <DependentUpon>SFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SFixedAssetBudgetList.resx">
+      <DependentUpon>SFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SGSummaryBudget.resx">
+      <DependentUpon>SGSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SGSummaryBudgetList.resx">
+      <DependentUpon>SGSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SReduceEmployee.resx">
+      <DependentUpon>SReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateAddEmployee.resx">
+      <DependentUpon>SUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateCGXBBudget.resx">
+      <DependentUpon>SUpdateCGXBBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateFixedAssetBudget.resx">
+      <DependentUpon>SUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateGSummaryBudget.resx">
+      <DependentUpon>SUpdateGSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketingDepartment\SUpdateReduceEmployee.resx">
+      <DependentUpon>SUpdateReduceEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MessageS.resx">
       <DependentUpon>MessageS.cs</DependentUpon>
@@ -1182,6 +2827,54 @@
     <EmbeddedResource Include="Order\R_Order.resx">
       <DependentUpon>R_Order.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\Padd.resx">
+      <DependentUpon>Padd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PAddEmployee.resx">
+      <DependentUpon>PAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PEmployeeList.resx">
+      <DependentUpon>PEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PEmployeePlan.resx">
+      <DependentUpon>PEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PFixedAssetBudget.resx">
+      <DependentUpon>PFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PFixedAssetBudgetList.resx">
+      <DependentUpon>PFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PReduceEmployee.resx">
+      <DependentUpon>PReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PSalaryDetails.resx">
+      <DependentUpon>PSalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PSalaryDetailsList.resx">
+      <DependentUpon>PSalaryDetailsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PSummaryBudget.resx">
+      <DependentUpon>PSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PSummaryBudgetList.resx">
+      <DependentUpon>PSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PUpdateAddEmployee.resx">
+      <DependentUpon>PUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PUpdateFixedAssetBudget.resx">
+      <DependentUpon>PUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PUpdateReduceEmployee.resx">
+      <DependentUpon>PUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PUpdateSalaryDetails.resx">
+      <DependentUpon>PUpdateSalaryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonnelDepartment\PUpdateSummaryBudget.resx">
+      <DependentUpon>PUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plan\PlanOrder.resx">
       <DependentUpon>PlanOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -1215,14 +2908,38 @@
     <EmbeddedResource Include="PO\SupplierPO.resx">
       <DependentUpon>SupplierPO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produce\PBAdd.resx">
+      <DependentUpon>PBAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produce\PBListByMonth.resx">
+      <DependentUpon>PBListByMonth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produce\PBListByYear.resx">
+      <DependentUpon>PBListByYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produce\ProductionBudget.resx">
+      <DependentUpon>ProductionBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produce\ProductionBudgetList.resx">
+      <DependentUpon>ProductionBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produce\ProductionUpdateBudget.resx">
+      <DependentUpon>ProductionUpdateBudget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product\addStockCaryyDown.resx">
       <DependentUpon>addStockCaryyDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\CBTZ_ST.resx">
       <DependentUpon>CBTZ_ST.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Product\cwsfc.resx">
+      <DependentUpon>cwsfc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product\ForColumn.resx">
       <DependentUpon>ForColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\ImportProIn.resx">
       <DependentUpon>ImportProIn.cs</DependentUpon>
@@ -1365,6 +3082,282 @@
     <EmbeddedResource Include="Purchase\ShortAgeApply.resx">
       <DependentUpon>ShortAgeApply.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpBudget.resx">
+      <DependentUpon>PpBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\Ppadd.resx">
+      <DependentUpon>Ppadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpAddEmployee.resx">
+      <DependentUpon>PpAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpBudgetList.resx">
+      <DependentUpon>PpBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpEmployeeList.resx">
+      <DependentUpon>PpEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpEmployeePlan.resx">
+      <DependentUpon>PpEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpFixedAssetBudget.resx">
+      <DependentUpon>PpFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpFixedAssetBudgetList.resx">
+      <DependentUpon>PpFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpReduceEmployee.resx">
+      <DependentUpon>PpReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpSummaryBudget.resx">
+      <DependentUpon>PpSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpSummaryBudgetList.resx">
+      <DependentUpon>PpSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpUpdateAddEmployee.resx">
+      <DependentUpon>PpUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpUpdateBudget.resx">
+      <DependentUpon>PpUpdateBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpUpdateFixedAssetBudget.resx">
+      <DependentUpon>PpUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpUpdateReduceEmployee.resx">
+      <DependentUpon>PpUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingDepartment\PpUpdateSummaryBudget.resx">
+      <DependentUpon>PpUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYadd.resx">
+      <DependentUpon>JZQYadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYAddEmployee.resx">
+      <DependentUpon>JZQYAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYCgxBudget.resx">
+      <DependentUpon>JZQYCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYCgxBudgetList.resx">
+      <DependentUpon>JZQYCgxBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYEmployeeList.resx">
+      <DependentUpon>JZQYEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYEmployeePlan.resx">
+      <DependentUpon>JZQYEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYExpandPlan.resx">
+      <DependentUpon>JZQYExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYExpandPlanList.resx">
+      <DependentUpon>JZQYExpandPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYFixedAssetBudget.resx">
+      <DependentUpon>JZQYFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYFixedAssetBudgetList.resx">
+      <DependentUpon>JZQYFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYReduceEmployee.resx">
+      <DependentUpon>JZQYReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYSummaryBudget.resx">
+      <DependentUpon>JZQYSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYSummaryBudgetList.resx">
+      <DependentUpon>JZQYSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateAddEmployee.resx">
+      <DependentUpon>JZQYUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateCgxBudget.resx">
+      <DependentUpon>JZQYUpdateCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateExpandPlan.resx">
+      <DependentUpon>JZQYUpdateExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateFixedAssetBudget.resx">
+      <DependentUpon>JZQYUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateReduceEmployee.resx">
+      <DependentUpon>JZQYUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\JZQYUpdateSummaryBudget.resx">
+      <DependentUpon>JZQYUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCadd.resx">
+      <DependentUpon>WHGCadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCAddEmployee.resx">
+      <DependentUpon>WHGCAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCCgxBudget.resx">
+      <DependentUpon>WHGCCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCCgxBudgetList.resx">
+      <DependentUpon>WHGCCgxBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCEmployeeList.resx">
+      <DependentUpon>WHGCEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCEmployeePlan.resx">
+      <DependentUpon>WHGCEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCExpandPlan.resx">
+      <DependentUpon>WHGCExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCExpandPlanList.resx">
+      <DependentUpon>WHGCExpandPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCFixedAssetBudget.resx">
+      <DependentUpon>WHGCFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCFixedAssetBudgetList.resx">
+      <DependentUpon>WHGCFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCReduceEmployee.resx">
+      <DependentUpon>WHGCReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCSummaryBudget.resx">
+      <DependentUpon>WHGCSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCSummaryBudgetList.resx">
+      <DependentUpon>WHGCSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateAddEmployee.resx">
+      <DependentUpon>WHGCUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateCgxBudget.resx">
+      <DependentUpon>WHGCUpdateCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateExpandPlan.resx">
+      <DependentUpon>WHGCUpdateExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateFixedAssetBudget.resx">
+      <DependentUpon>WHGCUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateReduceEmployee.resx">
+      <DependentUpon>WHGCUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHGCUpdateSummaryBudget.resx">
+      <DependentUpon>WHGCUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYadd.resx">
+      <DependentUpon>WHQYadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYAddEmployee.resx">
+      <DependentUpon>WHQYAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYCgxBudget.resx">
+      <DependentUpon>WHQYCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYCgxBudgetList.resx">
+      <DependentUpon>WHQYCgxBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYEmployeeList.resx">
+      <DependentUpon>WHQYEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYEmployeePlan.resx">
+      <DependentUpon>WHQYEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYExpandPlan.resx">
+      <DependentUpon>WHQYExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYExpandPlanList.resx">
+      <DependentUpon>WHQYExpandPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYFixedAssetBudget.resx">
+      <DependentUpon>WHQYFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYFixedAssetBudgetList.resx">
+      <DependentUpon>WHQYFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYReduceEmployee.resx">
+      <DependentUpon>WHQYReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYSummaryBudget.resx">
+      <DependentUpon>WHQYSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYSummaryBudgetList.resx">
+      <DependentUpon>WHQYSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateAddEmployee.resx">
+      <DependentUpon>WHQYUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateCgxBudget.resx">
+      <DependentUpon>WHQYUpdateCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateExpandPlan.resx">
+      <DependentUpon>WHQYUpdateExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateFixedAssetBudget.resx">
+      <DependentUpon>WHQYUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateReduceEmployee.resx">
+      <DependentUpon>WHQYUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WHQYUpdateSummaryBudget.resx">
+      <DependentUpon>WHQYUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBadd.resx">
+      <DependentUpon>WXBadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBAddEmployee.resx">
+      <DependentUpon>WXBAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBCgxBudget.resx">
+      <DependentUpon>WXBCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBCgxBudgetList.resx">
+      <DependentUpon>WXBCgxBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBEmployeeList.resx">
+      <DependentUpon>WXBEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBEmployeePlan.resx">
+      <DependentUpon>WXBEmployeePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBExpandPlan.resx">
+      <DependentUpon>WXBExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBExpandPlanList.resx">
+      <DependentUpon>WXBExpandPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBFixedAssetBudget.resx">
+      <DependentUpon>WXBFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBFixedAssetBudgetList.resx">
+      <DependentUpon>WXBFixedAssetBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBReduceEmployee.resx">
+      <DependentUpon>WXBReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBSummaryBudget.resx">
+      <DependentUpon>WXBSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBSummaryBudgetList.resx">
+      <DependentUpon>WXBSummaryBudgetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateAddEmployee.resx">
+      <DependentUpon>WXBUpdateAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateCgxBudget.resx">
+      <DependentUpon>WXBUpdateCgxBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateExpandPlan.resx">
+      <DependentUpon>WXBUpdateExpandPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateFixedAssetBudget.resx">
+      <DependentUpon>WXBUpdateFixedAssetBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateReduceEmployee.resx">
+      <DependentUpon>WXBUpdateReduceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesDepartment\WXBUpdateSummaryBudget.resx">
+      <DependentUpon>WXBUpdateSummaryBudget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Scheduling\CheckStock.resx">
       <DependentUpon>CheckStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -1412,6 +3405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Stock\updateStock.resx">
       <DependentUpon>updateStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test\test1.resx">
+      <DependentUpon>test1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Updatelog.resx">
       <DependentUpon>Updatelog.cs</DependentUpon>

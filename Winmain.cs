@@ -16,6 +16,8 @@ using WindowsFormsApp1.Class;
 using WindowsFormsApp1.Properties;
 using WindowsFormsApp1.OrderReport;
 using WindowsFormsApp1.Platform;
+using WindowsFormsApp1.test;
+using WindowsFormsApp1.Produce;
 
 namespace WindowsFormsApp1
 {
@@ -430,6 +432,34 @@ namespace WindowsFormsApp1
         {
             addStockCaryyDown addStock = new addStockCaryyDown();
             addStock.Show();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            budget budget = new budget();
+            budget.Username = Username;
+            budget.Group = Group;
+            budget.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            BudgetList budgetList = new BudgetList();
+            budgetList.Show();
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            test1 test1 = new test1();
+            test1.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            PBAdd productionBudget = new PBAdd();
+            productionBudget.Username = Username;
+            productionBudget.Group = Group;
+            productionBudget.ShowDialog();
         }
     }
 }

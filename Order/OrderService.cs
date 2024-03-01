@@ -100,7 +100,7 @@ namespace WindowsFormsApp1.Order
         }
 
         #endregion 合同编号相关
-
+        decimal bb;
         #region 红色groupbox边框
 
         private void GroupBox1_Paint_1(object sender, PaintEventArgs e)
@@ -213,7 +213,7 @@ namespace WindowsFormsApp1.Order
             else
             {
                 decimal aa;
-                decimal bb;
+                
                 decimal c;
                 string qj = QJ.Text;
                 string ddbh = DDBH.Text;
@@ -242,6 +242,7 @@ namespace WindowsFormsApp1.Order
                 string dj = DJ.Text;
                 string hk = HK.Text;
                 string bz = richTextBox1.Text;
+                string scd = comboBox1.Text;
                 SqlConnection con = new SqlConnection(SQL);
                 bool go = true;
                 bool flag7 = this.YS.Text != "" && this.ZCM.Text != "" && this.ZMS.Text != "" && this.LXR.Text != "" && this.LXFS.Text != "";
@@ -268,7 +269,15 @@ namespace WindowsFormsApp1.Order
                             //实际金额
                             aa = Convert.ToDecimal(je) - Convert.ToDecimal(Azf) - Convert.ToDecimal(Hk) - Convert.ToDecimal(Yf);
                             //无税金额
-                            bb = aa / (1 + (Convert.ToDecimal(JESL.Text)/100));
+                            /*bb = aa / (1 + (Convert.ToDecimal(JESL.Text)/100));*/
+                            if(JESL.Text == "含税")
+                            {
+                                bb = aa / 113 * 100;
+                            }
+                            else if(JESL.Text == "不含税")
+                            {
+                                bb = aa;
+                            }
                             //货款
                             decimal huokuan = aa - Convert.ToDecimal(dj1);
                             sunAa += aa;
@@ -277,7 +286,7 @@ namespace WindowsFormsApp1.Order
                             sumHUOK += huokuan;
                             sumHk += Hk;
                             //sjje += (je + Azf + Yf);
-                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[azf],[hk],[yf],[ywy],[qy],[sjje],[wsje],[ident],[pmc],[dusting],ckzt,examine,rkzt,xdrq) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','"+Azf+ "','"+Hk+"','"+Yf+"','"+ywy+"','"+qy+"','"+aa+"','"+bb+"','N','N','" + PF.Text + "','未出库','未审核','未入库','"+sds+"')";
+                            comm.CommandText = "INSERT INTO [dbo].[Order_b]([orderid],[contractid],[date],[service],[company],[project],[sub],[quantity],[unit],[price],[meters],[amount],[productname],[azf],[hk],[yf],[ywy],[qy],[sjje],[wsje],[ident],[pmc],[dusting],ckzt,examine,rkzt,xdrq,[scd]) VALUES('" + ddbh + "', '" + htbh + "', '" + xdrq + "', '" + gdy + "', '" + gsm + "', '" + xmmc + "', '" + nr + "','" + sl1 + "','" + dw + "','" + dj1 + "','" + ms + "','" + je + "','" + cpmc + "','"+Azf+ "','"+Hk+"','"+Yf+"','"+ywy+"','"+qy+"','"+aa+"','"+bb+"','N','N','" + PF.Text + "','未出库','未审核','未入库','"+sds+"','"+scd+"')";
                             comm.Connection = con;
                             int count = comm.ExecuteNonQuery();
                             if (count < 1)

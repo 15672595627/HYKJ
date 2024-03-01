@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.Product
         public ProductIn()
         {
             InitializeComponent();
-            this.dataGridView1.DataError += delegate (object sender, DataGridViewDataErrorEventArgs e) { };
+            dataGridView1.DataError += delegate (object sender, DataGridViewDataErrorEventArgs e) { };
         }
 
         private static readonly string SQL = ConfigurationManager.AppSettings["connectionstring"];
@@ -38,6 +38,8 @@ namespace WindowsFormsApp1.Product
         SqlDataAdapter da2;
         DataTable dt3;
         SqlDataAdapter da3;
+        DataTable dt4;
+        SqlDataAdapter da4;
 
         private AutoSizeFormClass asc = new AutoSizeFormClass();
         private void ProductIn_Load(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace WindowsFormsApp1.Product
 
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    
+
                     string xsdj = dataGridView1.Rows[i].Cells[0].Value.ToString();
                     string htbh = dataGridView1.Rows[i].Cells[1].Value.ToString();
                     string gsm = dataGridView1.Rows[i].Cells[2].Value.ToString();
@@ -93,7 +95,7 @@ namespace WindowsFormsApp1.Product
                     da1 = new SqlDataAdapter(str, SQL);
                     dt1 = new DataTable();
                     da1.Fill(dt1);
-                    string str1 = "select contractid as 合同编号,productname as 产品,sub as 内容,quantity as 数量,amount as 金额 from [dbo].[Order_b] where productname = '" + cpmc + "' and sub = '" + nr + "' and contractid = '" + htbh + "' and quantity = '" + sssl + "'and date = '"+xdrq+"'";
+                    string str1 = "select contractid as 合同编号,productname as 产品,sub as 内容,quantity as 数量,amount as 金额 from [dbo].[Order_b] where productname = '" + cpmc + "' and sub = '" + nr + "' and contractid = '" + htbh + "' and quantity = '" + sssl + "'and date = '" + xdrq + "'";
                     da2 = new SqlDataAdapter(str1, SQL);
                     dt2 = new DataTable();
                     da2.Fill(dt2);
@@ -101,10 +103,10 @@ namespace WindowsFormsApp1.Product
                     da3 = new SqlDataAdapter(str2, SQL);
                     dt3 = new DataTable();
                     da3.Fill(dt3);
-                    
+
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "select * from [dbo].[ProductIn] where product = '" + cpmc + "' and  substance = '" + nr + "' and contractid = '" + htbh + "'and sl = '"+sssl+ "'and xdrq = '"+xdrq+"'";
+                        /*cmd.CommandText = "select * from [dbo].[ProductIn] where product = '" + cpmc + "' and  substance = '" + nr + "' and contractid = '" + htbh + "'and sl = '" + sssl + "'and xdrq = '" + xdrq + "'";
                         SqlDataReader sdr = cmd.ExecuteReader();
                         sdr.Read();
                         if (sdr.HasRows)
@@ -114,13 +116,13 @@ namespace WindowsFormsApp1.Product
                             MessageBox.Show(ts);
                             continue;
                         }
-                        else
+                        else*/
                         {
-                            sdr.Close();
+                            //sdr.Close();
                             SqlCommand cmmd = con.CreateCommand();
-                            cmmd.CommandText = "INSERT INTO [dbo].[ProductIn] ([orderid],[date],[caiwuRiqi],[staffin],[sorderid],[contractid],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[sssl],[zsms],[sjdj],[shck],[cbdj],[cbje],[state],[examine],[sent],cwsh,xdrq) VALUES ('" + djbh + "','" + djrq + "','" + djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + sda + "','" + sssl + "','" + zsms + "','" + sjdj + "','" + shck + "','" + cbdj + "','" + cbje + "','已入库','已审核','0','未审核','"+xdrq+"')";
+                            cmmd.CommandText = "INSERT INTO [dbo].[ProductIn] ([orderid],[date],[caiwuRiqi],[staffin],[sorderid],[contractid],[company],[project],[product],[substance],[sl],[dw],[kfdj],[meters],[kfje],[tax],[wscz],[sssl],[zsms],[sjdj],[shck],[cbdj],[cbje],[state],[examine],[sent],cwsh,xdrq,productionScheduling,state1) VALUES ('" + djbh + "','" + djrq + "','" + djrq + "','" + ldy + "','" + xsdj + "','" + htbh + "','" + gsm + "','" + xmmc + "','" + cpmc + "','" + nr + "','" + sl + "','" + dw + "','" + kfdj + "','" + ms + "','" + kfje + "','" + jesl + "','" + sda + "','" + sssl + "','" + zsms + "','" + sjdj + "','" + shck + "','" + cbdj + "','" + cbje + "','已入库','已审核','0','未审核','" + xdrq + "','未排产','1')";
                             int cot = cmmd.ExecuteNonQuery();
-                            if (cot == 0 )
+                            if (cot == 0)
                             {
                                 MessageBox.Show("保存失败");
                             }
@@ -160,19 +162,45 @@ namespace WindowsFormsApp1.Product
                         cmd3.CommandText = "insert into Stock(date,contractid,product,sub,norm,unit,num,amount,warehouse,createtime) VALUES ('" + sj + "','" + htbh + "','" + cpmc + "','" + nr + "','','" + dw + "','" + sl + "','" + kfje + "','" + shck + "','" + sj + "')";
                         cmd3.ExecuteNonQuery();
                     }
-                    if(dt2.Rows.Count > 0) {
+                    if (dt2.Rows.Count > 0)
+                    {
                         SqlCommand cmmd1 = con.CreateCommand();
                         cmmd1.CommandText = "update Order_b set rkzt = '已入库',rksj = '" + djrq + "' where productname = '" + cpmc + "' and sub = '" + nr + "' and contractid = '" + htbh + "'";
                         int cot2 = cmmd1.ExecuteNonQuery();
-                    }if(dt3.Rows.Count > 0) {
+                    }
+                    if (dt3.Rows.Count > 0)
+                    {
                         SqlCommand cmmd2 = con.CreateCommand();
                         cmmd2.CommandText = "update Order_b set rkzt = '部分入库',rksj = '" + djrq + "' where productname = '" + cpmc + "' and sub = '" + nr + "' and contractid = '" + htbh + "'";
                         int cot3 = cmmd2.ExecuteNonQuery();
-                    }   
+                    }
+
+                    string str3 = "select contractid as 合同编号,product as 产品,nr as 内容 from [dbo].[Plan] where product = '" + cpmc + "' and nr = '" + nr + "' and contractid = '" + htbh + "'";
+                    da4 = new SqlDataAdapter(str3, ProductIn.SQL);
+                    dt4 = new DataTable();
+                    da4.Fill(this.dt4);
+                    for (int k = 0; k < this.dt4.Rows.Count; k++)
+                    {
+                        string b3 = dt4.Rows[k]["合同编号"].ToString();
+                        string b4 = dt4.Rows[k]["产品"].ToString();
+                        string a2 = dt4.Rows[k]["内容"].ToString();
+                        if (htbh == b3 && cpmc == b4 && a2 == nr)
+                        {
+                            SqlCommand cmd111 = con.CreateCommand();
+                            cmd111.CommandText = "update ProductIn set productionScheduling = '已排产'where contractid = '" + htbh + "' and product = '" + cpmc + "' and substance = '" + nr + "'";
+                            cmd111.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            SqlCommand cmd222 = con.CreateCommand();
+                            cmd222.CommandText = "update ProductIn set productionScheduling = '未排产''";
+                            cmd222.ExecuteNonQuery();
+                        }
+                    }
                 }
+
                 MessageBox.Show("保存成功");
                 this.Close();
-
             }
             catch (Exception ex)
             {

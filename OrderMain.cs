@@ -559,5 +559,13 @@ namespace WindowsFormsApp1
             putStockDetial.User = this.Username1;
             putStockDetial.Group = this.Group1;
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            addBom putStockDetial = new addBom();
+            putStockDetial.Show();
+            putStockDetial.User = Username1;
+            putStockDetial.Group = Group1;
+        }
     }
 }

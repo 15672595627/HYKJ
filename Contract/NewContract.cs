@@ -71,7 +71,31 @@ namespace WindowsFormsApp1.Contract
                 WLKH.Text = "网络客户";
             if (HS.CheckState == CheckState.Checked)
                 HS.Text = "含税";
+            if (comboBox1.Text == "民用建筑")
+            {
+                HTBH.Text = "HYMY" + HTBH.Text;
+            }
+            if (comboBox1.Text == "市政交通")
+            {
+                HTBH.Text = "HYSZ" + HTBH.Text;
+            }
+            if (comboBox1.Text == "波形护栏")
+            {
+                HTBH.Text = "HYBX" + HTBH.Text;
+            }
+            if (comboBox1.Text == "铝单板")
+            {
+                HTBH.Text = "HYLD" + HTBH.Text;
+            }
+            if (comboBox1.Text == "公寓床")
+            {
+                HTBH.Text = "HYGY" + HTBH.Text;
+            }
 
+            if (comboBox1.Text == "货架")
+            {
+                HTBH.Text = "HYHJ" + HTBH.Text;     
+            }
             string djbh = DJBH.Text.Trim();
             string djrq = DJRQ.Text.Trim();
             string sjd = SJDXH.Text.Trim();//数据单编号
@@ -595,6 +619,11 @@ namespace WindowsFormsApp1.Contract
         private void NewContract_SizeChanged(object sender, EventArgs e)
         {
             asc.controlAutoSize(this);
+        }
+
+        private void NewContract_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

@@ -47,6 +47,8 @@
             this.txtKh = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.下推ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,15 +58,13 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.下推ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -239,6 +239,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(770, 201);
             this.dataGridView1.TabIndex = 0;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.下推ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
+            // 下推ToolStripMenuItem
+            // 
+            this.下推ToolStripMenuItem.Name = "下推ToolStripMenuItem";
+            this.下推ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.下推ToolStripMenuItem.Text = "下推";
+            this.下推ToolStripMenuItem.Click += new System.EventHandler(this.下推ToolStripMenuItem_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button3);
@@ -271,6 +285,7 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label10
             // 
@@ -322,20 +337,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(769, 149);
             this.dataGridView2.TabIndex = 1;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.下推ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
-            // 
-            // 下推ToolStripMenuItem
-            // 
-            this.下推ToolStripMenuItem.Name = "下推ToolStripMenuItem";
-            this.下推ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.下推ToolStripMenuItem.Text = "下推";
-            this.下推ToolStripMenuItem.Click += new System.EventHandler(this.下推ToolStripMenuItem_Click);
-            // 
             // CheckStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -351,11 +352,11 @@
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

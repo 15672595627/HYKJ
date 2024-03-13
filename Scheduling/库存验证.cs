@@ -27,6 +27,13 @@ namespace WindowsFormsApp1.Scheduling
 
         private SqlDataAdapter da1;
         private DataTable dt1;
+
+        private SqlDataAdapter da2;
+        private DataTable dt2;
+
+        private SqlDataAdapter da3;
+        private DataTable dt3;
+
         private AutoSizeFormClass asc = new AutoSizeFormClass();
         public static readonly string SQL = ConfigurationManager.AppSettings["connectionstring"];
         public string User { get; set; }
@@ -35,26 +42,28 @@ namespace WindowsFormsApp1.Scheduling
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string text = this.txtId.Text.Trim();
-            string text2 = this.txtName.Text.Trim();
-            string text3 = this.txtGg.Text.Trim();
+            string text = txtId.Text.Trim();
+            string text2 = txtName.Text.Trim();
+            string text3 = txtGg.Text.Trim();
             string ckmc = comCkmc.Text.Trim();
             string selectCommandText = string.Concat(new string[]
             {
-                "select id, materialsId as 物料代码, materialsName as 物料名称, specification as 规格型号,auxiliarysign as 助记号,stockId as 仓库代码,stockName as 仓库名称 , sl as 数量,unitNumber as 库存数量,unit as 单位,kuwei as 库位,weight as 重量数量,weightUnit as 重量单位,remark as 备注,purchasingPrice as 最新进价 ,stockAmount as 库存金额,state as 下推状态 from MaterialStock where materialsId like '%",
-                text,
-                "%' and materialsName like '%",
-                text2,
-                "%' and specification like '%",
-                text3,
-                "%' and state = 'N' and stockName like '%"+ckmc+"%'"
+                "select id, clid as 物料代码, clmc as 物料名称, clgg as 规格型号,ckdm as 仓库代码,zs as 实发数量,kcsl as 库存数量,unit as 单位,ck as 发货仓库 from DesginBom where clid like '%"+text+"%' and clmc like '%"+text2+"%' and clgg like '%"+text3+"%' and ck like '%"+ckmc+"%' and rkzt = '未出库'"
             });
             da = new SqlDataAdapter(selectCommandText, SQL);
             dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
             dataGridView1.Columns["id"].Visible = false;
-            //this.dataGridView1.Columns["下推状态"].Visible = false;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                int a1 = Convert.ToInt32(dataGridView1.Rows[i].Cells["实发数量"].Value);
+                int a2 = Convert.ToInt32(dataGridView1.Rows[i].Cells["库存数量"].Value);
+                if (a1 > a2)
+                {
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
         }
 
         private void txtHtbh_TextChanged(object sender, EventArgs e)
@@ -99,34 +108,38 @@ namespace WindowsFormsApp1.Scheduling
             {
                 int m = dataGridView1.SelectedRows[i].Index;
                 string id = dataGridView1.Rows[m].Cells["id"].Value.ToString();
-                string text8 = dataGridView1.Rows[m].Cells["物料代码"].Value.ToString();
-                string text9 = dataGridView1.Rows[m].Cells["物料名称"].Value.ToString();
-                string text10 = dataGridView1.Rows[m].Cells["规格型号"].Value.ToString();
-                string text11 = dataGridView1.Rows[m].Cells["仓库名称"].Value.ToString();
-                string text12 = dataGridView1.Rows[m].Cells["单位"].Value.ToString();
-                int sl = Convert.ToInt32(dataGridView1.Rows[m].Cells["数量"].Value.ToString());
-                int d = Convert.ToInt32(dataGridView1.Rows[m].Cells["库存数量"].Value.ToString());
-                //decimal d2 = Convert.ToInt32(textBox6.Text.Trim());
-                decimal text13 = Convert.ToDecimal(dataGridView1.Rows[m].Cells["最新进价"].Value.ToString());
-                string text14 = dataGridView1.Rows[m].Cells["库存金额"].Value.ToString();
-                SqlConnection sqlConnection = new SqlConnection(kucunyanzheng.SQL);
-                sqlConnection.Open();
-                /*SqlCommand sqlCommand = sqlConnection.CreateCommand();
-                sqlCommand.CommandText = "update MaterialStock set state = 'Y'where id = '" + id + "'";
-                int num = sqlCommand.ExecuteNonQuery();
-                bool flag = num == 0;
-                if (flag)
+                string wldm = dataGridView1.Rows[m].Cells["物料代码"].Value.ToString();
+                string wlmc = dataGridView1.Rows[m].Cells["物料名称"].Value.ToString();
+                string ggxh = dataGridView1.Rows[m].Cells["规格型号"].Value.ToString();
+                string ckdm = dataGridView1.Rows[m].Cells["仓库代码"].Value.ToString();
+                int sfsl = Convert.ToInt32(dataGridView1.Rows[m].Cells["实发数量"].Value.ToString());
+                int sl = Convert.ToInt32(dataGridView1.Rows[m].Cells["库存数量"].Value.ToString());
+                string fhck = (dataGridView1.Rows[m].Cells["发货仓库"].Value.ToString());
+                string dw = (dataGridView1.Rows[m].Cells["单位"].Value.ToString());
+
+                if (sfsl>sl)
                 {
-                    MessageBox.Show("下推失败");
-                }*/
-                SqlCommand sqlCommand1 = sqlConnection.CreateCommand();
-                sqlCommand1.CommandText = "INSERT INTO OutStockDetial (Date,orderId,contactId,company,project,wsje,stockName,materialsId,materialsName,specification,unit,sl,unitNumber,purchasingPrice,stockAmount,state,zdy) VALUES ('" + text + "','" + text2 + "','" + text3 + "','" + text4 + "','" + text5 + "','" + wsje + "','" + text11 + "','" + text8 + "','" + text9 + "','" + text10 + "','" + text12 + "','" + sl + "','" + d + "','" + text13 + "','" + text14 + "','Y','"+User+"')";
-                int num1 = sqlCommand1.ExecuteNonQuery();
-                if (num1 == 0)
-                {
-                    MessageBox.Show("下推失败");
+                    MessageBox.Show("物料代码为：'"+wldm+ "'库存不足，无法出库！");
                 }
-                sqlConnection.Close();
+                else if(sfsl <= sl)
+                {
+                    SqlConnection sqlConnection = new SqlConnection(kucunyanzheng.SQL);
+                    sqlConnection.Open();
+                    SqlCommand sqlCommand1 = sqlConnection.CreateCommand();
+                    sqlCommand1.CommandText = "INSERT INTO OutStockDetial (Date,orderId,contactId,company,project,wsje,stockName,materialsId,materialsName,specification,unit,sl,unitNumber,state,zdy,stockId) VALUES ('" + text + "','" + text2 + "','" + text3 + "','" + text4 + "','" + text5 + "','" + wsje + "','" + fhck + "','" + wldm + "','" + wlmc + "','" + ggxh + "','" + dw + "','" + sfsl + "','" + sl + "','N','" + User + "','" + ckdm + "')";
+                    int num1 = sqlCommand1.ExecuteNonQuery();
+
+                    SqlCommand sqlCommand2 = sqlConnection.CreateCommand();
+                    sqlCommand2.CommandText = "update DesginBom set rkzt = '已出库'where clid = '"+ wldm + "'";
+                    int num2 = sqlCommand2.ExecuteNonQuery();
+                    if (num1 == 0)
+                    {
+                        MessageBox.Show("下推失败");
+                    }
+                    sqlConnection.Close();
+
+
+                }
             }
             this.button1.PerformClick();
             this.button3.PerformClick();
@@ -134,8 +147,10 @@ namespace WindowsFormsApp1.Scheduling
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
-            string selectCommandText = "select id, contactId as 合同编号,materialsId as 物料代码, materialsName as 物料名称, specification as 规格型号,stockId as 仓库代码,stockName as 仓库名称  ,sl as 出库数量,unitNumber as 库存数量,unit as 单位,kuwei as 库位,weight as 重量数量,weightUnit as 重量单位,remark as 备注,purchasingPrice as 最新进价 ,stockAmount as 库存金额 from OutStockDetial where state = 'Y'";
+            //搜索BOM单，将录入的BOM单带出来，然后通过物料编码的id去关联库存的数量，进行库存的数量的更新
+            //数量够就，正常入库领料，数量不够则走领料程序
+            //领料保存的同时也要更新BOM数据库的入库状态，不然数据一直在就乱了
+            string selectCommandText = "select id, contactId as 合同编号,materialsId as 物料编码, materialsName as 物料名称, specification as 规格型号,stockId as 仓库代码,stockName as 仓库名称  ,sl as 出库数量,unitNumber as 库存数量,unit as 单位,kuwei as 库位,weight as 重量数量,weightUnit as 重量单位,remark as 备注,purchasingPrice as 最新进价 ,stockAmount as 库存金额 from OutStockDetial where state = 'N'";
             da1 = new SqlDataAdapter(selectCommandText, SQL);
             dt1 = new DataTable();
             da1.Fill(dt1);
@@ -143,6 +158,16 @@ namespace WindowsFormsApp1.Scheduling
             dataGridView2.Columns["id"].Visible = false;
             
         }
+        int sl;
+        string sdid;
+        string zt;
+        string Omid;
+        int sl1;
+        decimal zxjj1;
+        decimal kcje1;
+        int Newsl1;
+        decimal Newzxjj1;
+        decimal Newkcje1;
         private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             string text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -162,18 +187,18 @@ namespace WindowsFormsApp1.Scheduling
                     string id = dataGridView2.Rows[m].Cells["id"].Value.ToString();
                     string text11 = dataGridView2.Rows[m].Cells["仓库名称"].Value.ToString();
                     string text12 = dataGridView2.Rows[m].Cells["单位"].Value.ToString();
-                    string wldl = dataGridView2.Rows[m].Cells["物料代码"].Value.ToString();
+                    string wldl = dataGridView2.Rows[m].Cells["物料编码"].Value.ToString();
                     string text9 = dataGridView2.Rows[m].Cells["物料名称"].Value.ToString();
                     string text10 = dataGridView2.Rows[m].Cells["规格型号"].Value.ToString();
                     int sl = Convert.ToInt32(dataGridView2.Rows[m].Cells["出库数量"].Value);
                     int d = Convert.ToInt32(dataGridView2.Rows[m].Cells["库存数量"].Value);
                     decimal text13 = Convert.ToDecimal(dataGridView2.Rows[m].Cells["最新进价"].Value);
                     string text14 = dataGridView2.Rows[m].Cells["库存金额"].Value.ToString();
-                    
+
                     int sl1 = sl;
                     int kcsl = d - sl;
                     decimal newje = kcsl * text13;
-                    if(sl < d)
+                    if (sl < d)
                     {
                         SqlCommand cmd = sqlConnection.CreateCommand();
                         cmd.CommandText = "update MaterialStock set  unitNumber = '" + kcsl + "',stockAmount = '" + newje + "'where materialsId = '" + wldl + "'";
@@ -185,25 +210,30 @@ namespace WindowsFormsApp1.Scheduling
                     }
                     if (sl > d)
                     {
-                        MessageBox.Show("该 '"+wldl+"' 仓库库存不够，无法领料，系统已经自动生成采购申请单");
+                        MessageBox.Show("该 '" + wldl + "' 仓库库存不够，无法领料，系统已经自动生成采购申请单");
                         //string str = "insert into ";
                     }
-                    /*SqlCommand sqlCommand1 = sqlConnection.CreateCommand();
+
+                    SqlCommand sqlCommand1 = sqlConnection.CreateCommand();
                     sqlCommand1.CommandText = "INSERT INTO OutStockDetial (Date,orderId,contactId,company,project,product,stockName,materialsId,materialsName,specification,unit,sl,unitNumber,purchasingPrice,stockAmount) VALUES ('" + text + "','" + text2 + "','" + text3 + "','" + text4 + "','" + text5 + "','" + text6 + "','" + text11 + "','" + wldl + "','" + text9 + "','" + text10 + "','" + text12 + "','" + sl1 + "','" + kcsl + "','" + text13 + "','" + newje + "')";
-                    sqlCommand1.ExecuteNonQuery();*/
+                    sqlCommand1.ExecuteNonQuery();
                 }
             }
             catch (Exception)
             {
 
                 throw;
-            }finally
+            }
+            finally
             { sqlConnection.Close(); }
-            
+
         }
         private void btnBc_Click(object sender, EventArgs e)
         {
-            
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                row.Selected = true;
+            }
             button3.PerformClick();
             string text = DateTime.Now.ToString("yyyy-MM-dd");
             string text2 = txtDdbh.Text.Trim();
@@ -215,175 +245,70 @@ namespace WindowsFormsApp1.Scheduling
             string ss = DateTime.Now.ToString("yyyy-MM-dd");
             if (dataGridView2.Rows.Count > 0)
             {
-                for (int i = 0; i < dataGridView2.Rows.Count-1; i++)
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
                     
                     string id = dataGridView2.Rows[i].Cells["id"].Value.ToString();
                     string htbh = dataGridView2.Rows[i].Cells["合同编号"].Value.ToString();
-                    string wldm = dataGridView2.Rows[i].Cells["物料代码"].Value.ToString();
+                    string wldm = dataGridView2.Rows[i].Cells["物料编码"].Value.ToString();
                     string wlmc = dataGridView2.Rows[i].Cells["物料名称"].Value.ToString();
                     string ggxh = dataGridView2.Rows[i].Cells["规格型号"].Value.ToString();
                     string ckmc = dataGridView2.Rows[i].Cells["仓库名称"].Value.ToString();
                     string dw = dataGridView2.Rows[i].Cells["单位"].Value.ToString();
-                    int sl = Convert.ToInt32(dataGridView2.Rows[i].Cells["出库数量"].Value.ToString());
-                    int d = Convert.ToInt32(dataGridView2.Rows[i].Cells["库存数量"].Value.ToString());
-                    //decimal d2 = Convert.ToInt32(textBox6.Text.Trim());
-                    decimal zxjj = Convert.ToDecimal(dataGridView2.Rows[i].Cells["最新进价"].Value.ToString());
-                    string kcje = dataGridView2.Rows[i].Cells["库存金额"].Value.ToString();
-                    decimal je = sl * zxjj;
-                    /*int kcsl = d - sl;
-                    decimal newje = kcsl * text13;*/
+                    int cksl = Convert.ToInt32(dataGridView2.Rows[i].Cells["出库数量"].Value.ToString());
+                    int kcsl = Convert.ToInt32(dataGridView2.Rows[i].Cells["库存数量"].Value.ToString());
+                    
                     SqlConnection sqlConnection = new SqlConnection(SQL);
                     sqlConnection.Open();
-                    string cmdText = string.Concat(new string[]
-                    {
-                            "update OutStockDetial set state = 'N' "
-                    });
-                    SqlCommand sqlCommand = new SqlCommand(cmdText, sqlConnection);
-                    sqlCommand.ExecuteNonQuery();
 
-                    if (sl < d)
-                    {
-                        string addLld = "insert into linliaodan (materialRequisitionId,contactId,company,project,wsje,materialsId,materialsName,specification,unit,sl,unitNumber,ll,zd,je,stockAmount,date,kuwei,stockName,state)Values('" + textBox1.Text + "','" + htbh + "','" + txtGsm.Text + "','" + txtXm.Text + "','" + txtWsje.Text + "','" + wldm + "','" + wlmc + "','" + ggxh + "','" + dw + "','" + sl + "','" + d + "','" + txtLl.Text + "','" + User + "','" + je + "','" + kcje + "','" + ss + "','" + kw + "','" + ckmc + "','已审核')";
-                        SqlCommand cmd = new SqlCommand(addLld, sqlConnection);
-                        cmd.ExecuteNonQuery();
-                        //更新到出库明细表
-                        /* SqlCommand sqlCommand1 = sqlConnection.CreateCommand();
-                         sqlCommand1.CommandText = "INSERT INTO OutStockDetial (Date,orderId,contactId,company,project,product,stockName,materialsId,materialsName,specification,unit,sl,unitNumber,purchasingPrice,stockAmount) VALUES ('" + text + "','" + text2 + "','" + text3 + "','" + text4 + "','" + text5 + "','" + text6 + "','" + text11 + "','" + text8 + "','" + text9 + "','" + text10 + "','" + text12 + "','" + sl + "','" + d + "','" + text13 + "','" + text14 + "')";
-                         sqlCommand1.ExecuteNonQuery();*/
+                    string str1 = "select materialsId,unitNumber,purchasingPrice,stockAmount from MaterialStock ";
+                    da2 = new SqlDataAdapter(str1, SQL);
+                    dt2 = new DataTable();
+                    da2.Fill(dt2);
 
-                        sqlConnection.Close();
-                    }
-                    else
+                    string str2 = "select materialsId,state,sl from OutStockDetial ";
+                    da3 = new SqlDataAdapter(str2, SQL);
+                    dt3 = new DataTable();
+                    da3.Fill(dt3);
+                    /*if (dt3.Rows.Count > 0)
                     {
-                        MessageBox.Show("");
+                        for (int ii = 0; ii < dt3.Rows.Count; ii++)
+                        {
+                            sdid = dt3.Rows[ii]["materialsId"].ToString();
+                            zt = dt3.Rows[ii]["state"].ToString();
+                            sl = Convert.ToInt32(dt3.Rows[ii]["sl"]);
+                        }
+                    }*/
+                    if (dt2.Rows.Count > 0)
+                    {
+                        for (int j = 0; j < dt2.Rows.Count; j++)
+                        {
+                            Omid = dt2.Rows[j]["materialsId"].ToString();
+                            sl1 = Convert.ToInt32(dt2.Rows[j]["unitNumber"].ToString());
+                            //zxjj1 = Convert.ToDecimal(dt2.Rows[j]["purchasingPrice"]);
+                            //kcje1 = Convert.ToDecimal(dt2.Rows[j]["stockAmount"]);
+                            if (Omid == wldm)
+                            {
+                                Newsl1 = sl1 - cksl;
+                                Newkcje1 = kcje1 - zxjj1 * sl;
+                                SqlCommand cmd11 = sqlConnection.CreateCommand();
+                                cmd11.CommandText = "update MaterialStock set unitNumber = '" + Newsl1 + "',stockAmount = '" + Newkcje1 + "'where materialsId = '" + wldm + "'";
+                                cmd11.ExecuteNonQuery();
+                            }
+                        }
                     }
-                    //更新库存和更新金额
-                   
-                    /* try
-                     {
-                         bool flag = d > d2;
-                         if (flag)
-                         {
-                             decimal num = d - d2;
-                             SqlConnection sqlConnection = new SqlConnection(kucunyanzheng.SQL);
-                             sqlConnection.Open();
-                             string cmdText = string.Concat(new string[]
-                             {
-                             "update MaterialStock set unitNumber = '"+d+"',state = 'N' where id ='"+text7+"'"
-                             });
-                             SqlCommand sqlCommand = new SqlCommand(cmdText, sqlConnection);
-                             sqlCommand.ExecuteNonQuery();
-                             string cmdText2 = string.Concat(new string[]
-                             {
-                             "INSERT INTO OutStockDetial (Date,orderId,contactId,company,project,product,stockName,materialsId,materialsName,specification,unit,unitNumber,purchasingPrice,stockAmount,state) VALUES ('",
-                             text,
-                             "','",
-                             text2,
-                             "','",
-                             text3,
-                             "','",
-                             text4,
-                             "','",
-                             text5,
-                             "','",
-                             text6,
-                             "','",
-                             text11,
-                             "','",
-                             text8,
-                             "','",
-                             text9,
-                             "','",
-                             text10,
-                             "','",
-                             text12,
-                             "','",
-                             d2.ToString(),
-                             "','",
-                             text13,
-                             "','",
-                             text14,
-                             "','N')"
-                             });
-                             SqlCommand sqlCommand2 = new SqlCommand(cmdText2, sqlConnection);
-                             int num2 = sqlCommand2.ExecuteNonQuery();
-                             bool flag2 = num2 > 0;
-                             if (flag2)
-                             {
-                                 MessageBox.Show("保存成功");
-                             }
-                             sqlConnection.Close();
-                         }
-                         else
-                         {
-                             bool flag3 = d < d2;
-                             if (flag3)
-                             {
-                                 MessageBox.Show(string.Concat(new string[]
-                                 {
-                                 "库存数量：",
-                                 d.ToString(),
-                                 "  小于需要的数量：",
-                                 d2.ToString(),
-                                 "  ,请申请采购"
-                                 }));
-                                 SqlConnection sqlConnection2 = new SqlConnection(kucunyanzheng.SQL);
-                                 sqlConnection2.Open();
-                                 string cmdText3 = string.Concat(new string[]
-                                 {
-                                 "INSERT INTO purchaseRequest (orderId,contactId,company,project,product,stockName,materialsId,materialsName,specification,unit,unitNumber,purchasingPrice,stockAmount,state) VALUES ('",
-                                 text2,
-                                 "','",
-                                 text3,
-                                 "','",
-                                 text4,
-                                 "','",
-                                 text5,
-                                 "','",
-                                 text6,
-                                 "','",
-                                 text11,
-                                 "','",
-                                 text8,
-                                 "','",
-                                 text9,
-                                 "','",
-                                 text10,
-                                 "','",
-                                 text12,
-                                 "','",
-                                 d.ToString(),
-                                 "','",
-                                 text13,
-                                 "','",
-                                 text14,
-                                 "','N')"
-                                 });
-                                 SqlCommand sqlCommand3 = new SqlCommand(cmdText3, sqlConnection2);
-                                 int num3 = sqlCommand3.ExecuteNonQuery();
-                                 bool flag4 = num3 < 0;
-                                 if (flag4)
-                                 {
-                                     MessageBox.Show("保存失败！");
-                                 }
-                             }
-                         }
-                     }
-                     catch (Exception ex)
-                     {
-                         MessageBox.Show("更新失败，失败原因" + ex.Message);
-                     }*/
+                    SqlCommand cmd = sqlConnection.CreateCommand();
+                    cmd.CommandText = "update OutStockDetial set state = 'Y'";
+                    cmd.ExecuteNonQuery();
+                    sqlConnection.Close();
                 }
             }
-            
-            
             button3.PerformClick();
         }
 
         private void kucunyanzheng_SizeChanged(object sender, EventArgs e)
         {
-            this.asc.controlAutoSize(this);
+            asc.controlAutoSize(this);
             
         }
 

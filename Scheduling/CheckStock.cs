@@ -34,12 +34,13 @@ namespace WindowsFormsApp1.Scheduling
             asc.controlAutoSize(this);
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             string wlbm = txtWlbm.Text.Trim();
             string wlmc = txtWlmc.Text.Trim();
             string wlgg = txtWlgg.Text.Trim();
-            string str = "select [id], [materialsId] as 物料编码, [materialsName] as 物料名称, [specification] as 规格型号, [auxiliarysign] as 助记号, [stockId] as 仓库代码 , [stockName] as 仓库名称, [unitNumber] as 数量, [unit] as 单位, kuwei as 库位,[weight] as 重量, [weightUnit] as 重量单位, [remark] as 备注, [purchasingPrice] as 最新进价, [stockAmount] as 库存金额 from MaterialStock where materialsId like '%" + wlbm + "%' and materialsName like '%"+wlmc+"%' and specification like '%" + wlgg+"%'";
+            string str = "select id,orderid as 单据编号,contractid as 合同编号,zs as 数量,date as 日期,desgin as 下单员,company as 客户名,project as 项目名称,color as 颜色,product as 产品,sfyl as 塑粉用量,meters as 米数,clid as 材料ID,clmc as 材料名称,clgg as 材料规格,cllb as 材料类别,ccpf as 尺寸喷粉,zs as 支数,bz as 备注 from [dbo].[DesginBom] where clid like '%" + wlbm + "%' and clmc like '%" + wlmc+ "%' and clgg like '%" + wlgg+ "%'and rkzt = '未入库'";
             da = new SqlDataAdapter(str, SQL);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -54,6 +55,11 @@ namespace WindowsFormsApp1.Scheduling
         }
 
         private void 下推ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

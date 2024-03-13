@@ -76,6 +76,7 @@ namespace WindowsFormsApp1
             this.button21 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -89,7 +90,6 @@ namespace WindowsFormsApp1
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -609,7 +609,7 @@ namespace WindowsFormsApp1
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(184, 40);
             this.button31.TabIndex = 7;
-            this.button31.Text = "库存验证（仓库数据）";
+            this.button31.Text = "库存验证";
             this.button31.UseVisualStyleBackColor = true;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
@@ -702,6 +702,18 @@ namespace WindowsFormsApp1
             this.groupBox7.Text = "研发中心";
             this.groupBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox7_Paint);
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button8.ForeColor = System.Drawing.Color.Black;
+            this.button8.Location = new System.Drawing.Point(115, 22);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(74, 68);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "新增";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button38
             // 
             this.button38.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -742,11 +754,11 @@ namespace WindowsFormsApp1
             // 
             this.button17.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button17.Location = new System.Drawing.Point(6, 50);
+            this.button17.Location = new System.Drawing.Point(6, 22);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(188, 40);
+            this.button17.Size = new System.Drawing.Size(90, 68);
             this.button17.TabIndex = 0;
-            this.button17.Text = "设计数据新增（BOM）";
+            this.button17.Text = "设计数据新增（BOM废弃）";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -813,18 +825,6 @@ namespace WindowsFormsApp1
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("楷体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(81, 21);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "ee";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // OrderMain
             // 
